@@ -1,0 +1,21 @@
+% =====================================================================
+\section{Open problems}\label{sec:open}
+% =====================================================================
+
+\paragraph{Finite energies.} The infinite energies freeze the background and keep the computations exact. With finite energies every local pattern has positive probability, the background can fluctuate, and errors can imitate a ready grid or break a wire.
+
+\begin{problem}\label{prob:finite}
+Is there one translation-invariant finite-range interaction on $\Z^d$ with finite rational energies, and computable rational inverse temperatures $\beta_n$, such that uniqueness of the translation-invariant Gibbs measure at $\beta_n$ is undecidable?
+\end{problem}
+
+\paragraph{All Gibbs measures.} The model of Theorem~A has Gibbs measures that are not translation invariant at every temperature, so its undecidable property is uniqueness among translation-invariant Gibbs measures.
+
+\begin{problem}\label{prob:all}
+Is there one interaction, with or without hard constraints, for which uniqueness among all Gibbs measures, as a function of $\beta$, is undecidable?
+\end{problem}
+
+\paragraph{Smaller models.} Our alphabet is large, the model is two-dimensional, and its rules are built to order. One dimension is excluded, hard constraints included. Recode a finite-range interaction on $\Z$ with a finite alphabet as a transfer matrix $W(\beta)$ on a finite graph, with entries $e^{-\beta E}$ on the allowed edges and $0$ on the forbidden ones; the allowed edges do not depend on $\beta$. A bi-infinite legal path crosses between strongly connected components of this graph at most a bounded number of times, so a translation-invariant measure gives a crossing at the origin probability $0$, and a translation-invariant Gibbs measure is a mixture of translation-invariant Gibbs measures carried by single components. On a component that contains a cycle the Perron--Frobenius theorem gives exactly one, the uniform average over the cyclic classes when the component is periodic. So the number of extremal translation-invariant Gibbs measures equals the number of components that contain a cycle, at every finite $\beta>0$, and uniqueness cannot change with the temperature.
+
+\begin{problem}\label{prob:small}
+Is there a two-dimensional example with a small alphabet or with a natural interaction?
+\end{problem}

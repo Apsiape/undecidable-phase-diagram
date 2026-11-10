@@ -1,0 +1,102 @@
+% =====================================================================
+\section{The payload is a union of Ising models}\label{sec:payload}
+% =====================================================================
+
+Fix a typical $\tau$ and write $\mathfrak b=\mathfrak b_\tau$. This section shows that the Gibbs measures of the frozen kernels $\gamma^{\mathfrak b}$ are in bijection with the Gibbs measures of an Ising model on a disjoint union of square lattices, one for each ready depth.
+
+\subsection{Edges and their private coordinates}
+
+For $d\ge1$, the roots of depth $d$ are the sites $\mathbf r_d(m_1,m_2)$, $(m_1,m_2)\in\Z^2$ (\cref{bg:grids}(d)). For each $d$, $m_1$, $m_2$ there are two \emph{edges} with \emph{head} $v=\mathbf r_d(m_1,m_2)$: the horizontal edge with \emph{tail} $u=\mathbf r_d(m_1-1,m_2)$ and the vertical edge with tail $u=\mathbf r_d(m_1,m_2-1)$. Let $\xi(i,j)$ be the sites of the grid whose root is $v$, and let $N=N_d$. The \emph{private coordinates} $\eta_e$ of the horizontal edge $e$ are:
+\begin{itemize}
+\item the \emph{arm}: the wire values $w^{\mathrm E}(z,v_2)$ for $u_1\le z<v_1$ and $w^{\mathrm W}(z,v_2)$ for $u_1<z\le v_1$;
+\item if $\rho_d=1$, the \emph{sensor}: the components $x^-_{\mathrm h},x^+_{\mathrm h},y^-_{\mathrm h},y^+_{\mathrm h}$ of the cell records at $\xi(0,j)$, $j\in[0,N)$, and the components $x^-_{\mathrm h},x^+_{\mathrm h}$ of $\ell^{\mathrm S}$ and $\ell^{\mathrm N}$ at the sites of the column of $v$ from $\xi(0,0)$ to $\xi(0,N-1)$.
+\end{itemize}
+The private coordinates of the vertical edge are defined in the same way, with the wire values $w^{\mathrm N}$, $w^{\mathrm S}$ along the column of $v$ and the sensor components with subscript $\mathrm v$.
+
+\begin{lemma}[Factorization]\label{pay:factor}
+\begin{itemize}
+\item[(a)] The sets $\eta_e$ are pairwise disjoint and contain no spin. Every payload coordinate that is neither a spin nor in some $\eta_e$ takes one fixed value in every $p\in P_{\mathfrak b}$.
+\item[(b)] For each edge $e$ with tail $u$ and head $v$ of depth $d$ there is a function $W_e(\eta_e,\sigma_u,\sigma_v)\ge0$ such that, for every finite $\Lambda$ and $p\in P_{\mathfrak b}$, the frozen kernel $\gamma^{\mathfrak b}_\Lambda(\cdot\mid p)$ is the kernel of the coordinates at the sites of $\Lambda$ for the factors $W_e$, one for each edge, together with the indicators that the coordinates of (a) take their fixed values. Explicitly, with $(x^-,x^+)$ the switches of the sensor of $e$ at $\xi(0,0)$,
+$W_e=\mathbf 1[\text{arm}\equiv\sigma_u]$ if $\rho_d=0$, and if $\rho_d=1$
+\[
+W_e=\mathbf 1[\text{arm}\equiv\sigma_u]\,\mathbf 1[\text{sensor consistent}]\,\mathbf 1\bigl[(x^-,x^+)=(0,1)\Rightarrow\sigma_v=\sigma_u\bigr]\,e^{-20\beta(x^-+x^+)},
+\]
+where ``arm $\equiv\sigma_u$'' means that all wire values of the arm equal $\sigma_u$, and the sensor is consistent when all copies of $x^\pm$ along the column equal the values at $\xi(0,0)$ and every free bit $y^\pm(0,j)$ is $0$ unless $x^\pm=1$ and $j<20n(d)\pm5$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(a) Disjointness: by \cref{bg:markers}(b), the arms of one root row partition its wire coordinates; different root rows carry different wire coordinates, and horizontal and vertical wire values are different fields. Sensor coordinates of different edges are different components or lie in the first columns of different grids, and the first columns of different grids are disjoint because root columns of different depths are disjoint (\cref{scf:frames}(d)) and grids of one depth are disjoint.
+
+Fixed coordinates: on an unmarked row all wire values are $\square$ by (P1), and every wire coordinate on a marked row lies in an arm. Outside the first logical column of a grid, (C8) and (C9) set $x=y=0$ and $\ell^{\mathrm N}_x=0$ at every active site, so by (K2) and matching every $x$ component of a vertical colour there is $0$, and at non-carriers the vertical colour is $\circ$. In the first column of a grid with $\rho_d=0$, (C8) sets $x=0$ at the root, the copies along the column are then $0$, and (C9) gives $y=0$. These are all the payload coordinates outside the arms, the sensors of ready grids and the spins.
+
+(b) The payload enters only (P1)--(P3), (C8), (C9) and the charge, and these split into conditions of the kinds listed in \cref{int:sub-split}. We go through them, given the background.
+\begin{itemize}
+\item (P1) on a root row: at the tail root $w^{\mathrm E}(u)=\sigma_u$, and at every other site $w^{\mathrm E}=w^{\mathrm W}$; with matching across edges, the arm of $e$ has all values equal to $\sigma_u$, and all values lie in $\{+1,-1\}$. These are conditions on the arm and $\sigma_u$.
+\item (C8) along the first column of a ready grid, with (K2) along its channels: the copies of each switch equal its value at the root, and the root value is free. These are conditions on one switch of one sensor.
+\item (C9): $y^\pm_k(0,j)$ is free if $x^\pm_k=1$ and $g^\pm(0,j)=1$, and $0$ otherwise; by \cref{bg:grid}(d) and \cref{bg:ready}(a), $g^\pm(0,j)=[j<20n(d)\pm5]$.
+\item (P3) at $v$: if $(x^-,x^+)=(0,1)$ then $\sigma_v=w^{\mathrm W}(v)$, and $w^{\mathrm W}(v)$ is the last value of the arm, which equals $\sigma_u$.
+\item The charge: by \cref{bg:grid}(a), $\mathrm{rc}(0,j)=\min(j,80)$, and $N_d\ge80$ when $\rho_d=1$, since then $d\ge8$. So the switch $x^-_{\mathrm h}$ is charged at the $20$ cells $j\in[0,20)$, $x^+_{\mathrm h}$ at $j\in[20,40)$, $x^-_{\mathrm v}$ at $j\in[40,60)$ and $x^+_{\mathrm v}$ at $j\in[60,80)$, each copy contributing the value of the switch.
+\end{itemize}
+The frozen Boltzmann weight is therefore the product of the factors $W_e$ and of the indicators of (a), up to factors that do not involve the coordinates at the sites of $\Lambda$; these cancel in the kernel. Spins at sites that are not roots, and spins at roots apart from the factors above, appear in no condition.
+\end{proof}
+
+\subsection{The sensor sum}
+
+\begin{lemma}[The sensor sum]\label{pay:sum}
+Let $e$ be an edge with head of depth $d$, tail spin $\sigma_u$ and head spin $\sigma_v$, and let $Z_e(\sigma_u,\sigma_v)=\sum_{\eta_e}W_e(\eta_e,\sigma_u,\sigma_v)$. If $\rho_d=0$, then $Z_e=1$. If $\rho_d=1$, put $n=n(d)$ and $s=\beta/\log2$. Then
+\[
+Z_e(\sigma_u,\sigma_v)=H_n+G_n\,\mathbf 1[\sigma_u=\sigma_v],\qquad G_n=2^{20n+5}e^{-20\beta},\quad H_n=1+2^{20n-5}e^{-20\beta}+2^{40n}e^{-40\beta},
+\]
+so that $Z_e(\sigma_u,\sigma_v)=C_n\exp\bigl(J_n(\beta)\sigma_u\sigma_v\bigr)$ for a constant $C_n>0$, with
+\[
+e^{2J_n(\beta)}=1+\frac1{b_n(\beta)},\qquad b_n(\beta)=\frac{H_n}{G_n}=2^{20(n-\frac14-s)}+2^{20(s-n-\frac14)}+2^{-10},
+\]
+that is, $b_n(\beta)=2^{-4}\cosh\bigl(20(\beta-n\log2)\bigr)+2^{-10}$.
+\end{lemma}
+
+\begin{proof}
+If $\rho_d=0$, the private coordinates are the arm, which has exactly one admissible value. Let $\rho_d=1$. The arm again has one admissible value. Given the switches $(x^-,x^+)$, the consistent sensor configurations are determined by the free bits: $y^-(0,j)$ is free for the $20n-5$ values $j<20n-5$ if $x^-=1$, and $y^+(0,j)$ is free for the $20n+5$ values $j<20n+5$ if $x^+=1$; all these values of $j$ are below $N_d$ by \cref{bg:ready}(a). So the switch values $(x^-,x^+)$ contribute
+\[
+(0,0)\colon 1,\qquad(1,0)\colon2^{20n-5}e^{-20\beta},\qquad(0,1)\colon2^{20n+5}e^{-20\beta}\,\mathbf 1[\sigma_u=\sigma_v],\qquad(1,1)\colon2^{40n}e^{-40\beta}.
+\]
+Their sum is $H_n+G_n\mathbf 1[\sigma_u=\sigma_v]$. Hence $Z_e(+,+)/Z_e(+,-)=1+G_n/H_n=e^{2J_n}$, and $Z_e=C_ne^{J_n\sigma_u\sigma_v}$ with $C_n=\sqrt{H_n(H_n+G_n)}$. With $e^{-20\beta}=2^{-20s}$,
+\[
+\frac{H_n}{G_n}=2^{-20n-5+20s}+2^{-10}+2^{20n-5-20s},
+\]
+which is the first formula for $b_n$. Writing $2^{20(n-s)}+2^{20(s-n)}=2\cosh(20(n-s)\log2)$ and $20(n-s)\log2=20(n\log2-\beta)$ gives the second.
+\end{proof}
+
+The numbers are chosen so that the sensor resonates: $2^{20n\pm5}$ assignments of the $20n\pm5$ free bits against the energy $20$ of one switch. The coupling $J_n(\beta)$ is large only when $\beta$ is close to $n\log2$.
+
+\subsection{Eliminating the private coordinates}
+
+\begin{lemma}[Elimination]\label{pay:elim}
+Let $V$ be a countable set of spins with values in $\{-1,+1\}$ and $E$ a set of edges $e$, each with a tail $u(e)$ and a head $v(e)$ in $V$, such that every spin lies in finitely many edges. For each $e$ let $\eta_e$ be a finite set of coordinates with finite value sets, the sets $\eta_e$ being pairwise disjoint and disjoint from $V$, and let $W_e(\eta_e,\sigma_{u(e)},\sigma_{v(e)})\ge0$ with $Z_e(\sigma_u,\sigma_v)=\sum_{\eta_e}W_e>0$ for all spin values. Let $\gamma$ be the specification of the factors $W_e$ on the coordinates $V\cup\bigcup_e\eta_e$, and $\bar\gamma$ that of the factors $Z_e$ on $V$. For a measure $\nu$ on spin configurations put
+\[
+L(\nu)(d\sigma,d\eta)=\nu(d\sigma)\prod_{e\in E}K_e(\eta_e\mid\sigma_{u(e)},\sigma_{v(e)}),\qquad K_e=\frac{W_e}{Z_e}.
+\]
+Then $L$ is a bijection from the Gibbs measures of $\bar\gamma$ onto the Gibbs measures of $\gamma$, and its inverse is the marginal on the spins.
+\end{lemma}
+
+\begin{proof}
+For a finite set $T\subseteq V$ let $E(T)$ be the set of edges with an endpoint in $T$, and for a finite set $E'\subseteq E$ let $S(T,E')$ consist of $T$ and the private coordinates of the edges in $E(T)\cup E'$. Every finite set of coordinates lies in such a set: take for $T$ its spins and for $E'$ the edges whose private coordinates it meets. By \cref{set:consistency} it suffices to check the Gibbs identities for the sets $S=S(T,E')$.
+
+Let $\nu$ be Gibbs for $\bar\gamma$ and $\mu=L(\nu)$. Under $\mu$, given all spins, the $\eta_e$ are independent with laws $K_e$. Condition on all coordinates outside $S$: these are the spins outside $T$ and the private coordinates of edges not in $E(T)\cup E'$, which depend only on spins outside $T$. So the conditional law of the coordinates in $S$ is
+\[
+\bar\gamma_T(\sigma_T\mid\sigma_{T^c})\prod_{e\in E(T)\cup E'}K_e(\eta_e\mid\sigma)\ \propto\ \prod_{e\in E(T)}Z_e\prod_{e\in E(T)}\frac{W_e}{Z_e}\prod_{e\in E'\setminus E(T)}\frac{W_e}{Z_e}\ \propto\ \prod_{e\in E(T)\cup E'}W_e,
+\]
+because $Z_e$ is constant for $e\notin E(T)$. This is $\gamma_S$, so $\mu$ is Gibbs for $\gamma$.
+
+Conversely let $\mu$ be Gibbs for $\gamma$. Applying the identity for $S(T,\emptyset)$ and summing over the private coordinates of $E(T)$ shows that the conditional law of $\sigma_T$ given all coordinates outside $S(T,\emptyset)$ is $\prod_{e\in E(T)}Z_e$, normalized, which depends only on $\sigma_{T^c}$; so the spin marginal $\nu$ is Gibbs for $\bar\gamma$. Applying the identity for $S(\emptyset,E')$ shows that, given all spins and the private coordinates of the other edges, the private coordinates of the edges in $E'$ are independent with laws $K_e$. Since $E'$ is an arbitrary finite set, $\mu=L(\nu)$.
+\end{proof}
+
+\begin{corollary}[The effective model]\label{pay:effective}
+Let $\Gamma_{\mathfrak b}$ be the graph with vertex set $\Z^2$ whose edges are the pairs $\{\mathbf r_d(m_1,m_2),\mathbf r_d(m_1+1,m_2)\}$ and $\{\mathbf r_d(m_1,m_2),\mathbf r_d(m_1,m_2+1)\}$ for the ready depths $d$, with coupling $J_{n(d)}(\beta)$ on the edges of depth $d$. The Gibbs measures for $\gamma^{\mathfrak b}$ are exactly the measures $L(\nu)$, completed by the fixed values of \cref{pay:factor}(a), where $\nu$ ranges over the Gibbs measures of the Ising model on $\Gamma_{\mathfrak b}$. The graph $\Gamma_{\mathfrak b}$ is a disjoint union of one square lattice for each ready depth and of isolated vertices.
+\end{corollary}
+
+\begin{proof}
+By \cref{set:consistency} and \cref{pay:factor}(b), Gibbs measures for $\gamma^{\mathfrak b}$ are the Gibbs measures for the factors $W_e$ on the coordinates of all sites, with the fixed coordinates at their values. A root is the head of two edges and the tail of two, and other spins lie in no edge, so \cref{pay:elim} applies. By \cref{pay:sum}, the factor $Z_e$ is constant for edges of non-ready depths and proportional to $e^{J_{n(d)}\sigma_u\sigma_v}$ for ready ones; constant factors do not change a specification. Roots of different depths are different sites, and the roots of depth $d$ with these edges form a square lattice.
+\end{proof}
+
+The square lattice of depth $d$ is $\{\mathbf r_d(m):m\in\Z^2\}$ with its nearest-neighbour edges, and $m\mapsto\mathbf r_d(m)$ is a graph isomorphism from $\Z^2$. A translation of the background by $a$ maps it onto the lattice of depth $d$ of $T_a\mathfrak b$, and the two isomorphisms differ by a translation of $\Z^2$.

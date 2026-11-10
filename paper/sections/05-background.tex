@@ -1,0 +1,165 @@
+% =====================================================================
+\section{The background}\label{sec:background}
+% =====================================================================
+
+In this section $\omega$ is a legal configuration whose quarters form a tiling $Y$ of $\mathbb A^{\mathrm q}$ with typical quarter phase $\tau$ (\cref{scf:def-typical}). We show that the rules force every background field of $\omega$, compute the result, and deduce that the background has one translation-invariant law and cannot be changed by finite modifications. Frames, free coordinates and owners refer to $\tau$: column frames $I^{(1)}_d(m)$ and row frames $I^{(2)}_d(m)$, with $r^{(i)}_d(m)=\min\mathcal F^{(i)}_d(m)$.
+
+\subsection{Corridors, carriers and grids}
+
+Fix a row $y\in\Z$. Let $D(y)$ be the set of depths $d$ such that $y$ lies in a row frame of depth $d$, so that $\operatorname{own}_2(y)=\min D(y)$, and let $\mathcal J(y)$ be the set of column frames of the depths in $D(y)$. By \cref{scf:walls}, the sites of row $y$ that lie on light vertical walls are exactly the sites $(z,y)$ with $z$ an endpoint of a member of $\mathcal J(y)$, with left sides at left endpoints and right sides at right endpoints. We call these sites the \emph{walls} of the row. By \cref{scf:frames}(a), $\mathcal J(y)$ is laminar in the sense of \cref{app:laminar}, and its members that contain no other member are exactly the frames of depth $\operatorname{own}_2(y)$: a frame of larger depth contains one of depth $\operatorname{own}_2(y)$ by \cref{scf:frames}(b), and a member inside a frame of depth $\operatorname{own}_2(y)$ would have smaller depth. The frames of depth $\operatorname{own}_2(y)$ occur periodically in both directions, so the walls of the row are unbounded on both sides. Columns are treated in the same way with $\operatorname{own}_1$, row frames and light horizontal walls.
+
+\begin{proposition}[Routing]\label{prop:routing}
+\begin{itemize}
+\item[(a)] Let $\xi\in\Z^2$, let $w_-\le\xi_1$ be the largest wall of row $\xi_2$ at or west of $\xi$, and let $w_+\ge\xi_1+1$ be the smallest wall at or east of $\xi+\mathbf e_1$. Then $o^{\mathrm E}(\xi)=o^{\mathrm W}(\xi+\mathbf e_1)$ is the pair of the sides of $w_-$ and $w_+$. The vertical tags are described in the same way.
+\item[(b)] $\xi$ is a horizontal carrier if and only if $\xi_1$ lies in the interior of a column frame of depth $\operatorname{own}_2(\xi_2)$, and a vertical carrier if and only if $\xi_2$ lies in the interior of a row frame of depth $\operatorname{own}_1(\xi_1)$.
+\item[(c)] $\xi$ is active if and only if $\xi\in\mathcal F^{(1)}_d(m_1)\times\mathcal F^{(2)}_d(m_2)$ for some $d\ge1$ and $m_1,m_2\in\Z$.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+(a) Let $w<w'$ be consecutive walls of row $\xi_2$. At each site strictly between them $\operatorname{VW}=-$, so by (O1) its west and east tags are equal, and by matching all edges between $w$ and $w'$ carry one tag. By (O1) at $w$ its first entry is the side of $w$, and by (O1) at $w'$ its second entry is the side of $w'$. Every edge of the row lies between two consecutive walls.
+
+(b) If $\xi$ is a wall, it is not a horizontal carrier, and $\xi_1$ lies in the interior of no frame of depth $\operatorname{own}_2(\xi_2)$, whose endpoints are consecutive walls by \cref{app:laminar}. Otherwise let $w_-<\xi_1<w_+$ be the nearest walls. By (a), $\xi$ is a horizontal carrier if and only if $w_-$ is a left side and $w_+$ a right side. By \cref{app:laminar} this holds if and only if $[w_-,w_+]$ is a member of $\mathcal J(\xi_2)$ with consecutive endpoints, that is a member containing no other member, that is a frame of depth $\operatorname{own}_2(\xi_2)$. Columns are the same.
+
+(c) If $\xi$ is active, then $\xi_1$ lies in a column frame of depth $\operatorname{own}_2(\xi_2)$, so $\operatorname{own}_1(\xi_1)\le\operatorname{own}_2(\xi_2)$, and symmetrically. With $d$ the common value, $\xi_1$ lies in the interior of a column frame of depth $d$ and in no column frame of smaller depth, that is $\xi_1\in\mathcal F^{(1)}_d(m_1)$; likewise $\xi_2\in\mathcal F^{(2)}_d(m_2)$. Conversely, if $\xi_i\in\mathcal F^{(i)}_d(m_i)$, then $\operatorname{own}_i(\xi_i)=d$ for both $i$, and (b) shows that $\xi$ is a horizontal and a vertical carrier.
+\end{proof}
+
+Horizontal walls make every frame endpoint row a row of walls; its corridors carry the tag $(\mathrm L,\mathrm R)$ where they cross frames of the owner depth, but contain no active site.
+
+\begin{definition}[Grids]\label{bg:def-grid}
+For $d\ge1$ and $m_1,m_2\in\Z$ put $N=N_d=2^{d+2}-2$ and let $\zeta^{(i)}_0<\dots<\zeta^{(i)}_{N-1}$ be the elements of $\mathcal F^{(i)}_d(m_i)$ (\cref{scf:frames}(c)). The \emph{grid} $G_d(m_1,m_2)$ is the set of sites $\xi(i,j)=(\zeta^{(1)}_i,\zeta^{(2)}_j)$, $i,j\in[0,N)$; the pair $(i,j)$ is the \emph{logical position} of $\xi(i,j)$. Its \emph{root} is $\mathbf r_d(m_1,m_2)=\xi(0,0)=(r^{(1)}_d(m_1),r^{(2)}_d(m_2))$. The \emph{label} of depth $d$ is $n(d)=1+v_2(d)$, where $v_2(d)$ is the exponent of $2$ in $d$.
+\end{definition}
+
+\begin{lemma}[Grids]\label{bg:grids}
+Let $G=G_d(m_1,m_2)$.
+\begin{itemize}
+\item[(a)] The sites strictly between $\xi(i,j)$ and $\xi(i+1,j)$ are horizontal, and those strictly between $\xi(i,j)$ and $\xi(i,j+1)$ are vertical.
+\item[(b)] $\xi(0,j)-\mathbf e_1$ and $\xi(N-1,j)+\mathbf e_1$ lie on light vertical walls, as a left and a right side; $\xi(i,0)-\mathbf e_2$ and $\xi(i,N-1)+\mathbf e_2$ lie on light horizontal walls, as a bottom and a top side.
+\item[(c)] The boundary flags at $\xi(i,j)$ are $f_{\mathrm W}=[i=0]$, $f_{\mathrm E}=[i=N-1]$, $f_{\mathrm S}=[j=0]$ and $f_{\mathrm N}=[j=N-1]$.
+\item[(d)] Every active site lies in exactly one grid, and the roots of $\omega$ are exactly the roots of the grids.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(a) Let $\zeta^{(1)}_i<z<\zeta^{(1)}_{i+1}$. Then $z$ lies in the interior of $I^{(1)}_d(m_1)$ but is not free, so it lies in a column frame of depth less than $d$, and $\operatorname{own}_1(z)<d$. Since $\operatorname{own}_2(\zeta^{(2)}_j)=d$, \cref{prop:routing}(b) shows that $(z,\zeta^{(2)}_j)$ is a horizontal carrier, and it is not a vertical carrier, because $\zeta^{(2)}_j$ lies in no row frame of depth $\operatorname{own}_1(z)<d$. The vertical case is the same.
+
+(b) By \cref{scf:frames}(c), $\zeta^{(1)}_0-1$ and $\zeta^{(1)}_{N-1}+1$ are the endpoints of $I^{(1)}_d(m_1)$, and $\zeta^{(2)}_j\in I^{(2)}_d(m_2)$; apply \cref{scf:walls}.
+
+(c) The frame $I^{(1)}_d(m_1)$ contains no other member of $\mathcal J(\zeta^{(2)}_j)$, so its endpoints are consecutive walls of the row, and the sites between them are the $N$ active sites $\xi(i,j)$ and the horizontal sites of (a). On the edges between these walls the orientation tag is $(\mathrm L,\mathrm R)$, so the event tags are pairs by (E1). Reading (E2) from west to east: the left wall sets $e_-=\mathrm{wall}$ on its east edge, horizontal sites copy, and each active site sets $e_-=\mathrm{cell}$ on its east edge. So the first entry of $e^{\mathrm W}(\xi(i,j))$ is $\mathrm{wall}$ exactly when $i=0$. The other three flags are the same.
+
+(d) The first claim follows from \cref{prop:routing}(c), since the sets $\mathcal F^{(i)}_d(m)$ are pairwise disjoint for different $(d,m)$ by \cref{scf:frames}(a). By (c), an active site is a root exactly when its logical position is $(0,0)$.
+\end{proof}
+
+\subsection{The computation on a grid}
+
+\Cref{app:machine} defines, for every $d\ge1$, the \emph{run} of $M$ on the grid of depth $d$: tape columns $c_0,\dots,c_{N-1}\colon[0,N)\to\mathcal S_M$ with $c_0(j)=\operatorname{init}([j=d+2],[j=0])$ and $c_{i+1}(j)=f_M(c_i(j-1),c_i(j),c_i(j+1))$, where $c_i(-1)=c_i(N)=\bot$ (\cref{mach:def-run}). The depth $d$ is \emph{ready} if $c_{N-1}(0)$ carries the state $q_{\mathrm{acc}}$; write $\rho_d\in\{0,1\}$ for the indicator.
+
+\begin{lemma}[The grid computation]\label{bg:grid}
+Let $G=G_d(m_1,m_2)$ and write $\mathfrak k(i,j)$ for the cell record at $\xi(i,j)$. The background components of the cell records of $G$, and of the logical colours at the sites of $G$ and of its channels, are determined by $d$. In particular, for all $i,j\in[0,N)$:
+\begin{itemize}
+\item[(a)] $\mathrm{ct}(i,j)$ is the binary digit of $i$ at position $j$, and $\mathrm{rc}(i,j)=\min(j,80)$;
+\item[(b)] $\mathrm{hot}(i,j)=[j=d+2]$;
+\item[(c)] $t_{\mathrm C}(i,j)=c_i(j)$;
+\item[(d)] $\mathrm{rdy}(i,j)=\rho_d$ and $g^\pm(i,j)=\rho_d\,\mathsf m^\pm(c_{N-1}(j))$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+By \cref{bg:grids}(a) and (K1), (K2), the sites of a channel copy logical colours, so by matching the east colour of $\xi(i,j)$ is the west colour of $\xi(i+1,j)$ and the north colour of $\xi(i,j)$ is the south colour of $\xi(i,j+1)$. By \cref{bg:grids}(b),(c) and (K1), (K2), the colours facing the walls are $\circ$, in agreement with (C0). The rules (C1)--(C7) are then equations on the $N\times N$ logical grid, which we solve in order.
+
+(a) Column $0$ has $\mathrm{ct}=0$ by (C1). For $i\ge1$, (C1) sets the carry into row $0$ to $1$, $\mathrm{ct}(i,j)=\mathrm{ct}(i-1,j)\oplus\mathrm{cy}(i,j)$ and $\mathrm{cy}(i,j+1)=\mathrm{ct}(i-1,j)\wedge\mathrm{cy}(i,j)$: column $i$ is column $i-1$ plus one in binary, with the carry out of the top row dropped. Since $i<N<2^N$, column $i$ holds $i$. The row counter is (C2).
+
+(b) In the last column, $\mathrm{ct}(N-1,\cdot)$ holds $N-1=2^{d+2}-3$. By (C3) the adder adds the number with binary digits $k=[\mathrm{rc}\le1]=[j\le1]$, which is $3$, with the carry chain running north from row $0$, and drops the carry out of the top row. So $\mathrm{sm}(N-1,j)$ is the digit of $2^{d+2}$ at position $j$, which is $[j=d+2]$; this position exists because $d+2<N$. By (C4) this value is copied west along each logical row.
+
+(c) By (C5) and (b), column $0$ holds $t_{\mathrm C}(0,j)=\operatorname{init}([j=d+2],[j=0])=c_0(j)$. The triples $(t_{\mathrm S},t_{\mathrm C},t_{\mathrm N})$ at $(i,j)$ are $(t_{\mathrm C}(i,j-1),t_{\mathrm C}(i,j),t_{\mathrm C}(i,j+1))$ with $\bot$ beyond the first and last rows, because the north colour $(t_{\mathrm C}(i,j),t_{\mathrm N}(i,j))$ of $(i,j)$ equals the south colour $(t_{\mathrm S}(i,j+1),t_{\mathrm C}(i,j+1))$ of $(i,j+1)$. So $t_{\mathrm C}(i+1,j)=f_M(t_{\mathrm C}(i,j-1),t_{\mathrm C}(i,j),t_{\mathrm C}(i,j+1))$ by (C5), which is the recursion defining the run.
+
+(d) By (C6), $\mathrm{rdy}(N-1,0)=\rho_d$, it is copied north along the last column and then west along each row. (C7) is the same for the masks.
+
+The components $\mathrm{ct}_{\mathrm{in}}$, $\mathrm{cy}$, $\mathrm{ay}$ and the colour components are determined by these values through (C1)--(C7).
+\end{proof}
+
+\begin{lemma}[Readiness]\label{bg:ready}
+\begin{itemize}
+\item[(a)] If $\rho_d=1$, then $d\ge8$, $U$ halts on $n(d)$, and $\mathsf m^-(c_{N-1}(j))=[j<20n(d)-5]$ and $\mathsf m^+(c_{N-1}(j))=[j<20n(d)+5]$ for all $j\in[0,N)$; moreover $20n(d)+5\le N_d$.
+\item[(b)] If $U$ halts on $n$, there is $d_0$ such that $\rho_d=1$ for every $d\ge d_0$ with $n(d)=n$; there are infinitely many such $d$.
+\end{itemize}
+\end{lemma}
+
+The proof is in \cref{app:machine}. The machine $M$ never reads the readiness bit or the masks of the cell records: its run depends only on $d$.
+
+\subsection{Markers and roots}
+
+\begin{lemma}[Markers and roots]\label{bg:markers}
+\begin{itemize}
+\item[(a)] $\mathfrak r(\xi)=1$ if and only if $\xi_2=r^{(2)}_d(m)$ for some $d\ge1$ and $m\in\Z$, and $\mathfrak c(\xi)=1$ if and only if $\xi_1=r^{(1)}_d(m)$ for some $d$ and $m$. We call these rows and columns \emph{root rows} and \emph{root columns} of depth $d$; by \cref{scf:frames}(d) the depth is unique.
+\item[(b)] The roots on a root row of depth $d$ are the sites $\mathbf r_d(m_1,m_2)$, $m_1\in\Z$, for the fixed $m_2$; consecutive ones are $4^{d+1}$ apart. Root columns are the same.
+\item[(c)] A root row of depth $d$ contains light vertical walls, at the endpoints of the column frames of depth $d$, and no light horizontal wall.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+Fix a row $y$ and let $d=\operatorname{own}_2(y)$, which is finite because $\tau$ is typical.
+
+Suppose first that $y$ is an endpoint of a row frame $I^{(2)}_d(m')$. By \cref{scf:walls} every site $(z,y)$ with $z\in I^{(1)}_d(m)$ lies on a light horizontal wall, so $\mathfrak r=0$ on the row by (Q2). The row contains no active site: an active site $(z,y)$ would have $y\in\mathcal F^{(2)}_e(\cdot)$ for some $e$, so $e=\operatorname{own}_2(y)=d$ and $y$ would be interior to a frame of depth $d$, while it is an endpoint of one, and frames of one depth are disjoint.
+
+Otherwise $y$ lies in the interior of $I^{(2)}_d(m')$ and in no row frame of smaller depth, so $y\in\mathcal F^{(2)}_d(m')$. By \cref{prop:routing}(c) the sites $(z,y)$ with $z\in\mathcal F^{(1)}_d(m)$ are active, for every $m\in\Z$, and by \cref{bg:grids}(c) all of them have $f_{\mathrm S}=[y=r^{(2)}_d(m')]$. So (Q1) gives $\mathfrak r=[y=r^{(2)}_d(m')]$. The row contains no light horizontal wall: that would make $y$ an endpoint of a row frame of some depth $e$, which is impossible for $e<d$ because $y$ lies in no frame of depth $e$, for $e=d$ because $y$ is interior to a frame of depth $d$, and for $e>d$ by \cref{scf:frames}(a). So (Q2) does not apply on this row, the seeds are consistent, and $\mathfrak r$ is as claimed. Every $r^{(2)}_d(m')$ falls under this second case, and an endpoint row is not of this form, which proves (a) for rows; columns are the same with (Q1), (Q2) for $\mathfrak c$.
+
+(b) By \cref{bg:grids}(d) the roots are the sites $\mathbf r_e(m_1,m_2)$. Such a root lies on the row $r^{(2)}_d(m_2)$ only if $e=d$, by \cref{scf:frames}(d), and $r^{(1)}_d(m_1+1)-r^{(1)}_d(m_1)=4^{d+1}$.
+
+(c) The row $y=r^{(2)}_d(m_2)$ lies in $I^{(2)}_d(m_2)$, so \cref{scf:walls} places light vertical walls at $(z,y)$ for the endpoints $z$ of the column frames of depth $d$. The absence of light horizontal walls was shown above.
+\end{proof}
+
+Part (c) is why (Q2) tests the orientation of the wall: the seed $\mathfrak r=0$ must not be placed on root rows, and every root row crosses light vertical walls.
+
+\subsection{The law of the background and its rigidity}
+
+\begin{proposition}[The background]\label{prop:background}
+\begin{itemize}
+\item[(a)] There is a measurable map $\tau\mapsto\mathfrak b_\tau$ from typical phases to background configurations, with $\mathfrak b_{\tau+a}=T_a\mathfrak b_\tau$ for $a\in\Z^2$, such that every legal configuration whose quarters have typical phase $\tau$ has background $\mathfrak b_\tau$.
+\item[(b)] For every typical $\tau$, the configuration with background $\mathfrak b_\tau$, arbitrary spins, wire values given by (P1) and (P2) from the spins at the roots, and all switches and free bits equal to $0$, is legal.
+\item[(c)] Every translation-invariant probability measure on $X_\Phi$ has the same background marginal $\mathbb K$, the image of Haar measure on $\Z_2^2$ under $\tau\mapsto\mathfrak b_\tau$. It is concentrated on the backgrounds $\mathfrak b_\tau$ with $\tau$ typical.
+\item[(d)] If $\omega\in X_\Phi$ has typical quarter phase and $\omega'\in X_\Phi$ agrees with $\omega$ outside a finite set, then $\omega'$ has the same background as $\omega$.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+(a) The quarters are $Y_\tau$ (\cref{prop:quarter-ti}). The orientation tags are given by \cref{prop:routing}(a). The event tags are $*$ on edges whose tag is not $(\mathrm L,\mathrm R)$ or $(\mathrm B,\mathrm T)$ (E1). An edge with tag $(\mathrm L,\mathrm R)$ lies between consecutive walls bounding a frame of the owner depth of its row; if the row is a free row of that frame, the event tags are those of \cref{bg:grids}(c), and otherwise the corridor contains no active site and (E2) forces $(\mathrm{wall},\mathrm{wall})$ on all its edges. Vertical event tags are the same. The logical colours are $\circ$ off the carriers (K1), (K2), and on the corridors and channels of the grids they are given by \cref{bg:grid}; a corridor of carriers without active sites copies the colour $\circ$ of the walls at its ends. The background components of the cell records are given by \cref{bg:grid}, and the markers by \cref{bg:markers}. Each of these values is a function of the restriction of $Y_\tau$ to a finite window whose size depends on $\tau$, so $\tau\mapsto\mathfrak b_\tau$ is measurable, and $\mathfrak b_{\tau+a}=T_a\mathfrak b_\tau$ by uniqueness and \cref{scf:quarter}.
+
+(b) The values described in (a) satisfy (O1)--(Q2) and (C0)--(C7) by construction: each was obtained by solving these rules, and the solutions exist because the corridors and grids are finite. With all switches and free bits $0$, (C8), (C9) and (P3) hold. On a marked row, (P1) determines the wire values from the spins at the roots, which by \cref{bg:markers}(b) recur at finite distance in both directions; on an unmarked row the wires are blank. Columns are the same.
+
+(c) Let $\mu$ be a translation-invariant probability measure on $X_\Phi$. Its quarter marginal is a translation-invariant probability measure on the tilings of $\mathbb A^{\mathrm q}$, hence by \cref{prop:quarter-ti}(a) the image of Haar measure under $\tau\mapsto Y_\tau$. Haar-almost every $\tau$ is typical, and (a) gives the background.
+
+(d) The quarters of $\omega'$ form a tiling of $\mathbb A^{\mathrm q}$ that agrees with $Y_\tau$ outside a finite set, so it equals $Y_\tau$ by \cref{prop:quarter-ti}(b). Then (a) applies to $\omega'$ with the same $\tau$.
+\end{proof}
+
+Part (d) is the frozen-background property: every legal configuration over a typical scaffold, including its payload, admits no finite change of its background. The quarter encoding enters through the global checker phase, which a finite edit cannot change (\cref{prop:quarter-ti}(b)).
+
+Fix a typical $\tau$ and write $\mathfrak b=\mathfrak b_\tau$. Let $P_{\mathfrak b}$ be the set of payload configurations $p$ with $(\mathfrak b,p)$ legal. For a finite $\Lambda\subseteq\Z^2$ and $p\in P_{\mathfrak b}$, the \emph{frozen kernel} is
+\[
+\gamma^{\mathfrak b}_\Lambda(p'\mid p)=\frac{\mathbf 1[p'_{\Lambda^c}=p_{\Lambda^c}]\,e^{-\beta H_\Lambda(\mathfrak b,p')}}{\sum_{p'':\,p''_{\Lambda^c}=p_{\Lambda^c}}e^{-\beta H_\Lambda(\mathfrak b,p'')}},
+\]
+and a probability measure $\nu$ on payload configurations is \emph{Gibbs for $\gamma^{\mathfrak b}$} if $\nu(P_{\mathfrak b})=1$ and $\nu\gamma^{\mathfrak b}_\Lambda=\nu$ for every finite $\Lambda$.
+
+\begin{lemma}[Conditioning on the background]\label{lem:freeze}
+Let $X_{\mathrm{typ}}\subseteq X_\Phi$ be the set of legal configurations whose quarters have typical phase.
+\begin{itemize}
+\item[(a)] For $\omega=(\mathfrak b,p)\in X_{\mathrm{typ}}$ and finite $\Lambda$, $\gamma_\Lambda(\cdot\mid\omega)=\delta_{\mathfrak b}\otimes\gamma^{\mathfrak b}_\Lambda(\cdot\mid p)$.
+\item[(b)] For every finite $\Lambda$ there is a measurable function $h_\Lambda$ of $\omega_{\Lambda^c}$ such that the background of $\omega$ on $\Lambda$ equals $h_\Lambda(\omega_{\Lambda^c})$ for every $\omega\in X_{\mathrm{typ}}$. So for every probability measure $\mu$ on $X_{\mathrm{typ}}$, the $\sigma$-algebra generated by the background is contained in the $\mu$-completion of $\mathcal F_{\Lambda^c}$.
+\item[(c)] Let $\mu$ be a probability measure on $X_{\mathrm{typ}}$, with background law $\mathbb L$ and regular conditional laws $\mu^{\mathfrak b}$ of the payload given the background. Then $\mu$ is a Gibbs measure for $\beta\Phi$ if and only if $\mu^{\mathfrak b}$ is Gibbs for $\gamma^{\mathfrak b}$ for $\mathbb L$-almost every $\mathfrak b$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(a) The kernel $\gamma_\Lambda(\cdot\mid\omega)$ charges the legal configurations that agree with $\omega$ off $\Lambda$. By \cref{prop:background}(d) they have background $\mathfrak b$, so they are the configurations $(\mathfrak b,p')$ with $p'\in P_{\mathfrak b}$ and $p'_{\Lambda^c}=p_{\Lambda^c}$, with weights $e^{-\beta H_\Lambda(\mathfrak b,p')}$.
+
+(b) By \cref{scf:quarter}, $\tau\bmod2^l$ is determined by the quarters in a box $B_l$, and $\tau(T_aY)=\tau(Y)+a$, so it is also determined by the quarters in $B_l+a$ for any $a$. Choosing $a$ with $B_l+a$ disjoint from $\Lambda$ for each $l$ expresses $\tau$, and hence by \cref{prop:background}(a) the background $\mathfrak b_\tau$ on $\Lambda$, as a measurable function of $\omega_{\Lambda^c}$.
+
+(c) Suppose $\mu$ is Gibbs. Let $f$ be a bounded function of the payload on $\Lambda$, $h$ a bounded measurable function of the background, and $g$ a bounded measurable function of the payload off $\Lambda$. By (a), the kernel $\gamma_\Lambda(\cdot\mid\omega)$ changes neither the background nor the payload off $\Lambda$, so $\gamma_\Lambda(fgh)(\omega)=g(p)h(\mathfrak b)(\gamma^{\mathfrak b}_\Lambda f)(p)$ for $\omega=(\mathfrak b,p)$. The Gibbs identity for $F=fgh$ gives
+\[
+\int\mathbb L(d\mathfrak b)\,h(\mathfrak b)\int f\,g\,d\mu^{\mathfrak b}=\int\mathbb L(d\mathfrak b)\,h(\mathfrak b)\int(\gamma^{\mathfrak b}_\Lambda f)\,g\,d\mu^{\mathfrak b}.
+\]
+As $h$ varies, the inner integrals agree for $\mathbb L$-almost every $\mathfrak b$. Taking $\Lambda$ and $f,g$ in a countable family that determines measures, $\mu^{\mathfrak b}$ is Gibbs for $\gamma^{\mathfrak b}$ for $\mathbb L$-almost every $\mathfrak b$; also $\mu^{\mathfrak b}(P_{\mathfrak b})=1$ almost surely since $\mu(X_\Phi)=1$. By (b), the same identities say that $\mathbb E_\mu[f\mid\mathcal F_{\Lambda^c}]=\gamma^{\mathfrak b}_\Lambda f$, so conditioning on the background only uses information outside $\Lambda$. Conversely, if $\mu^{\mathfrak b}$ is Gibbs for $\gamma^{\mathfrak b}$ for $\mathbb L$-almost every $\mathfrak b$, then for bounded measurable $F$, by (a),
+\[
+\int\gamma_\Lambda F\,d\mu=\int\mathbb L(d\mathfrak b)\int\gamma^{\mathfrak b}_\Lambda F(\mathfrak b,\cdot)\,d\mu^{\mathfrak b}=\int\mathbb L(d\mathfrak b)\int F(\mathfrak b,\cdot)\,d\mu^{\mathfrak b}=\int F\,d\mu .\qedhere
+\]
+\end{proof}

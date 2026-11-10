@@ -1,0 +1,41 @@
+% =====================================================================
+\section{The exact phase diagram, assuming the Ising solution}\label{sec:exact}
+% =====================================================================
+
+Theorem~A uses only the Peierls argument and Dobrushin's theorem. With the exact solution of the two-dimensional Ising model as an additional input, the whole set of inverse temperatures with coexisting phases can be described. This section is conditional on the following classical facts.
+
+\paragraph{Input (I).} For the Ising model on $\Z^2$ with coupling $J\ge0$, put $J_c=\frac12\log(1+\sqrt2)$. If $J\le J_c$, the model has exactly one Gibbs measure. If $J>J_c$, the plus state of \cref{set:peierls} satisfies $\nu^+(\sigma_0)>0$.
+
+Kramers and Wannier identified the self-dual value $J_c$ as the candidate critical point \cite{KramersWannier41}, and Onsager's exact solution established it \cite{Onsager44}; a modern proof that the self-dual point is critical is \cite{BeffaraDuminilCopin12}. The spontaneous magnetization $\nu^+(\sigma_0)$ was computed by Yang \cite{Yang52}; it is positive for $J>J_c$ and zero for $J\le J_c$. Uniqueness of the Gibbs measure when $\nu^+(\sigma_0)=0$, including at $J=J_c$, follows from the FKG inequality \cite[Chapters~3 and~6]{FriedliVelenik17}, and every Gibbs measure is a mixture of $\nu^+$ and $\nu^-$ by the theorem of Aizenman and Higuchi \cite{Aizenman80,Higuchi81}; the full statement is recalled, for instance, in \cite[Section~1]{CoquilleVelenik12}. We use only Input (I) as stated.
+
+\begin{lemma}[Product of unique components]\label{ex:product}
+Let $G$ be a countable graph with bounded degrees that is a disjoint union of subgraphs $G_k$, and suppose the Ising model on each $G_k$, with given couplings, has exactly one Gibbs measure $\nu_k$. Then the Ising model on $G$ has exactly one Gibbs measure, $\bigotimes_k\nu_k$.
+\end{lemma}
+
+\begin{proof}
+The product is a Gibbs measure, as in Step~3 of the proof of \cref{thm:main}. Let $\mu$ be a Gibbs measure on $G$ and fix $k$. For a finite set $T$ of vertices of $G_k$, the kernel $\gamma_T$ depends only on the spins of $G_k$ outside $T$. So the regular conditional law of the spins of $G_k$ given those of $G\setminus G_k$ satisfies the Gibbs identities of $G_k$ for almost every condition, for a countable family of sets $T$ and test functions, and therefore equals $\nu_k$. Hence the spins of $G_k$ are independent of the rest with law $\nu_k$. Applying this to finitely many components in turn shows that every finite-dimensional marginal of $\mu$ is that of the product.
+\end{proof}
+
+\begin{proposition}[The exact diagram]\label{prop:exact}
+Assume Input~(I) and put $\Delta=\frac1{20}\operatorname{arcosh}\bigl(8\sqrt2-\frac1{64}\bigr)$. Then $0.15<\Delta<\frac14\log2$, and for $\beta>0$ the interaction $\beta\Phi$ has at least two translation-invariant Gibbs measures if $\beta\in\mathcal N$ and exactly one otherwise, where
+\[
+\mathcal N=\bigcup_{n\in\mathcal H_U}\bigl(n\log2-\Delta,\ n\log2+\Delta\bigr).
+\]
+The set $\mathcal N\cap\Q_{>0}$ is $\Sigma^0_1$-complete, and its complement in $\Q_{>0}$ is $\Pi^0_1$-complete.
+\end{proposition}
+
+\begin{proof}
+By \cref{pay:sum}, $J_m(\beta)>J_c$ if and only if $e^{2J_m}>1+\sqrt2$, that is $b_m(\beta)<2^{-1/2}$, that is
+\[
+\cosh\bigl(20(\beta-m\log2)\bigr)<2^4\bigl(2^{-1/2}-2^{-10}\bigr)=8\sqrt2-\tfrac1{64},
+\]
+that is $|\beta-m\log2|<\Delta$. Since $8\sqrt2-\frac1{64}>11$ and $\operatorname{arcosh}11=\log(11+\sqrt{120})>\log21>3$, we have $\Delta>\frac{3}{20}$. Since $8\sqrt2-\frac1{64}<16+\frac1{64}=\cosh(5\log2)$, we have $\Delta<\frac14\log 2$. So for each $\beta$ at most one label $m$ has $J_m(\beta)>J_c$, and $J_m(\beta)=J_c$ exactly at $\beta=m\log2\pm\Delta$.
+
+Let $\beta\in(n\log2-\Delta,n\log2+\Delta)$ with $n\in\mathcal H_U$. The set $\mathcal D_n$ of ready depths with label $n$ is nonempty, and the lattices of these depths have coupling $J_n(\beta)>J_c$. All other components of $\Gamma_\tau$ have couplings at most $J_c$, or are isolated vertices, and have exactly one Gibbs measure by Input~(I); by \cref{ex:product} so does their union. The construction of Step~3 of the proof of \cref{thm:main} gives two translation-invariant Gibbs measures, which differ on the event $E\cap\{\sigma_0=+1\}$ because $\nu^{+}(\sigma_0=+1)=\frac12(1+\nu^+(\sigma_0))>\frac12$ and $\nu^-(\sigma_0=+1)<\frac12$.
+
+Let $\beta\notin\mathcal N$. A ready depth $d$ has $n(d)\in\mathcal H_U$ by \cref{bg:ready}(a), so $J_{n(d)}(\beta)\le J_c$. Every component of $\Gamma_\tau$ has exactly one Gibbs measure by Input~(I), and so does $\Gamma_\tau$ by \cref{ex:product}. Step~2 of the proof of \cref{thm:main}, with \cref{ex:product} in place of \cref{set:dobrushin}, gives exactly one translation-invariant Gibbs measure.
+
+Degree. A rational $\beta>0$ lies in $\mathcal N$ if and only if there are $n$ and $t$ such that $U$ halts on $n$ within $t$ steps and $|\beta-n\log2|<\Delta$. The last condition is a strict inequality between computable reals, which is semidecidable; so $\mathcal N\cap\Q_{>0}$ is computably enumerable. By \cref{prf:windows}(b), $|\beta_n-n\log2|<\frac1{1000}<\Delta$, and $\beta_n$ is at distance more than $\log2-\frac1{1000}>\Delta$ from $m\log2$ for every $m\ne n$; so $\beta_n\in\mathcal N$ if and only if $n\in\mathcal H_U$. Since $\mathcal H_U$ is $\Sigma^0_1$-complete, so is $\mathcal N\cap\Q_{>0}$, and its complement in $\Q_{>0}$ is $\Pi^0_1$-complete.
+\end{proof}
+
+At the endpoints $n\log2\pm\Delta$ the coupling equals $J_c$, and uniqueness there uses the critical case of Input~(I). The degree statement uses only open intervals and does not need to decide whether a rational number is an endpoint.

@@ -1,0 +1,90 @@
+% =====================================================================
+\section{The machine on the grids}\label{app:machine}
+% =====================================================================
+
+This appendix defines the machine $M$, its local rule $f_M$ and the map $\operatorname{init}$ used in rules (C5)--(C7), and proves \cref{bg:ready}. The universal machine $U$ of \cref{sec:setting} has states $Q_U$, initial state $q^0_U$, halting states, tape alphabet $\Gamma_U$ with blank $\sqcup$ and the symbol $1$, and transition function $\delta_U$; it never moves left from cell $0$.
+
+\subsection{Tape, states and program}
+
+The tape of $M$ has the cells $0,\dots,N-1$ of one logical column of a grid; cell $j$ is the logical row $j$, and the time is the logical column. A tape symbol of $M$ is a tuple
+\[
+(\mathsf h,\mathsf z,\mathsf u,\mathsf p,\mathsf n,\mathsf m^-,\mathsf m^+)\in\Gamma_M=\{0,1\}\times\{0,1\}\times\Gamma_U\times\{0,1\}\times\{0,1,2\}\times\{0,1\}\times\{0,1\}.
+\]
+The tracks $\mathsf h$ (the one-hot marker) and $\mathsf z$ (the mark of cell $0$) are never written. The track $\mathsf u$ carries the tape of $U$, the track $\mathsf p$ marks used to compute $v_2(d)$, the track $\mathsf n$ the label in unary, and $\mathsf m^\pm$ the two masks. The set of cell contents is $\mathcal S_M=\Gamma_M\times(Q_M\cup\{\cdot\})$, where $\cdot$ means that the head is elsewhere, and
+\[
+\operatorname{init}(h,z)=\bigl((h,z,\sqcup,0,0,0,0),\,q\bigr),\qquad q=q_{\mathrm{start}}\text{ if }z=1,\quad q=\cdot\text{ if }z=0 .
+\]
+The mask bits $\mathsf m^\pm(s)$ of $s\in\mathcal S_M$ are the tracks $\mathsf m^\pm$ of its tape symbol.
+
+The states of $M$ are $P_0,\dots,P_{10}$ with $q_{\mathrm{start}}=P_0$; $S_1,\dots,S_6$; $H_0,H_1$; the pairs $(q,\mathrm{run})$ for the non-halting states $q$ of $U$; $E_0$, $E_1$, $E_2^{(c)}$ for $c\in[1,20]$, $E_3$, $E_4^{(c)}$ for $c\in[1,4]$, $E_5^{(c)}$ for $c\in[1,5]$, $E_6$; and $q_{\mathrm{acc}}$, $q_{\mathrm{fail}}$. At each step $M$ reads the symbol under its head, may change some tracks, moves up ($+1$), down ($-1$) or stays ($0$), and changes state, according to \cref{tab:program}. Every pair of a state and a symbol not covered by the table, and every attempt to move down from a cell with $\mathsf z=1$, leads to $q_{\mathrm{fail}}$ without writing or moving. The states $q_{\mathrm{acc}}$ and $q_{\mathrm{fail}}$ are absorbing: the head stays and nothing is written.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{2.6cm}c>{\raggedright\arraybackslash}p{2.5cm}@{}}
+\toprule
+state & reads & writes & move & next state\\
+\midrule
+$P_k$ & $\mathsf h=0$ & $\mathsf p:=1$ if $k\ge2$ & $+1$ & $P_{\min(k+1,10)}$\\
+$P_k$, $k\le9$ & $\mathsf h=1$ & & $0$ & $q_{\mathrm{fail}}$\\
+$P_{10}$ & $\mathsf h=1$ & & $0$ & $S_1$\\
+$S_1$ & $\mathsf z=0$ / $\mathsf z=1$ & -- / $\mathsf n:=1$ & $-1$ / $0$ & $S_1$ / $H_0$\\
+$H_\pi$ & $\mathsf h=0$, $\mathsf p=0$ & & $+1$ & $H_\pi$\\
+$H_0$ & $\mathsf h=0$, $\mathsf p=1$ & & $+1$ & $H_1$\\
+$H_1$ & $\mathsf h=0$, $\mathsf p=1$ & $\mathsf p:=0$ & $+1$ & $H_0$\\
+$H_0$ / $H_1$ & $\mathsf h=1$ & & $0$ & $S_2$ / $S_4$\\
+$S_2$ & $\mathsf z=0$ / $\mathsf z=1$ & & $-1$ / $0$ & $S_2$ / $S_3$\\
+$S_3$ & $\mathsf n=1$ / $\mathsf n=0$ & -- / $\mathsf n:=1$ & $+1$ / $0$ & $S_3$ / $S_1$\\
+$S_4$ & $\mathsf z=0$ / $\mathsf z=1$ & & $-1$ / $0$ & $S_4$ / $S_5$\\
+$S_5$ & $\mathsf n=1$ / $\mathsf n=0$ & $\mathsf u:=1$ / -- & $+1$ / $0$ & $S_5$ / $S_6$\\
+$S_6$ & $\mathsf z=0$ / $\mathsf z=1$ & & $-1$ / $0$ & $S_6$ / $(q^0_U,\mathrm{run})$\\
+$(q,\mathrm{run})$ & $\mathsf u=\gamma$, $\delta_U(q,\gamma)=(q',\gamma',D)$ & $\mathsf u:=\gamma'$ & $D$ & $(q',\mathrm{run})$, or $E_0$ if $q'$ halts\\
+$E_0$ & $\mathsf z=0$ / $\mathsf z=1$ & & $-1$ / $0$ & $E_0$ / $E_1$\\
+$E_1$ & $\mathsf n=2$ / $\mathsf n=1$ / $\mathsf n=0$ & -- / $\mathsf n:=2$ / -- & $+1$ / $0$ / $0$ & $E_1$ / $E_2^{(20)}$ / $E_3$\\
+$E_2^{(c)}$ & $\mathsf m^-=1$ & & $+1$ & $E_2^{(c)}$\\
+$E_2^{(c)}$, $c\ge2$ & $\mathsf m^-=0$ & $\mathsf m^-:=1$, $\mathsf m^+:=1$ & $+1$ & $E_2^{(c-1)}$\\
+$E_2^{(1)}$ & $\mathsf m^-=0$ & $\mathsf m^-:=1$, $\mathsf m^+:=1$ & $0$ & $E_0$\\
+$E_3$ & $\mathsf m^+=1$ / $\mathsf m^+=0$ & -- / $\mathsf m^+:=1$ & $+1$ / $+1$ & $E_3$ / $E_4^{(4)}$\\
+$E_4^{(c)}$, $c\ge2$ / $E_4^{(1)}$ & any & $\mathsf m^+:=1$ & $+1$ / $-1$ & $E_4^{(c-1)}$ / $E_5^{(5)}$\\
+$E_5^{(5)}$ & $\mathsf m^-=0$ / $\mathsf m^-=1$ & -- / $\mathsf m^-:=0$ & $-1$ / $-1$ & $E_5^{(5)}$ / $E_5^{(4)}$\\
+$E_5^{(c)}$, $2\le c\le4$ & $\mathsf m^-=1$ & $\mathsf m^-:=0$ & $-1$ & $E_5^{(c-1)}$\\
+$E_5^{(1)}$ & $\mathsf m^-=1$ & $\mathsf m^-:=0$ & $0$ & $E_6$\\
+$E_6$ & $\mathsf z=0$ / $\mathsf z=1$ & & $-1$ / $0$ & $E_6$ / $q_{\mathrm{acc}}$\\
+\bottomrule
+\end{tabularx}
+\caption{The program of $M$. Entries separated by ``/'' are alternative cases, matched in order. In the row for $(q,\mathrm{run})$, $D=+1$ if $U$ moves right and $D=-1$ if it moves left.}
+\label{tab:program}
+\end{table}
+
+\subsection{The local rule}
+
+For a cell content $s=(g,q)$ with a head ($q\ne\cdot$) let $\delta_M(q,g)=(q',g',D)$ be the step of \cref{tab:program}, with the convention for uncovered pairs. The local rule $f_M(a,b,c)$, for $a,c\in\mathcal S_M\cup\{\bot\}$ and $b=(g_b,q_b)\in\mathcal S_M$, is defined by the first applicable case:
+\begin{enumerate}[label=(\arabic*)]
+\item if $q_b\ne\cdot$ and $\delta_M(q_b,g_b)=(q',g',D)$: return $(g_b,q_{\mathrm{fail}})$ if $D=+1$ and $c=\bot$, or if $D=-1$ and $a=\bot$; otherwise return $(g',q')$ if $D=0$ and $(g',\cdot)$ if $D\ne0$;
+\item if $a=(g_a,q_a)$ with $q_a\ne\cdot$ and $\delta_M(q_a,g_a)=(q',g',+1)$: return $(g_b,q')$;
+\item if $c=(g_c,q_c)$ with $q_c\ne\cdot$ and $\delta_M(q_c,g_c)=(q',g',-1)$: return $(g_b,q')$;
+\item otherwise return $(g_b,\cdot)$.
+\end{enumerate}
+This is a total function on a finite set; it is the usual radius-one cellular-automaton form of a Turing machine.
+
+\begin{definition}[The run]\label{mach:def-run}
+For $d\ge1$ and $N=N_d$, the \emph{run} of $M$ on the grid of depth $d$ is the sequence of maps $c_i\colon[0,N)\to\mathcal S_M$, $i\in[0,N)$, with $c_0(j)=\operatorname{init}([j=d+2],[j=0])$ and $c_{i+1}(j)=f_M(c_i(j-1),c_i(j),c_i(j+1))$, where $c_i(-1)=c_i(N)=\bot$.
+\end{definition}
+
+Since $d+2<N_d$, the column $c_0$ has $\mathsf h=1$ exactly at cell $d+2$, $\mathsf z=1$ exactly at cell $0$, and one head, at cell $0$ in state $P_0$. By induction on $i$, each $c_i$ has exactly one cell with a head, and $c_{i+1}$ is obtained from $c_i$ by one step of $M$, except that a step that would move the head off the tape $[0,N)$ instead puts it in $q_{\mathrm{fail}}$. So $(c_i)$ is the run of $M$ for $N-1$ steps on a tape of $N$ cells, with an exit through either end counted as failure.
+
+\subsection{Proof of the readiness lemma}
+
+Let $n=n(d)=1+v_2(d)$. We follow the program from $c_0$.
+
+\emph{Depth.} In state $P_k$ the head is at cell $k$ while $k<10$, and at a cell at least $10$ in state $P_{10}$. It moves up, marking $\mathsf p=1$ at the cells $2,\dots,d+1$, until it reads $\mathsf h=1$ at cell $d+2$. If $d+2\le9$, that is $d\le7$, it fails. Otherwise it enters $S_1$, which returns to cell $0$, writes $\mathsf n=1$ there and enters $H_0$.
+
+\emph{Label.} A pass in states $H_0,H_1$ scans the cells from $0$ up to the marker, keeps the first, third, \dots\ marked cell and erases the second, fourth, \dots; it ends in $H_0$ if the number $c$ of marks was even and in $H_1$ if it was odd. In the even case $c/2$ marks remain, and $S_2,S_3,S_1$ append one cell with $\mathsf n=1$ above the existing ones and start the next pass at cell $0$. Starting from $c=d\ge8$, the passes end after $v_2(d)$ even passes and one odd pass, leaving $\mathsf n=1$ exactly on the cells $0,\dots,n-1$.
+
+\emph{Simulation.} $S_4,S_5,S_6$ write the symbol $1$ on the $\mathsf u$-track of the cells $0,\dots,n-1$ and return to cell $0$ in the state $(q^0_U,\mathrm{run})$. From then on each step of $M$ is one step of $U$ on the $\mathsf u$-track, started on $1^n$, until $U$ enters a halting state, at which point $M$ enters $E_0$. If $U$ does not halt on $n$, $M$ never leaves the states $(q,\mathrm{run})$ and $q_{\mathrm{fail}}$.
+
+\emph{Masks.} $E_0$ returns to cell $0$. Each round of $E_1$, $E_2^{(20)},\dots,E_2^{(1)}$, $E_0$ consumes the lowest cell with $\mathsf n=1$, setting it to $2$, and extends both masks by $20$ cells; after $n$ rounds $E_1$ reaches the cell $n$, where $\mathsf n=0$, and $\mathsf m^-=\mathsf m^+=1$ exactly on the cells $0,\dots,20n-1$. Then $E_3$ and $E_4$ set $\mathsf m^+=1$ on the cells $20n,\dots,20n+4$, $E_5$ clears $\mathsf m^-$ on the cells $20n-5,\dots,20n-1$, and $E_6$ returns to cell $0$ and enters the absorbing state $q_{\mathrm{acc}}$. Then $\mathsf m^-=1$ exactly on the cells $j<20n-5$ and $\mathsf m^+=1$ exactly on the cells $j<20n+5$.
+
+\emph{Proof of \cref{bg:ready}(a).} The state $q_{\mathrm{acc}}$ is entered only from $E_6$, which is reached only through the whole program above; $q_{\mathrm{fail}}$ is absorbing. So if $c_{N-1}(0)$ carries $q_{\mathrm{acc}}$, then $d\ge8$, $U$ halted on $n$, the masks are as stated and stay so, since $q_{\mathrm{acc}}$ writes nothing, and the head wrote at cell $20n+4$ without leaving the tape, so $20n+5\le N_d$.
+
+\emph{Proof of \cref{bg:ready}(b).} Suppose $U$ halts on $n$, after $t_U(n)$ steps, with largest visited cell $s_U(n)$. Let $d\ge8$ with $n(d)=n$, so $n\le d$. Counting the steps of each phase: the depth phase and the return take at most $2(d+3)$ steps; there are at most $v_2(d)+1\le d$ passes, each followed by at most $2(d+3)+2(n+2)$ steps; loading the input takes at most $2(d+3)+2(n+1)$ steps; the simulation takes $t_U(n)$ steps; the return after it at most $s_U(n)+1$; the $n$ mask rounds at most $n(41n+3)$; and the end at most $40n+25$. With $n\le d$ the total is at most $45d^2+59d+40+t_U(n)+s_U(n)\le50(d+2)^2+t_U(n)+s_U(n)$. The head never goes above the cell $\max(d+2,s_U(n),20n+4)$. Since $N_d-1=2^{d+2}-3$, there is $d_0$ such that for all $d\ge d_0$ both bounds are below $N_d-1$, and then the run reaches $q_{\mathrm{acc}}$ at cell $0$ before the last column and stays there, so $\rho_d=1$. The depths $d=2^{n-1}(2k+1)$, $k\ge0$, all have label $n$, so infinitely many of them are at least $d_0$. \qed

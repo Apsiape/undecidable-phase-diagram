@@ -1,0 +1,42 @@
+% =====================================================================
+%  An uncomputable phase diagram at positive temperature
+%  for one classical lattice model
+%  Seth Douglas and Nidhal Mghirbi
+%  Version 1.0.0, November 2026
+%
+%  Build: python -B build.py (three pdflatex passes)
+% =====================================================================
+\documentclass[11pt]{article}
+\input{preamble-core.tex}
+\newcommand{\OPENAIMODEL}{GPT-6.1~Sol}
+
+\hypersetup{pdftitle={An uncomputable phase diagram at positive temperature for one classical lattice model},pdfauthor={Seth Douglas and Nidhal Mghirbi}}
+\title{\vspace{-1.2cm}\LARGE An uncomputable phase diagram at positive temperature\\ for one classical lattice model}
+\author{Seth Douglas \and Nidhal Mghirbi}
+\date{\small Version 1.0.0, November 2026}
+
+\begin{document}
+\maketitle
+
+\input{sections/00-abstract.tex}
+
+\tableofcontents
+
+\input{sections/01-introduction.tex}
+\input{sections/02-setting.tex}
+\input{sections/03-scaffold.tex}
+\input{sections/04-interaction.tex}
+\input{sections/05-background.tex}
+\input{sections/06-payload.tex}
+\input{sections/07-proof.tex}
+\input{sections/08-exact.tex}
+\input{sections/09-open.tex}
+\input{sections/10-how.tex}
+
+\appendix
+\input{sections/appendix-scaffold.tex}
+\input{sections/appendix-tables.tex}
+\input{sections/appendix-machine.tex}
+
+\input{sections/references.tex}
+\end{document}

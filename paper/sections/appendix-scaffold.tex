@@ -1,0 +1,242 @@
+% =====================================================================
+\section{The scaffold: tables and proofs}\label{app:scaffold}
+% =====================================================================
+
+This appendix lists the finite data of \cref{sec:scaffold}, Ollinger's substitution \cite{Ollinger08} in the transcription of \cite{LeanWang} with the ruler decoration of \cite{DM26forget}, and proves \cref{scf:desub}, \cref{scf:frames}(a)--(c) and \cref{scf:walls}. The arguments follow \cite{DM26forget}; they compare components of tiles, so no list of cases is needed. Vertical atoms are $\mathsf r_0,\mathsf r_2,\mathsf g_0,\mathsf g_2$ and horizontal atoms $\mathsf r_1,\mathsf r_3,\mathsf g_1,\mathsf g_3$.
+
+\subsection{Tables}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{c|cccc}
+ & $\partial_{\mathrm N}$ & $\partial_{\mathrm S}$ & $\partial_{\mathrm E}$ & $\partial_{\mathrm W}$\\\hline
+thin $\mathsf a$ & $\mathsf r_0$ & $\mathsf g_2$ & $\mathsf r_1$ & $\mathsf g_3$\\
+thin $\mathsf b$ & $\mathsf g_0$ & $\mathsf r_2$ & $\mathsf g_1$ & $\mathsf r_3$\\
+thin $\mathsf c$ & $\mathsf r_2$ & $\mathsf g_0$ & $\mathsf g_3$ & $\mathsf r_1$\\
+thin $\mathsf d$ & $\mathsf g_2$ & $\mathsf r_0$ & $\mathsf r_3$ & $\mathsf g_1$\\\hline
+corner $\angle\mathsf a$ & $\mathsf g_2$ & $\mathsf r_0$ & $\mathsf r_3$ & $\mathsf g_1$\\
+corner $\angle\mathsf b$ & $\mathsf r_0$ & $\mathsf g_2$ & $\mathsf r_1$ & $\mathsf g_3$\\
+corner $\angle\mathsf c$ & $\mathsf r_2$ & $\mathsf g_0$ & $\mathsf g_3$ & $\mathsf r_1$\\
+corner $\angle\mathsf d$ & $\mathsf g_0$ & $\mathsf r_2$ & $\mathsf g_1$ & $\mathsf r_3$\\\hline
+line $\langle\alpha,\alpha'\rangle$ & $\alpha$ & $\alpha$ & $\alpha'$ & $\alpha'$
+\end{tabular}
+\qquad
+\begin{tabular}{c|cccc}
+ & $\partial_{\mathrm N}$ & $\partial_{\mathrm S}$ & $\partial_{\mathrm E}$ & $\partial_{\mathrm W}$\\\hline
+black $\mathsf A$ & $0$ & $1$ & $0$ & $1$\\
+black $\mathsf B$ & $1$ & $0$ & $0$ & $0$\\
+black $\mathsf C$ & $1$ & $0$ & $1$ & $1$\\
+black $\mathsf D$ & $1$ & $1$ & $1$ & $0$\\
+black $\mathsf E$ & $0$ & $0$ & $1$ & $0$
+\end{tabular}
+\caption{Endpoints of the thin and thick components, and bits of the black component. A line $\langle\alpha,\alpha'\rangle$ has a vertical atom $\alpha$ and a horizontal atom $\alpha'$; all sixteen lines occur.}
+\label{tab:edges}
+\end{table}
+
+The left table shows: each corner has exactly the four endpoints of one thin type, namely $F(\mathsf a)=\angle\mathsf b$, $F(\mathsf b)=\angle\mathsf d$, $F(\mathsf c)=\angle\mathsf c$, $F(\mathsf d)=\angle\mathsf a$; thin types match horizontally exactly in the pairs $(\mathsf a,\mathsf c)$, $(\mathsf c,\mathsf a)$, $(\mathsf b,\mathsf d)$, $(\mathsf d,\mathsf b)$, west tile first, and vertically exactly in the pairs $(\mathsf a,\mathsf d)$, $(\mathsf d,\mathsf a)$, $(\mathsf b,\mathsf c)$, $(\mathsf c,\mathsf b)$, south tile first. The black maps of the substitution are
+\[
+\begin{array}{c|ccccc}
+\psi & \mathsf A&\mathsf B&\mathsf C&\mathsf D&\mathsf E\\\hline
+\operatorname{se}(\psi)&\mathsf B&\mathsf B&\mathsf C&\mathsf C&\mathsf C\\
+\operatorname{nw}(\psi)&\mathsf E&\mathsf D&\mathsf D&\mathsf D&\mathsf E
+\end{array}
+\]
+They satisfy $\partial_{\mathrm W}\operatorname{se}(\psi)=\partial_{\mathrm E}\psi$, $\partial_{\mathrm S}\operatorname{nw}(\psi)=\partial_{\mathrm N}\psi$, $\partial_{\mathrm E}\operatorname{se}(\psi)=\partial_{\mathrm E}\psi$, $\partial_{\mathrm N}\operatorname{nw}(\psi)=\partial_{\mathrm N}\psi$, $\partial_{\mathrm N}\operatorname{se}(\psi)=1$ and $\partial_{\mathrm E}\operatorname{nw}(\psi)=1$ for every $\psi$; and $\operatorname{se}(\psi)$ is the type in $\{\mathsf B,\mathsf C\}$ with west bit $\partial_{\mathrm E}\psi$, $\operatorname{nw}(\psi)$ the type in $\{\mathsf D,\mathsf E\}$ with south bit $\partial_{\mathrm N}\psi$.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{c|c|c|c|r}
+thin & thick & black & condition & tiles\\\hline
+$\mathsf a$ & corner & $\mathsf A$ & none & $4$\\
+$\mathsf a$ & line $\langle\alpha,\alpha'\rangle$ & $\mathsf B$ & $\alpha\ne\mathsf r_0$ & $12$\\
+$\mathsf a$ & line $\langle\alpha,\alpha'\rangle$ & $\mathsf C$ & $\alpha\ne\mathsf r_2$ & $12$\\
+$\mathsf a$ & line $\langle\alpha,\alpha'\rangle$ & $\mathsf D$ & $\alpha'\ne\mathsf r_3$ & $12$\\
+$\mathsf a$ & line $\langle\alpha,\alpha'\rangle$ & $\mathsf E$ & $\alpha'\ne\mathsf r_1$ & $12$\\
+$\mathsf b$ & corner & $\mathsf A$ & none & $4$\\
+$\mathsf c$ & line $\langle\alpha,\alpha'\rangle$ & $\mathsf B$ & $\alpha\ne\mathsf r_0$ & $12$\\
+$\mathsf c$ & line $\langle\alpha,\alpha'\rangle$ & $\mathsf C$ & $\alpha\ne\mathsf r_2$ & $12$\\
+$\mathsf d$ & line $\langle\alpha,\alpha'\rangle$ & $\mathsf D$ & $\alpha'\ne\mathsf r_3$ & $12$\\
+$\mathsf d$ & line $\langle\alpha,\alpha'\rangle$ & $\mathsf E$ & $\alpha'\ne\mathsf r_1$ & $12$\\\hline
+\multicolumn{4}{r|}{total} & $104$
+\end{tabular}
+\caption{The $104$ tiles of $\mathbb O$.}
+\label{tab:alphabet}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{c|c|c|c}
+child & thin & thick & black\\\hline
+$(0,0)$ & $\mathsf a$ & $\kappa$ & $\psi$\\
+$(1,0)$ & $\mathsf c$ & $\langle\partial_{\mathrm S}\theta,\ \partial_{\mathrm E}\kappa\rangle$ & $\operatorname{se}(\psi)$\\
+$(0,1)$ & $\mathsf d$ & $\langle\partial_{\mathrm N}\kappa,\ \partial_{\mathrm W}\theta\rangle$ & $\operatorname{nw}(\psi)$\\
+$(1,1)$ & $\mathsf b$ & $F(\theta)$ & $\mathsf A$
+\end{tabular}
+\qquad
+\begin{tabular}{c|c|c}
+child & $\chi_1$ & $\chi_2$\\\hline
+$(0,0)$ & $1-\chi_1(\mathfrak a)$ & $1-\chi_2(\mathfrak a)$\\
+$(1,0)$ & $0$ & $1-\chi_2(\mathfrak a)$\\
+$(0,1)$ & $1-\chi_1(\mathfrak a)$ & $0$\\
+$(1,1)$ & $0$ & $0$
+\end{tabular}
+\caption{The substitution $\varphi$ of a tile $(\theta,\kappa,\psi)$ (left), and the bits of $\varphi'(\mathfrak a)$ (right). Child $(1,0)$ is south-east and child $(0,1)$ is north-west.}
+\label{tab:subst}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{c|c|c|c|r}
+thin & base tiles & bit rule & variants each & letters\\\hline
+$\mathsf a$ & $4$ corners & $\chi_1=\chi_2$ & $2$ & $8$\\
+$\mathsf a$ & $8$ red crossings & $\chi_1\ne\chi_2$ & $2$ & $16$\\
+$\mathsf a$ & $40$ other lines & none & $4$ & $160$\\
+$\mathsf b$ & $4$ corners & $\chi_1=\chi_2=0$ & $1$ & $4$\\
+$\mathsf c$ & $4$ red crossings & $\chi_1=0$, $\chi_2=1$ & $1$ & $4$\\
+$\mathsf c$ & $20$ other lines & $\chi_1=0$ & $2$ & $40$\\
+$\mathsf d$ & $4$ red crossings & $\chi_1=1$, $\chi_2=0$ & $1$ & $4$\\
+$\mathsf d$ & $20$ other lines & $\chi_2=0$ & $2$ & $40$\\\hline
+\multicolumn{4}{r|}{total} & $276$
+\end{tabular}
+\caption{The $276$ letters of $\mathbb A$. Each black class $\mathsf B,\mathsf C,\mathsf D,\mathsf E$ admits exactly two of the four red crossings, which gives $8$ red crossings with thin type $\mathsf a$ and $4$ each with thin types $\mathsf c$ and $\mathsf d$.}
+\label{tab:letters}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{c|c|c|c}
+position & thin & thick & red crossing exactly when\\\hline
+$(2,1)$ & $\mathsf d$ & $\langle\partial_{\mathrm S}\theta,\ \mathsf r_1\rangle$ & $\theta\in\{\mathsf b,\mathsf d\}$\\
+$(2,3)$ & $\mathsf d$ & $\langle\partial_{\mathrm N}\theta,\ \mathsf r_3\rangle$ & $\theta\in\{\mathsf a,\mathsf c\}$\\
+$(1,2)$ & $\mathsf c$ & $\langle\mathsf r_0,\ \partial_{\mathrm W}\theta\rangle$ & $\theta\in\{\mathsf b,\mathsf c\}$\\
+$(3,2)$ & $\mathsf c$ & $\langle\mathsf r_2,\ \partial_{\mathrm E}\theta\rangle$ & $\theta\in\{\mathsf a,\mathsf d\}$
+\end{tabular}
+\caption{Four cells of the depth-two block $\varphi^2(\theta,\kappa,\psi)$, for every base tile. Position $(2,1)$ is child $(0,1)$ of child $(1,0)$; $(2,3)$ is child $(0,1)$ of child $(1,1)$; $(1,2)$ is child $(1,0)$ of child $(0,1)$; $(3,2)$ is child $(1,0)$ of child $(1,1)$.}
+\label{tab:witness}
+\end{table}
+
+\subsection{The base set}
+
+Distinct triples of $\mathbb O$ give distinct tiles: the four thin types have distinct north endpoints; a line has equal north and south endpoints while a corner does not, and the four corners have distinct north endpoints; the five black types have distinct bit tuples.
+
+\begin{lemma}[Thin phase]\label{app:thin}
+For every tiling $f$ of $\mathbb O$ there is a unique coset $c+2\Z^2$ such that the thin type of $f(c+2v+\varsigma)$ is $\mathsf a,\mathsf c,\mathsf d,\mathsf b$ for $\varsigma=(0,0),(1,0),(0,1),(1,1)$.
+\end{lemma}
+
+\begin{proof}
+The east endpoints of the thin types are distinct, and so are the west endpoints, so the thin type of the east neighbour is determined: $\mathsf a\leftrightarrow\mathsf c$, $\mathsf b\leftrightarrow\mathsf d$. Likewise the north neighbour: $\mathsf a\leftrightarrow\mathsf d$, $\mathsf b\leftrightarrow\mathsf c$. These involutions commute, so the thin type at $u+(x_1,x_2)$ is obtained from that at $u$ by applying the first $x_1$ times and the second $x_2$ times. The sites of thin type $\mathsf a$ form one coset of $2\Z^2$.
+\end{proof}
+
+\begin{lemma}[The substitution is sound]\label{app:sound}
+(a) For every $t\in\mathbb O$, $\varphi(t)$ is a legal pattern of tiles of $\mathbb O$. (b) For every pattern $w$ of $\mathbb O$, $\varphi(w)$ is legal if and only if $w$ is legal. (c) $\varphi$ is injective on triples.
+\end{lemma}
+
+\begin{proof}
+(a) Let $t=(\theta,\kappa,\psi)$. Child $(0,0)$ is $(\mathsf a,\kappa,\psi)$, which lies in $\mathbb O$ because every pair $(\kappa,\psi)$ allowed for some thin type is allowed for $\mathsf a$. Child $(1,1)$ is a corner with black $\mathsf A$. Child $(1,0)$ is the line $\langle\partial_{\mathrm S}\theta,\partial_{\mathrm E}\kappa\rangle$ with thin type $\mathsf c$ and black $\operatorname{se}(\psi)\in\{\mathsf B,\mathsf C\}$; it is excluded only if $\operatorname{se}(\psi)=\mathsf B$ and $\partial_{\mathrm S}\theta=\mathsf r_0$, or $\operatorname{se}(\psi)=\mathsf C$ and $\partial_{\mathrm S}\theta=\mathsf r_2$. But $\partial_{\mathrm S}\theta=\mathsf r_0$ only for $\theta=\mathsf d$, where $\psi\in\{\mathsf D,\mathsf E\}$ and $\operatorname{se}(\psi)=\mathsf C$; and $\partial_{\mathrm S}\theta=\mathsf r_2$ only for $\theta=\mathsf b$, where $\psi=\mathsf A$ and $\operatorname{se}(\psi)=\mathsf B$. Child $(0,1)$ is the line $\langle\partial_{\mathrm N}\kappa,\partial_{\mathrm W}\theta\rangle$ with thin type $\mathsf d$ and black $\operatorname{nw}(\psi)\in\{\mathsf D,\mathsf E\}$; it is excluded only if $\operatorname{nw}(\psi)=\mathsf D$ and $\partial_{\mathrm W}\theta=\mathsf r_3$, which needs $\theta=\mathsf b$, $\psi=\mathsf A$, where $\operatorname{nw}(\psi)=\mathsf E$; or $\operatorname{nw}(\psi)=\mathsf E$ and $\partial_{\mathrm W}\theta=\mathsf r_1$, which needs $\theta=\mathsf c$, $\psi\in\{\mathsf B,\mathsf C\}$, where $\operatorname{nw}(\psi)=\mathsf D$. Inside the block the thin pattern $\mathsf a,\mathsf c,\mathsf d,\mathsf b$ matches; the thick endpoints across the four internal edges are $\partial_{\mathrm E}\kappa$, $\partial_{\mathrm N}\kappa$, $\partial_{\mathrm S}\theta=\partial_{\mathrm S}F(\theta)$ and $\partial_{\mathrm W}\theta=\partial_{\mathrm W}F(\theta)$ on both sides; and the black bits match by the identities of the black maps.
+
+(b) Let $w(v)=(\theta,\kappa,\psi)$ and $w(v+\mathbf e_1)=(\theta',\kappa',\psi')$. Two fine edges cross the seam between their blocks. The lower one has thin endpoints $\mathsf g_3,\mathsf g_3$, thick endpoints $\partial_{\mathrm E}\kappa$ and $\partial_{\mathrm W}\kappa'$, and black bits $\partial_{\mathrm E}\psi$ and $\partial_{\mathrm W}\psi'$. The upper one has thin endpoints $\mathsf g_1,\mathsf g_1$, thick endpoints $\partial_{\mathrm E}F(\theta)=\partial_{\mathrm E}\theta$ and $\partial_{\mathrm W}\theta'$, and black bits $0,0$. So both match if and only if the coarse edge matches. Vertical seams are the same: the left fine edge records $\partial_{\mathrm N}\kappa=\partial_{\mathrm S}\kappa'$ and $\partial_{\mathrm N}\psi=\partial_{\mathrm S}\psi'$, the right one $\partial_{\mathrm N}\theta=\partial_{\mathrm S}\theta'$.
+
+(c) Child $(0,0)$ shows $\kappa$ and $\psi$, and child $(1,1)$ shows $F(\theta)$; $F$ is a bijection.
+\end{proof}
+
+\begin{lemma}[Parents]\label{app:parents}
+Let $w$ be a legal pattern of $\mathbb O$ on $[0,2)^2$ with thin types $\mathsf a$, $\mathsf c$, $\mathsf d$, $\mathsf b$ at the sites $(0,0)$, $(1,0)$, $(0,1)$, $(1,1)$. Then $w=\varphi(t)$ for exactly one triple $t$. If $w$ extends to a legal pattern on
+\[
+[0,2)^2\cup\{(0,-1),(1,-1),(-1,0),(-1,1)\},
+\]
+then $t\in\mathbb O$.
+\end{lemma}
+
+\begin{proof}
+$w(1,1)$ has thin type $\mathsf b$, so it is a corner with black $\mathsf A$; let $\theta=F^{-1}$ of it, and let $\kappa,\psi$ be the thick and black types of $w(0,0)$. The tile $w(1,0)$ has thin type $\mathsf c$, so it is a line with black $\mathsf B$ or $\mathsf C$; its west and north thick endpoints are $\partial_{\mathrm E}\kappa$ and $\partial_{\mathrm S}\theta$, and its west bit is $\partial_{\mathrm E}\psi$, so it is $(\mathsf c,\langle\partial_{\mathrm S}\theta,\partial_{\mathrm E}\kappa\rangle,\operatorname{se}(\psi))$. In the same way $w(0,1)=(\mathsf d,\langle\partial_{\mathrm N}\kappa,\partial_{\mathrm W}\theta\rangle,\operatorname{nw}(\psi))$. So $w=\varphi(t)$ with $t=(\theta,\kappa,\psi)$, unique by \cref{app:sound}(c).
+
+Child $(0,0)$ in $\mathbb O$ leaves the $52$ pairs $(\kappa,\psi)$ of thin type $\mathsf a$. The children $(1,0)$ and $(0,1)$ lie in $\mathbb O$ unless $\theta=\mathsf b$ and $\psi\ne\mathsf A$, or $\theta=\mathsf d$ and $\psi\in\{\mathsf A,\mathsf B\}$, or $\theta=\mathsf c$ and $\psi\in\{\mathsf A,\mathsf E\}$; for $\theta=\mathsf a$ the new atoms are green. Comparing with \cref{tab:alphabet}, the triples obtained that are not in $\mathbb O$ are of two kinds: $\theta=\mathsf c$, $\psi=\mathsf D$, $\kappa$ a line with $\alpha'\ne\mathsf r_3$; and $\theta=\mathsf d$, $\psi=\mathsf C$, $\kappa$ a line with $\alpha\ne\mathsf r_2$.
+
+Suppose $t=(\mathsf c,\langle\alpha,\alpha'\rangle,\mathsf D)$ with $\alpha'\ne\mathsf r_3$ and $w$ extends below. Then $w(1,0)$ is the line $\langle\mathsf g_0,\alpha'\rangle$. The tile at $(1,-1)$ has thin type $\mathsf b$, so it is a corner; its north endpoint is $\mathsf g_0$, so it is $\angle\mathsf d$, with west endpoint $\mathsf r_3$. The tile at $(0,-1)$ has thin type $\mathsf d$, so it is a line with black $\mathsf D$ or $\mathsf E$; its north bit equals the south bit $1$ of $\mathsf D$, so its black is $\mathsf D$, and its east endpoint is $\mathsf r_3$. But thin $\mathsf d$ with black $\mathsf D$ forbids the horizontal atom $\mathsf r_3$. The second kind is excluded in the same way by extending to the left: the tile at $(-1,1)$ is $\angle\mathsf d$ with south endpoint $\mathsf r_2$, and the tile at $(-1,0)$ has thin type $\mathsf c$, black $\mathsf C$ and vertical atom $\mathsf r_2$, which is forbidden.
+\end{proof}
+
+\begin{proposition}[Base desubstitution]\label{app:base-desub}
+$\mathbb O$ tiles. For every tiling $f$ of $\mathbb O$ there are a unique coset $c+2\Z^2$ and, for each representative $c$, a unique tiling $z$ of $\mathbb O$ with $f(c+2v+\varsigma)=\varphi(z(v))(\varsigma)$.
+\end{proposition}
+
+\begin{proof}
+Take the coset of \cref{app:thin}; no other coset has thin type $\mathsf a$ at all its sites. Each block $f|_{c+2v+[0,2)^2}$ has the thin pattern of \cref{app:parents} and the tiling supplies the cells below and to the left, so it equals $\varphi(z(v))$ for a unique $z(v)\in\mathbb O$, and $z$ is legal by \cref{app:sound}(b). For existence, $\varphi^m(t)$ is a legal pattern on $[0,2^m)^2$ for every $m$, and K\"onig's lemma gives a tiling.
+\end{proof}
+
+\subsection{The ruler decoration}
+
+\begin{lemma}[Decorated substitution is sound]\label{app:ruler-sound}
+(a) For every $\mathfrak a\in\mathbb A$, $\varphi'(\mathfrak a)$ is a legal pattern of $\mathbb A$. (b) For every pattern $w$ of $\mathbb A$, $\varphi'(w)$ is legal if and only if $w$ is legal. (c) $\varphi'$ is injective.
+\end{lemma}
+
+\begin{proof}
+(a) The bases are legal by \cref{app:sound}. Child $(0,0)$ has thin type $\mathsf a$ and both bits complemented, which preserves (R3) and (R4). Child $(1,1)$ is a corner of thin type $\mathsf b$ with bits $(0,0)$. Child $(1,0)$ has thin type $\mathsf c$ and $\chi_1=0$; its line $\langle\partial_{\mathrm S}\theta,\partial_{\mathrm E}\kappa\rangle$ is a red crossing only if $\partial_{\mathrm S}\theta$ is red, that is $\theta\in\{\mathsf b,\mathsf d\}$, and then (R2) for $\mathfrak a$ gives $\chi_2(\mathfrak a)=0$, so the child has bits $(0,1)$ and satisfies (R4). Child $(0,1)$ is symmetric. Inside the block the column bits are $1-\chi_1,1-\chi_1$ and $0,0$ and the row bits $1-\chi_2,1-\chi_2$ and $0,0$, so they match.
+
+(b) Across a vertical seam between the blocks of $\mathfrak a$ and $\mathfrak a'$, the fine edges carry row bits $1-\chi_2(\mathfrak a),1-\chi_2(\mathfrak a')$ and $0,0$; across a horizontal seam, column bits $1-\chi_1(\mathfrak a),1-\chi_1(\mathfrak a')$ and $0,0$. With \cref{app:sound}(b) this gives the claim. (c) Child $(0,0)$ shows $\kappa$, $\psi$ and the complemented bits, and child $(1,1)$ shows $\theta$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{scf:desub}]
+Soundness and injectivity are \cref{app:ruler-sound}. Let $f$ be a tiling of $\mathbb A$, with base tiling $\bar f$; take $c$ and $\bar z$ from \cref{app:base-desub}. The column bit of $f(x)$ depends only on $x_1$, say $X(x_1)$, and the row bit only on $x_2$, say $Y(x_2)$. A column $c_1+2v_1+1$ has thin types $\mathsf c,\mathsf b$, so $X=0$ there by (R1); a row $c_2+2v_2+1$ has thin types $\mathsf d,\mathsf b$, so $Y=0$ there. Put $z(v)=(\bar z(v),1-X(c_1+2v_1),1-Y(c_2+2v_2))$. Then $f(c+2v+\varsigma)=\varphi'(z(v))(\varsigma)$, the bits of $z$ are constant on columns and rows, and (R3), (R4) for $z(v)$ follow from those for $f(c+2v)$. For (R1) and (R2) apply \cref{app:base-desub} to $\bar z$: $\bar z(c'+2m+\varsigma')=\varphi(\bar w(m))(\varsigma')$ for $\varsigma'\in[0,2)^2$, and with $o=c+2c'$, $\bar f(o+4m+y)=\varphi^2(\bar w(m))(y)$. By \cref{tab:witness}, the cells $(2,1)$ and $(2,3)$ of this block have thin type $\mathsf d$, hence row bit $0$, and exactly one of them is a red crossing, which then has column bit $1$ by (R4); so $X(o_1+4m_1+2)=1$. Likewise $Y(o_2+4m_2+2)=1$. A letter $z(v)$ with $v=c'+2m+\varsigma'$ has thin type $\mathsf b$ or $\mathsf c$ exactly when $\varsigma'_1=1$, and then $c_1+2v_1=o_1+4m_1+2$ and $\chi_1(z(v))=0$: this is (R1). (R2) is the same. So $z$ is a tiling of $\mathbb A$, and it is unique since its bases are and its bits are read off $f$. Taking $\upsilon\equiv c\pmod2$ in $\{0,1\}^2$ and translating $z$ gives the statement. Finally $\mathbb A$ tiles: $\varphi'^m(\mathfrak a)$ is legal on $[0,2^m)^2$ for every $m$.
+\end{proof}
+
+\subsection{Ranks and red paths}
+
+Let $f$ be a tiling of $\mathbb A$ with tower $(f_m,\upsilon_m)$ and phase $\varpi$, and use the digits $\varsigma_m(x)$ of \cref{scf:sub-phase}. The \emph{rank} of a column $x_1$ is the least $m$ with $\varsigma_{m,1}(x)=1$, which by \eqref{scf:eq-digits} is the $2$-adic valuation of $x_1-\varpi_1$; it is finite when $\varpi_1\notin\Z$. Ranks of rows are defined with the second coordinate. For $r\ge0$ put $s_i(z)=(z-\varpi_i)\bmod 2^{r+2}$.
+
+\begin{lemma}[Ruler bits]\label{app:rank-bits}
+If the column $x_1$ has rank $r$, then $\chi_1(f(x))\equiv r\pmod2$; rows are the same.
+\end{lemma}
+
+\begin{proof}
+A child $\varsigma$ has column bit $0$ if $\varsigma_1=1$ and the complement of its parent's column bit if $\varsigma_1=0$ (\cref{tab:subst}). The letter $f_r(x^{(r)})$ has $\varsigma_{r,1}(x)=1$, so its column bit is $0$, and each of the $r$ steps down to $f(x)$ complements it.
+\end{proof}
+
+A thick type with a red endpoint on the north--south axis has exactly one red atom value on that axis: for a line it is the vertical atom, at both its north and its south endpoint, and the corners $\angle\mathsf b$, $\angle\mathsf c$ have red north endpoints $\mathsf r_0$, $\mathsf r_2$ and $\angle\mathsf a$, $\angle\mathsf d$ red south endpoints $\mathsf r_0$, $\mathsf r_2$. On the east--west axis, $\angle\mathsf b$, $\angle\mathsf a$ have red east endpoints $\mathsf r_1$, $\mathsf r_3$ and $\angle\mathsf c$, $\angle\mathsf d$ red west endpoints $\mathsf r_1$, $\mathsf r_3$.
+
+\begin{lemma}[Red paths]\label{app:red}
+Let $x_1$ be a column of rank $r$. Then $s_1(x_1)\in\{2^r,3\cdot2^r\}$, and for every $x=(x_1,x_2)$:
+\begin{itemize}
+\item[(a)] the thick type of $f(x)$ has a red endpoint on the north--south axis if and only if $s_2(x_2)\in[2^r,3\cdot2^r]$;
+\item[(b)] this endpoint is $\mathsf r_0$ if $s_1(x_1)=2^r$ and $\mathsf r_2$ if $s_1(x_1)=3\cdot2^r$;
+\item[(c)] the thick type is a corner with red north endpoint if $s_2(x_2)=2^r$, a corner with red south endpoint if $s_2(x_2)=3\cdot2^r$, and a line if $2^r<s_2(x_2)<3\cdot2^r$.
+\end{itemize}
+The same holds for a row $x_2$ of rank $r$ with the coordinates exchanged: east--west red endpoints occur if and only if $s_1(x_1)\in[2^r,3\cdot2^r]$, the endpoint is $\mathsf r_1$ if $s_2(x_2)=2^r$ and $\mathsf r_3$ if $s_2(x_2)=3\cdot2^r$, and the thick type is a corner with red east endpoint at $s_1(x_1)=2^r$, a corner with red west endpoint at $s_1(x_1)=3\cdot2^r$, and a line in between.
+\end{lemma}
+
+\begin{proof}
+By \eqref{scf:eq-digits}, $s_1(x_1)=2^r+2^{r+1}\varsigma_{r+1,1}(x)$. We argue by induction on $r$, for all tilings at once. Let $r=0$. The letter $f(x)$ is child $(1,\varsigma_{0,2})$ of $P=f_1(x^{(1)})$, which is child $\varsigma_1(x)$ of $f_2(x^{(2)})$; so $P$ has thin type $\theta=\mathsf a,\mathsf c,\mathsf d,\mathsf b$ for $\varsigma_1(x)=(0,0),(1,0),(0,1),(1,1)$, and $f(x)$ has thick type $\langle\partial_{\mathrm S}\theta,\cdot\rangle$ if $\varsigma_{0,2}=0$ and $F(\theta)$ if $\varsigma_{0,2}=1$. With $s_2=\varsigma_{0,2}+2\varsigma_{1,2}$ and $s_1=1+2\varsigma_{1,1}$, \cref{tab:edges} gives
+\[
+\begin{array}{c|cccc}
+s_2(x_2) & 0 & 1 & 2 & 3\\\hline
+s_1(x_1)=1 & \partial_{\mathrm S}\mathsf a=\mathsf g_2 & F(\mathsf a)=\angle\mathsf b & \partial_{\mathrm S}\mathsf d=\mathsf r_0 & F(\mathsf d)=\angle\mathsf a\\
+s_1(x_1)=3 & \partial_{\mathrm S}\mathsf c=\mathsf g_0 & F(\mathsf c)=\angle\mathsf c & \partial_{\mathrm S}\mathsf b=\mathsf r_2 & F(\mathsf b)=\angle\mathsf d
+\end{array}
+\]
+which is (a)--(c) for $r=0$. Let $r\ge1$, so $\varsigma_{0,1}(x)=0$. The tiling $f_1$ has phase $\varpi'$ with $\varpi=\upsilon_0+2\varpi'$; in it the column of $x^{(1)}$ has rank $r-1$, and with $s'_i(z)=(z-\varpi'_i)\bmod2^{r+1}$ we have $s_i(x_i)=2s'_i(x^{(1)}_i)+\varsigma_{0,i}(x)$. The letter $f(x)$ is child $(0,\varsigma_{0,2})$ of $P=f_1(x^{(1)})$, with thick type $\kappa_P$. If $\varsigma_{0,2}=0$, $f(x)$ has thick type $\kappa_P$, $s_2=2s'_2$, and (a)--(c) follow from the induction hypothesis. If $\varsigma_{0,2}=1$, $s_2$ is odd and $f(x)$ is the line $\langle\partial_{\mathrm N}\kappa_P,\cdot\rangle$; this endpoint is red exactly when $\kappa_P$ is a line with a red vertical atom or a corner with red north endpoint, that is when $s'_2\in[2^{r-1},3\cdot2^{r-1})$, and the odd numbers $2s'_2+1$ with this property are exactly the odd numbers in $[2^r,3\cdot2^r]$, all strictly between $2^r$ and $3\cdot2^r$. In both cases the atom is that of $P$, which gives (b). Rows are the same, with children $(\varsigma_{0,1},1)$ and $(1,0)$ and the endpoints $\partial_{\mathrm W}\theta$, $\partial_{\mathrm E}\kappa_P$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{scf:walls}]
+Write $Y(\xi)=f^{\mathrm q}(\xi-\eps)$ with phase $\varpi$ of $f$, so $\tau=\eps+2\varpi$, and $\xi-\eps=2x+\varsigma$. Let $r$ be the rank of the column $x_1$, finite since $\tau_1\notin\Z$, and put $\hat s_i=(\xi_i-\tau_i)\bmod2^{r+3}$, so that $\hat s_i=2s_i(x_i)+\varsigma_i$. By \cref{app:red} and \cref{scf:def-walls}, the quarter lies on a vertical red path if and only if $s_2(x_2)\in[2^r,3\cdot2^r]$, $\varsigma_1=1$ if $s_1(x_1)=2^r$ and $\varsigma_1=0$ if $s_1(x_1)=3\cdot2^r$, and $\varsigma_2=1$ if $s_2(x_2)=2^r$ and $\varsigma_2=0$ if $s_2(x_2)=3\cdot2^r$. That is,
+\[
+\hat s_1\in\{2^{r+1}+1,\ 3\cdot2^{r+1}\}\quad\text{and}\quad\hat s_2\in[2^{r+1}+1,\ 3\cdot2^{r+1}],
+\]
+with a left side exactly when $\hat s_1=2^{r+1}+1$. By \cref{app:rank-bits} the path is light if and only if $r$ is odd. For $r=2d-1$, $2^{r+1}=4^d$ and $2^{r+3}=4^{d+1}$, and $\hat s_i\equiv\xi_i-a^{(i)}_d\pmod{4^{d+1}}$; the conditions say that $\xi_1$ is an endpoint of a column frame of depth $d$, the left one exactly for a left side, and that $\xi_2$ lies in a row frame of depth $d$. Conversely, if $\xi_1$ is an endpoint of a column frame of depth $d$, then $\xi_1-\tau_1\equiv4^d+1$ or $3\cdot4^d\pmod{4^{d+1}}$, so $\varsigma_1=1$ and $x_1-\varpi_1\equiv2^{2d-1}$, or $\varsigma_1=0$ and $x_1-\varpi_1\equiv3\cdot2^{2d-1}$, modulo $2^{2d+1}$; in both cases the column has rank $2d-1$ and the first part applies. Light horizontal walls are the same, with the row half of \cref{app:red}.
+\end{proof}
+
+\subsection{Frames and laminar families}
+
+\begin{proof}[Proof of \cref{scf:frames}(a)--(c)]
+(a) $I_d(m)$ lies in $[a_d+4m\cdot4^d,a_d+4(m+1)4^d)$, and these windows are disjoint. Let $e<d$. Then $a_d\equiv a_e\pmod{4^{e+1}}$ and $4^{e+1}$ divides $4^d$, so the endpoints of a frame of depth $d$ are congruent to $a_e+1$ and $a_e$ modulo $4^{e+1}$. An integer $z$ lies in a frame of depth $e$ exactly when $(z-a_e)\bmod4^{e+1}\in[4^e+1,3\cdot4^e]$, which excludes $0$ and $1$. So if a frame of depth $e$ meets a frame of depth $d$, it contains neither endpoint of it and lies in its interior.
+
+(b) Let $I_d(m)=[L,L+2\cdot4^d-1]$. Left endpoints of frames of depth $e$ form one residue class modulo $4^{e+1}$, so one of them, $q$, lies in $[L,L+4^{e+1}-1]$, and its frame ends at $q+2\cdot4^e-1\le L+4^{e+1}+2\cdot4^e-2<L+2\cdot4^d-1$.
+
+(c) Call $s\in[0,4^d)$ \emph{allowed} if $s\bmod4^{e+1}\notin[4^e+1,3\cdot4^e]$ for every $1\le e<d$, and let $g_d$ be the number of allowed residues; an integer $z$ lies in no frame of depth below $d$ exactly when $(z-a_d)\bmod4^d$ is allowed. Then $g_1=4$. Writing $s\in[0,4^{d+1})$ as $s=t\cdot4^d+s'$ with $t\in[0,4)$, the conditions for $e<d$ concern $s'$ and the condition for $e=d$ is $s\notin[4^d+1,3\cdot4^d]$: for $t=0$ all $g_d$ allowed $s'$ remain, for $t=1$ only $s'=0$, for $t=2$ none, for $t=3$ all except $s'=0$. Since $0$ is allowed, $g_{d+1}=2g_d$ and $g_d=2^{d+1}$. Now $z=a_d+4m\cdot4^d+t\cdot4^d+s'$ lies in $\mathring I_d(m)$ exactly when $t=1$ and $s'\ge2$, or $t=2$. The residues $0$ and $1$ are allowed, so $|\mathcal F_d(m)|=(g_d-2)+g_d=2^{d+2}-2$.
+\end{proof}
+
+\begin{lemma}[Laminar families]\label{app:laminar}
+Let $\mathcal J$ be a set of integer intervals with at least two points each, such that any two distinct members are disjoint or one lies in the interior of the other, and let $E$ be the set of their endpoints. Every $e\in E$ is an endpoint of exactly one member. If $w_1<w_2$ are consecutive elements of $E$, $w_1$ a left endpoint and $w_2$ a right endpoint, then $[w_1,w_2]\in\mathcal J$. Conversely, the endpoints of a member that contains no other member are consecutive in $E$.
+\end{lemma}
+
+\begin{proof}
+If $e$ were an endpoint of two members, they would meet, so one would lie in the interior of the other and would not have $e$ as an endpoint. Let $w_1=\min I$ and $w_2=\max I'$ be consecutive, and suppose $I\ne I'$. If they are disjoint, then $\max I$ lies strictly between $w_1$ and $w_2$; if $I$ lies in the interior of $I'$, so does $\max I$; if $I'$ lies in the interior of $I$, then $\min I'$ does. Each case contradicts consecutiveness. Conversely, let $I$ contain no other member and $I'\ne I$: if $I'$ meets $I$, then $I$ lies in the interior of $I'$, so the endpoints of $I'$ lie outside $I$; otherwise no endpoint of $I'$ lies in $I$.
+\end{proof}

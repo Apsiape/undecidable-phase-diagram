@@ -1,0 +1,182 @@
+% =====================================================================
+\section{The scaffold}\label{sec:scaffold}
+% =====================================================================
+
+This section presents the bottom layer of the background: a Wang set $\mathbb A$ of $276$ letters with a substitution of expansion $2$, its quartered version $\mathbb A^{\mathrm q}$, and the light red squares that will serve as frames. The base set and the ruler decoration are those of the scaffold of \cite{DM26forget}; we restate the facts we need, with proofs of the finite-table statements in \cref{app:scaffold}. Beyond those facts we prove that every translation-invariant law has Haar-distributed phase, that $\mathbb A$ and $\mathbb A^{\mathrm q}$ have exactly one translation-invariant probability measure, and that typical tilings are rigid (\cref{prop:scaffold-ti,prop:quarter-ti}).
+
+\subsection{Wang sets}
+
+A \emph{Wang set} is a finite set of tiles, each with a north, east, south and west colour, written with subscripts $\mathrm N,\mathrm E,\mathrm S,\mathrm W$. A \emph{pattern} on $V\subseteq\Z^2$ is a map $P\colon V\to R$; it is \emph{legal} if $P(v)_{\mathrm E}=P(v+\mathbf e_1)_{\mathrm W}$ and $P(v)_{\mathrm N}=P(v+\mathbf e_2)_{\mathrm S}$ whenever both sites lie in $V$. A \emph{tiling} is a legal pattern on $\Z^2$, and $X_R$ is the set of tilings of $R$, a closed shift-invariant subset of $R^{\Z^2}$.
+
+\subsection{Ollinger's substitution and the ruler decoration}\label{scf:sub-base}
+
+A tile of the base set is a triple $(\theta,\kappa,\psi)$ of a \emph{thin} type $\theta\in\{\mathsf a,\mathsf b,\mathsf c,\mathsf d\}$, a \emph{thick} type $\kappa$ and a \emph{black} type $\psi\in\{\mathsf A,\mathsf B,\mathsf C,\mathsf D,\mathsf E\}$. A thick type is one of four corners $\angle\mathsf a,\angle\mathsf b,\angle\mathsf c,\angle\mathsf d$ or one of sixteen lines $\langle\alpha,\alpha'\rangle$ with a vertical atom $\alpha\in\{\mathsf r_0,\mathsf r_2,\mathsf g_0,\mathsf g_2\}$ and a horizontal atom $\alpha'\in\{\mathsf r_1,\mathsf r_3,\mathsf g_1,\mathsf g_3\}$; the letter $\mathsf r$ means red and $\mathsf g$ green. Each component has an endpoint $\partial_X$ on each side $X\in\{\mathrm N,\mathrm E,\mathrm S,\mathrm W\}$, listed in \cref{tab:edges}.
+
+\begin{definition}[The base set and its substitution]\label{scf:def-base}
+The base set $\mathbb O$ is the Wang set of the $104$ triples of \cref{tab:alphabet}; the colour of $(\theta,\kappa,\psi)$ on side $X$ is $(\partial_X\theta,\partial_X\kappa,\partial_X\psi)$. For a triple $t=(\theta,\kappa,\psi)$, the pattern $\varphi(t)$ on $[0,2)^2$ is given by \cref{tab:subst} (left), with the maps $F$, $\operatorname{se}$ and $\operatorname{nw}$ of \cref{app:scaffold}. For a pattern $w$ on $V$, $\varphi(w)$ is the pattern on $2V+[0,2)^2$ with $\varphi(w)(2v+\varsigma)=\varphi(w(v))(\varsigma)$.
+\end{definition}
+
+A \emph{red crossing} is a line whose two atoms are red.
+
+\begin{definition}[The scaffold $\mathbb A$]\label{scf:def-ruler}
+$\mathbb A$ is the set of tuples $\mathfrak a=(\theta,\kappa,\psi,\chi_1,\chi_2)$ with $(\theta,\kappa,\psi)\in\mathbb O$ and $\chi_1,\chi_2\in\{0,1\}$ such that: (R1) if $\theta\in\{\mathsf b,\mathsf c\}$ then $\chi_1=0$; (R2) if $\theta\in\{\mathsf b,\mathsf d\}$ then $\chi_2=0$; (R3) if $\kappa$ is a corner then $\chi_1=\chi_2$; (R4) if $\kappa$ is a red crossing then $\chi_1\ne\chi_2$. The north and south colours of $\mathfrak a$ are those of $(\theta,\kappa,\psi)$ together with the \emph{column bit} $\chi_1$; the east and west colours are those of $(\theta,\kappa,\psi)$ together with the \emph{row bit} $\chi_2$. The decorated substitution $\varphi'(\mathfrak a)$ is the pattern on $[0,2)^2$ whose bases are $\varphi(\theta,\kappa,\psi)$ and whose bits are given by \cref{tab:subst} (right); it acts on patterns blockwise.
+\end{definition}
+
+\Cref{tab:letters} counts $|\mathbb A|=276$. Letters matching vertically have the same column bit, and letters matching horizontally have the same row bit, so in a tiling $\chi_1$ is constant on columns and $\chi_2$ on rows.
+
+\begin{proposition}[Desubstitution]\label{scf:desub}
+The set $\mathbb A$ tiles. The map $\varphi'$ is injective, and for every pattern $w$ of $\mathbb A$, $\varphi'(w)$ is legal if and only if $w$ is legal. For every tiling $f$ of $\mathbb A$ there are a unique $\upsilon\in\{0,1\}^2$ and a unique tiling $g$ of $\mathbb A$ with $f(\upsilon+2v+\varsigma)=\varphi'(g(v))(\varsigma)$ for all $v\in\Z^2$ and $\varsigma\in[0,2)^2$.
+\end{proposition}
+
+This is proved in \cite{DM26forget}; the proof is recalled in \cref{app:scaffold}. It holds for every tiling, including tilings with faults along lines.
+
+\subsection{Phases, the coincidence and the translation-invariant law}\label{scf:sub-phase}
+
+Applying \cref{scf:desub} repeatedly, every tiling $f$ of $\mathbb A$ has a unique \emph{tower}: tilings $f_0=f,f_1,f_2,\dots$ and digits $\upsilon_0,\upsilon_1,\dots\in\{0,1\}^2$ with
+\[
+f_m(\upsilon_m+2v+\varsigma)=\varphi'\bigl(f_{m+1}(v)\bigr)(\varsigma)\qquad(v\in\Z^2,\ \varsigma\in[0,2)^2).
+\]
+Its \emph{phase} is $\varpi(f)=\sum_{m\ge0}2^m\upsilon_m\in\Z_2^2$, where $\Z_2$ is the ring of $2$-adic integers. For a site $x\in\Z^2$ put $x^{(0)}=x$ and let $\varsigma_m(x)\in\{0,1\}^2$ and $x^{(m+1)}\in\Z^2$ be defined by $x^{(m)}=\upsilon_m+2x^{(m+1)}+\varsigma_m(x)$. Then $f_m(x^{(m)})=\varphi'(f_{m+1}(x^{(m+1)}))(\varsigma_m(x))$, and by induction
+\begin{equation}\label{scf:eq-digits}
+x-\varpi(f)\equiv\sum_{m<l}2^m\varsigma_m(x)\pmod{2^l}\qquad(l\ge1),
+\end{equation}
+so the $\varsigma_m(x)$ are the binary digits of $x-\varpi(f)$, coordinatewise.
+
+\begin{lemma}[Phases]\label{scf:phase}
+\begin{itemize}
+\item[(a)] $\varpi(T_af)=\varpi(f)+a$ for every tiling $f$ and $a\in\Z^2$.
+\item[(b)] For every $l\ge1$ there is $\varrho_l$ such that $\varpi(f)\bmod 2^l$ is determined by the restriction of $f$ to $[-\varrho_l,\varrho_l]^2$.
+\item[(c)] For every $\varpi\in\Z_2^2$ there is a tiling of $\mathbb A$ with phase $\varpi$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(a) Let $(f_m,\upsilon_m)$ be the tower of $f$ and write $\upsilon_0+a=\upsilon'+2b$ with $\upsilon'\in\{0,1\}^2$. Then $T_af(\upsilon'+2(v+b)+\varsigma)=f(\upsilon_0+2v+\varsigma)=\varphi'(T_bf_1(v+b))(\varsigma)$, so by uniqueness the tower of $T_af$ starts with the digit $\upsilon'$ and continues with the tower of $T_bf_1$. By induction on $l$, $\varpi(T_af)\equiv\upsilon'+2(\varpi(f_1)+b)=\varpi(f)+a\pmod{2^l}$ for every $l$.
+
+(b) For $p\in[0,2^l)^2$ with binary digits $\upsilon_0,\dots,\upsilon_{l-1}$, let $X_p$ be the set of tilings whose phase is congruent to $p$ modulo $2^l$. By uniqueness of towers, $X_p$ is the image of $X_{\mathbb A}$ under the map $g\mapsto\operatorname{sub}_{\upsilon_0}\circ\dots\circ\operatorname{sub}_{\upsilon_{l-1}}(g)$, where $\operatorname{sub}_\upsilon(g)(\upsilon+2v+\varsigma)=\varphi'(g(v))(\varsigma)$. This map is continuous and $X_{\mathbb A}$ is compact, so each $X_p$ is compact. The $4^l$ sets $X_p$ are disjoint and cover $X_{\mathbb A}$, so each is also open in $X_{\mathbb A}$. A continuous map from the compact space $X_{\mathbb A}$ to a finite set depends only on the restriction to some finite box.
+
+(c) With the digits $\upsilon_m$ of $\varpi$, the sets of sequences $(f_m)_{m\ge0}$ of tilings with $f_m=\operatorname{sub}_{\upsilon_m}(f_{m+1})$ for $m<l$ are nonempty (\cref{scf:desub}), closed and decreasing in $l$; a sequence in their intersection is a tower with phase $\varpi$, and $f_0$ is the required tiling.
+\end{proof}
+
+Put $\mathfrak u=(\mathsf b,\angle\mathsf d,\mathsf A,0,0)$.
+
+\begin{lemma}[Coincidence]\label{scf:coincidence}
+Let $f$ be a tiling of $\mathbb A$ and $x\in\Z^2$. If $\varsigma_m(x)=\varsigma_{m+1}(x)=(1,1)$ for some $m$, then $f_m(x^{(m)})=\mathfrak u$, and $f(x)$ is determined by $\varsigma_0(x),\dots,\varsigma_{m-1}(x)$.
+\end{lemma}
+
+\begin{proof}
+By \cref{tab:subst}, child $(1,1)$ of a letter $(\theta,\kappa,\psi,\chi_1,\chi_2)$ is $(\mathsf b,F(\theta),\mathsf A,0,0)$. So $f_{m+1}(x^{(m+1)})$ has thin type $\mathsf b$, and $f_m(x^{(m)})$ is child $(1,1)$ of a letter of thin type $\mathsf b$, which is $(\mathsf b,F(\mathsf b),\mathsf A,0,0)=\mathfrak u$. Then $f(x)$ is obtained from $\mathfrak u$ by taking the children $\varsigma_{m-1}(x),\dots,\varsigma_0(x)$ in turn.
+\end{proof}
+
+\begin{definition}[Resolving phases]\label{scf:def-resolving}
+A phase $\varpi\in\Z_2^2$ is \emph{resolving} if for every $x\in\Z^2$ the binary expansion of $x-\varpi$ has two consecutive digits, at positions $m$ and $m+1$, both equal to $(1,1)$.
+\end{definition}
+
+For a fixed $x$ and Haar-distributed $\varpi$, $x-\varpi$ is Haar distributed, so its digit pairs at positions $(2k,2k+1)$, $k\ge0$, are independent and uniform on $16$ values; none of the first $K$ of them is $((1,1),(1,1))$ with probability $(15/16)^K$. Hence Haar-almost every phase is resolving.
+
+\begin{proposition}[The translation-invariant law of $\mathbb A$]\label{prop:scaffold-ti}
+\begin{itemize}
+\item[(a)] For every resolving $\varpi$ there is exactly one tiling $f_\varpi$ of $\mathbb A$ with phase $\varpi$.
+\item[(b)] $X_{\mathbb A}$ carries exactly one translation-invariant probability measure: the image of Haar measure on $\Z_2^2$ under $\varpi\mapsto f_\varpi$.
+\item[(c)] If $f$ is a tiling with resolving phase and $f'$ is a tiling that agrees with $f$ outside a finite set, then $f'=f$.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+(a) Existence is \cref{scf:phase}(c), and uniqueness is \cref{scf:coincidence}, by \eqref{scf:eq-digits}.
+
+(b) Let $\mu$ be a translation-invariant probability measure on $X_{\mathbb A}$ and $l\ge1$. By \cref{scf:phase}(a) the law of $\varpi\bmod2^l$ under $\mu$ is invariant under all translations of $(\Z/2^l\Z)^2$, hence uniform. So the law of $\varpi$ is Haar measure, which gives full measure to the resolving phases, and $f=f_{\varpi(f)}$ $\mu$-almost surely by (a). The map $\varpi\mapsto f_\varpi$ is measurable, since $f_\varpi(x)$ is computed from finitely many digits of $x-\varpi$. A translation-invariant probability measure exists, since $X_{\mathbb A}$ is compact and nonempty: average the translates of a point mass over growing boxes and take a limit point.
+
+(c) Let $l\ge1$. Choose $a$ such that $a+[-\varrho_l,\varrho_l]^2$ avoids the finite set. Then $T_{-a}f$ and $T_{-a}f'$ agree on $[-\varrho_l,\varrho_l]^2$, so by \cref{scf:phase}(b),(a) $\varpi(f)-a\equiv\varpi(f')-a\pmod{2^l}$. This holds for every $l$, so $\varpi(f')=\varpi(f)$, and (a) gives $f'=f$.
+\end{proof}
+
+\subsection{Quarters and light walls}\label{scf:sub-quarters}
+
+The physical lattice of the model carries quarters of letters. Let $\circ$ and $\bullet$ be two new symbols.
+
+\begin{definition}[Quarters]\label{scf:def-quarter}
+The quarter set $\mathbb A^{\mathrm q}$ is the Wang set of the $4\cdot276$ pairs $(\varsigma,\mathfrak a)\in\{0,1\}^2\times\mathbb A$; $\varsigma$ is the \emph{quadrant} and $\mathfrak a$ the \emph{parent}. The colours of $(\varsigma,\mathfrak a)$ are
+\[
+\begin{array}{lll}
+\text{east:} & (\circ,\mathfrak a,\varsigma_2)\text{ if }\varsigma_1=0, & (\bullet,\mathfrak a_{\mathrm E},\varsigma_2)\text{ if }\varsigma_1=1;\\
+\text{west:} & (\circ,\mathfrak a,\varsigma_2)\text{ if }\varsigma_1=1, & (\bullet,\mathfrak a_{\mathrm W},\varsigma_2)\text{ if }\varsigma_1=0;\\
+\text{north:} & (\circ,\mathfrak a,\varsigma_1)\text{ if }\varsigma_2=0, & (\bullet,\mathfrak a_{\mathrm N},\varsigma_1)\text{ if }\varsigma_2=1;\\
+\text{south:} & (\circ,\mathfrak a,\varsigma_1)\text{ if }\varsigma_2=1, & (\bullet,\mathfrak a_{\mathrm S},\varsigma_1)\text{ if }\varsigma_2=0,
+\end{array}
+\]
+where $\mathfrak a_{\mathrm E},\dots$ are the colours of $\mathfrak a$ in $\mathbb A$. The \emph{quartering} of a tiling $f$ of $\mathbb A$ is $f^{\mathrm q}(2x+\varsigma)=(\varsigma,f(x))$.
+\end{definition}
+
+\begin{lemma}[Quarter encoding]\label{scf:quarter}
+For every tiling $Y$ of $\mathbb A^{\mathrm q}$ there are a unique $\eps\in\{0,1\}^2$ and a unique tiling $f$ of $\mathbb A$ with $Y(\xi)=f^{\mathrm q}(\xi-\eps)$ for all $\xi$; conversely every such map is a tiling of $\mathbb A^{\mathrm q}$. The \emph{quarter phase} $\tau(Y)=\eps+2\varpi(f)\in\Z_2^2$ satisfies $\tau(T_aY)=\tau(Y)+a$, and $\tau(Y)\bmod 2^l$ is determined by the restriction of $Y$ to a finite box depending only on $l$.
+\end{lemma}
+
+\begin{proof}
+By the colour table, $(\varsigma,\mathfrak a)$ and $(\varsigma',\mathfrak a')$ match horizontally if and only if $\varsigma'\equiv\varsigma+\mathbf e_1\pmod2$ and either $\varsigma_1=0$ and $\mathfrak a'=\mathfrak a$, or $\varsigma_1=1$ and $\mathfrak a,\mathfrak a'$ match horizontally in $\mathbb A$; the vertical case is the same. So in a tiling $Y$ the quadrant of $Y(\xi)$ is congruent to $\xi-\eps$ modulo $2$ for one $\eps$, the four quarters of each block $\eps+2x+[0,2)^2$ have one parent $f(x)$, and adjacent blocks have matching parents. The converse is read off the same table. For the phase, write $a+\eps=\eps'+2b$ with $\eps'\in\{0,1\}^2$; then $T_aY(\xi)=(T_bf)^{\mathrm q}(\xi-\eps')$, so $\tau(T_aY)=\eps'+2(\varpi(f)+b)=\tau(Y)+a$ by \cref{scf:phase}(a). The last claim follows from \cref{scf:phase}(b), since $\eps$ is read off one quarter.
+\end{proof}
+
+A phase $\tau\in\Z_2^2$ of $\mathbb A^{\mathrm q}$ is \emph{resolving} if $(\tau-\eps)/2$ is resolving, where $\eps\equiv\tau\pmod2$.
+
+\begin{proposition}[The translation-invariant law of $\mathbb A^{\mathrm q}$]\label{prop:quarter-ti}
+\begin{itemize}
+\item[(a)] For every resolving $\tau$ there is exactly one tiling $Y_\tau$ of $\mathbb A^{\mathrm q}$ with quarter phase $\tau$, and $X_{\mathbb A^{\mathrm q}}$ carries exactly one translation-invariant probability measure, the image of Haar measure under $\tau\mapsto Y_\tau$.
+\item[(b)] If $Y$ is a tiling of $\mathbb A^{\mathrm q}$ with resolving phase and $Y'$ is a tiling of $\mathbb A^{\mathrm q}$ that agrees with $Y$ outside a finite set $D$, then $Y'=Y$.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+(a) The tiling $Y_\tau(\xi)=f_{\varpi}^{\mathrm q}(\xi-\eps)$, with $\eps\equiv\tau\pmod 2$ and $\varpi=(\tau-\eps)/2$, has phase $\tau$, and by \cref{scf:quarter} and \cref{prop:scaffold-ti}(a) it is the only one. The rest is the proof of \cref{prop:scaffold-ti}(b), with \cref{scf:quarter} in place of \cref{scf:phase}.
+
+(b) Write $Y(\xi)=f^{\mathrm q}(\xi-\eps)$ and $Y'(\xi)=f'^{\mathrm q}(\xi-\eps')$. The quadrant of $Y'(\xi)$ is congruent to $\xi-\eps'$ modulo $2$, and at any site $\xi\notin D$ it equals the quadrant of $Y(\xi)$; so $\eps'=\eps$, and the global checker phase is not changed by a finite edit. Grouping the quarters into blocks $\eps+2x+[0,2)^2$, the parents $f'(x)$ and $f(x)$ agree unless the block of $x$ meets $D$, which happens for finitely many $x$. So $f'$ is a finite modification of $f$, whose phase is resolving, and \cref{prop:scaffold-ti}(c) gives $f'=f$, hence $Y'=Y$.
+\end{proof}
+
+\begin{definition}[Walls]\label{scf:def-walls}
+Let $(\varsigma,\mathfrak a)\in\mathbb A^{\mathrm q}$, where $\mathfrak a$ has thick type $\kappa$. A thick type has a \emph{vertical red atom} if its north or south endpoint is red, and a \emph{horizontal red atom} if its east or west endpoint is red.
+\begin{itemize}
+\item The pair lies on a \emph{vertical red path} if $\kappa$ has a vertical red atom, $\varsigma_1=1$ if this atom is $\mathsf r_0$ and $\varsigma_1=0$ if it is $\mathsf r_2$, and, when $\kappa$ is a corner, $\varsigma_2=1$ if its north endpoint is red and $\varsigma_2=0$ if its south endpoint is red. It is a \emph{left side} if the atom is $\mathsf r_0$ and a \emph{right side} if it is $\mathsf r_2$. If moreover $\chi_1(\mathfrak a)=1$, the pair lies on a \emph{light vertical wall}.
+\item The pair lies on a \emph{horizontal red path} if $\kappa$ has a horizontal red atom, $\varsigma_2=1$ if this atom is $\mathsf r_1$ and $\varsigma_2=0$ if it is $\mathsf r_3$, and, when $\kappa$ is a corner, $\varsigma_1=1$ if its east endpoint is red and $\varsigma_1=0$ if its west endpoint is red. It is a \emph{bottom side} if the atom is $\mathsf r_1$ and a \emph{top side} if it is $\mathsf r_3$. If moreover $\chi_2(\mathfrak a)=1$, the pair lies on a \emph{light horizontal wall}.
+\end{itemize}
+\end{definition}
+
+On each axis, the red endpoints of a thick type carry at most one atom value (\cref{tab:edges}; a line carries its atom at both ends), so these notions are well defined. A corner quarter can lie on a light vertical and a light horizontal wall at once; a light vertical wall is not a light horizontal wall unless it is such a corner. The two notions are tested separately below.
+
+\subsection{Frames}\label{scf:sub-frames}
+
+\begin{definition}[Frames, free coordinates and owners]\label{scf:def-frames}
+Let $\tau_i\in\Z_2$ and, for $d\ge1$, let $a_d\in[0,4^{d+1})$ with $a_d\equiv\tau_i\pmod{4^{d+1}}$. The \emph{frames of depth $d$} are the integer intervals
+\[
+I_d(m)=\bigl[a_d+(4m+1)4^d+1,\ a_d+(4m+3)4^d\bigr],\qquad m\in\Z,
+\]
+with \emph{left endpoint} $a_d+(4m+1)4^d+1$ and \emph{right endpoint} $a_d+(4m+3)4^d$. The \emph{free coordinates} of $I_d(m)$ are the elements of
+\[
+\mathcal F_d(m)=\bigl\{z\in\mathring I_d(m):\ z\notin I_e(m')\text{ for all }1\le e<d,\ m'\in\Z\bigr\},
+\]
+where $\mathring I$ is $I$ without its endpoints. If $z$ lies in some frame, its \emph{owner depth} $\operatorname{own}(z)$ is the least $d$ such that $z$ lies in a frame of depth $d$. For a quarter phase $\tau=(\tau_1,\tau_2)$ we write $I^{(i)}_d(m)$, $\mathcal F^{(i)}_d(m)$ and $\operatorname{own}_i$ for the objects defined from $\tau_i$, and call $I^{(1)}$ the \emph{column frames} and $I^{(2)}$ the \emph{row frames}.
+\end{definition}
+
+\begin{lemma}[Frames]\label{scf:frames}
+Fix $\tau_i\in\Z_2$ and $d\ge1$, and put $N_d=2^{d+2}-2$.
+\begin{itemize}
+\item[(a)] Frames of the same depth are disjoint. If $e<d$, the endpoints of every frame of depth $d$ are congruent to $a_e$ and $a_e+1$ modulo $4^{e+1}$ and lie in no frame of depth $e$. Two frames of different depths are disjoint, or the one of smaller depth lies in the interior of the other.
+\item[(b)] If $e<d$, every frame of depth $d$ contains a frame of depth $e$.
+\item[(c)] $|\mathcal F_d(m)|=N_d$. The least element of $\mathcal F_d(m)$ is $r_d(m)=a_d+(4m+1)4^d+2$, the left endpoint plus one, and the largest is the right endpoint minus one.
+\item[(d)] $r_d(m)\equiv a_d+4^d+2\pmod{4^{d+1}}$, and for $D>d$ every $r_D(m')$ is congruent to $a_d+2$ modulo $4^{d+1}$. Hence no integer is of the form $r_d(m)$ for two different depths~$d$.
+\item[(e)] If the base-$4$ expansion of $z-\tau_i$ has the digit $2$ in some position $d\ge1$, then $z$ lies in the interior of a frame of depth $d$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(a), (b) and the count in (c) are proved in \cite{DM26forget}; the proof is recalled in \cref{app:scaffold}. For the rest of (c), the left endpoint plus one is congruent to $a_e+2$ modulo $4^{e+1}$ for every $e<d$, and an integer $z$ lies in a frame of depth $e$ exactly when $(z-a_e)\bmod 4^{e+1}\in[4^e+1,3\cdot4^e]$, which excludes $2$; so it is free. The right endpoint minus one is congruent to $a_e-1$, that is to $4^{e+1}-1$ relative to $a_e$, which is also excluded. (d) The first congruence is immediate; for $D>d$, $4^{d+1}$ divides $(4m'+1)4^D$ and $a_D\equiv a_d\pmod{4^{d+1}}$. The two residues differ by $4^d\not\equiv0$. (e) The digit condition says $(z-a_d)\bmod4^{d+1}\in[2\cdot4^d,3\cdot4^d-1]$, and these residues lie in the interior $[4^d+2,3\cdot4^d-1]$ of the frame window.
+\end{proof}
+
+\begin{lemma}[Light walls]\label{scf:walls}
+Let $Y$ be a tiling of $\mathbb A^{\mathrm q}$ with quarter phase $\tau$, where $\tau_1,\tau_2\notin\Z$. Then $Y(\xi)$ lies on a light vertical wall if and only if there are $d\ge1$ and $m,m'\in\Z$ such that $\xi_1$ is an endpoint of $I^{(1)}_d(m)$ and $\xi_2\in I^{(2)}_d(m')$; it is a left side when $\xi_1$ is the left endpoint and a right side when $\xi_1$ is the right endpoint. Dually, $Y(\xi)$ lies on a light horizontal wall if and only if $\xi_2$ is an endpoint of some $I^{(2)}_d(m')$ and $\xi_1\in I^{(1)}_d(m)$ for some $m$, with a bottom side at the left endpoint and a top side at the right endpoint.
+\end{lemma}
+
+The proof, which uses the red paths of the tower, is in \cref{app:scaffold}. The condition $\tau_i\notin\Z$ ensures that every column and row of the parent tiling has a finite rank there.
+
+\begin{definition}[Typical phases]\label{scf:def-typical}
+A quarter phase $\tau\in\Z_2^2$ is \emph{typical} if it is resolving, $\tau_1,\tau_2\notin\Z$, and for $i=1,2$ and every $z\in\Z$ the base-$4$ expansion of $z-\tau_i$ has the digit $2$ in some position $d\ge1$.
+\end{definition}
+
+Haar-almost every $\tau$ is typical: the first condition was checked above, $\Z^2$ is countable, and for fixed $z$ the base-$4$ digits of $z-\tau_i$ are independent and uniform. By \cref{scf:frames}(e), for a typical $\tau$ every integer has a finite owner depth in each direction.

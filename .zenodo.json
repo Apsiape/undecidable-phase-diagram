@@ -1,0 +1,32 @@
+{
+  "title": "An uncomputable phase diagram at positive temperature for one classical lattice model",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "version": "1.0.0",
+  "publication_date": "2026-11-10",
+  "creators": [
+    {
+      "name": "Douglas, Seth",
+      "orcid": "0009-0007-4708-3252"
+    },
+    {
+      "name": "Mghirbi, Nidhal",
+      "orcid": "0009-0005-6534-1118"
+    }
+  ],
+  "description": "Can the phase diagram of one fixed classical lattice model be uncomputable? For quantum spin systems at zero temperature it can: there are families of Hamiltonians whose spectral gap or ground-state phase cannot be computed from the parameter. We prove a classical counterpart at positive temperature. There is one translation-invariant nearest-neighbour interaction on ℤ², with local energies 0, 1 and +∞ (hard constraints) and a fixed universal Turing machine U built in, and there are disjoint intervals J_n with rational endpoints computable from n, such that at every inverse temperature β in J_n the model has exactly one translation-invariant Gibbs measure if U does not halt on input n, and at least two if U halts. So uniqueness of the translation-invariant Gibbs measure at rational inverse temperature is undecidable for this single model. Uniqueness among all Gibbs measures fails at every temperature, because the hard constraints freeze a non-periodic background.<br><br>The background is a hierarchical tiling that contains arbitrarily large square grids. On each grid a Turing machine reads a label n from the size of the grid and runs U on n. Where U halts, small sensors made of free bits and unit energies couple the corner spins of all grids of that size into an ordinary Ising model, whose coupling is large only when β is close to n log 2. Assuming the exact solution of the two-dimensional Ising model, the inverse temperatures with at least two translation-invariant Gibbs measures form exactly a union of explicit intervals around n log 2 over the halting inputs n; restricted to rational β, this set is Σ⁰₁-complete.",
+  "keywords": [
+    "Gibbs measures",
+    "phase transitions",
+    "undecidability",
+    "uncomputable phase diagram",
+    "lattice models",
+    "Wang tiles",
+    "Ising model",
+    "statistical mechanics"
+  ],
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "language": "eng",
+  "notes": "Preprint. It has not been peer reviewed. Version 1.0.0. Text: CC BY 4.0. Build script: MIT or Apache 2.0."
+}

@@ -1,0 +1,99 @@
+% =====================================================================
+\section{Tables of the interaction}\label{app:tables}
+% =====================================================================
+
+This appendix collects the fields, colours and components of \cref{sec:interaction} in tabular form. Together with the rules (O1)--(P3), (C0)--(C9) and the charge of \cref{sec:interaction}, and the program of \cref{app:machine}, they define $\Phi$. A site value is allowed when it satisfies every rule; neighbouring site values must have equal colours on their common edge.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{2.9cm}>{\raggedright\arraybackslash}p{2.6cm}@{}}
+\toprule
+field & values & in colours & rules\\
+\midrule
+$\mathfrak q$ & $\mathbb A^{\mathrm q}$, $1104$ quarters & all four, as $\mathfrak q_X$ & walls (\cref{scf:def-walls})\\
+$o^{\mathrm W},o^{\mathrm E}$ & $\{\mathrm L,\mathrm R\}^2$ & $c_{\mathrm W}$, $c_{\mathrm E}$ & (O1)\\
+$o^{\mathrm S},o^{\mathrm N}$ & $\{\mathrm B,\mathrm T\}^2$ & $c_{\mathrm S}$, $c_{\mathrm N}$ & (O2)\\
+$e^{\mathrm W},e^{\mathrm E},e^{\mathrm S},e^{\mathrm N}$ & $\{\mathrm{cell},\mathrm{wall}\}^2\cup\{*\}$ & matching side & (E1)--(E3)\\
+$\ell^{\mathrm W},\ell^{\mathrm E}$ & $\{\circ\}\cup\Lambda^+_{\mathrm h}$ & $c_{\mathrm W}$, $c_{\mathrm E}$ & (K1), (C0)--(C7)\\
+$\ell^{\mathrm S},\ell^{\mathrm N}$ & $\{\circ\}\cup\Lambda^+_{\mathrm v}$ & $c_{\mathrm S}$, $c_{\mathrm N}$ & (K2), (C0)--(C8)\\
+$\mathfrak k$ & $\{\circ\}\cup\mathcal K$ & none & (K3), (C0)--(C9)\\
+$\mathfrak r$ & $\{0,1\}$ & $c_{\mathrm W}$, $c_{\mathrm E}$ & (Q1), (Q2), (P1)\\
+$\mathfrak c$ & $\{0,1\}$ & $c_{\mathrm S}$, $c_{\mathrm N}$ & (Q1), (Q2), (P2)\\
+$\sigma$ & $\{+1,-1\}$ & none & (P1)--(P3)\\
+$w^{\mathrm W},w^{\mathrm E}$ & $\{+1,-1,\square\}$ & $c_{\mathrm W}$, $c_{\mathrm E}$ & (P1), (P3)\\
+$w^{\mathrm S},w^{\mathrm N}$ & $\{+1,-1,\square\}$ & $c_{\mathrm S}$, $c_{\mathrm N}$ & (P2), (P3)\\
+\bottomrule
+\end{tabularx}
+\caption{The fields of a site value. The payload consists of $\sigma$, the wire values, the components $x,y$ of $\mathfrak k$ and the components $x$ of $\ell^{\mathrm S},\ell^{\mathrm N}$; everything else is background.}
+\label{tab:fields}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+component & colour & flows & meaning and rule\\
+\midrule
+$\mathrm{ct}$ & horizontal & east & counter bit of the cell (C1)\\
+$\mathrm{tb}$ & horizontal & east & next cell content $f_M(t_{\mathrm S},t_{\mathrm C},t_{\mathrm N})$ (C5)\\
+$\mathrm{hot}$ & horizontal & west & one-hot marker, from the last column (C4)\\
+$\mathrm{rdy}$ & horizontal & west & readiness, from the last column (C6)\\
+$g^-,g^+$ & horizontal & west & masks, from the last column (C7)\\
+$\mathrm{cy}$ & vertical & north & counter carry (C1)\\
+$\mathrm{ay}$ & vertical & north & adder carry, last column only (C3)\\
+$\mathrm{rc}$ & vertical & north & row counter, saturating at $80$ (C2)\\
+$\mathrm{rdy}$ & vertical & north & readiness up the last column (C6)\\
+$\mathrm{tb}$ & vertical & both & overlapping pair of cell contents (C5)\\
+$x$ & vertical & north & switches up the first column, payload (C8)\\
+\bottomrule
+\end{tabularx}
+\caption{Components of the logical colours $\Lambda^+_{\mathrm h}$ and $\Lambda^+_{\mathrm v}$. A component flowing east is written on the east colour and read on the west colour of the next cell; the others likewise.}
+\label{tab:components}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+component & values & role\\
+\midrule
+$\mathrm{ct}_{\mathrm{in}},\mathrm{ct},\mathrm{cy}$ & $\{0,1\}$ & static binary counter: column $i$ holds $i$ (C1)\\
+$\mathrm{rc}$ & $[0,80]$ & logical row index, saturating at $80$ (C2)\\
+$\mathrm{ay},\mathrm{sm}$ & $\{0,1\}$ & adds $3$ to the last column, giving $2^{d+2}$ (C3)\\
+$\mathrm{hot}$ & $\{0,1\}$ & $1$ exactly on the logical row $d+2$ (C4)\\
+$t_{\mathrm S},t_{\mathrm N}$ & $\mathcal S_M\cup\{\bot\}$ & contents of the tape cells below and above, at the current time (C5)\\
+$t_{\mathrm C}$ & $\mathcal S_M$ & content of the tape cell at the current time (C5)\\
+$\mathrm{rdy}$ & $\{0,1\}$ & $1$ if $M$ ended in $q_{\mathrm{acc}}$ at cell $0$ (C6)\\
+$g^-,g^+$ & $\{0,1\}$ & masks of lengths $20n-5$ and $20n+5$ on ready grids (C7)\\
+$x$ & $\{0,1\}^4$ & switches of the two sensors, first column only (C8)\\
+$y$ & $\{0,1\}^4$ & free bits of the two sensors, first column only (C9)\\
+\bottomrule
+\end{tabularx}
+\caption{Components of a cell record $\mathfrak k\in\mathcal K$, carried by active sites only.}
+\label{tab:cells}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+quantity & definition\\
+\midrule
+$\operatorname{VW}$, $\operatorname{HW}$ & side of a light vertical or horizontal wall at the quarter, or $-$ (\cref{scf:def-walls})\\
+horizontal carrier & $\operatorname{VW}=-$ and $o^{\mathrm W}=(\mathrm L,\mathrm R)$\\
+vertical carrier & $\operatorname{HW}=-$ and $o^{\mathrm S}=(\mathrm B,\mathrm T)$\\
+role & active (both), horizontal, vertical, or inert (neither)\\
+$f_{\mathrm W},f_{\mathrm E},f_{\mathrm S},f_{\mathrm N}$ & at active sites: $[e^{\mathrm W}_-=\mathrm{wall}]$, $[e^{\mathrm E}_+=\mathrm{wall}]$, $[e^{\mathrm S}_-=\mathrm{wall}]$, $[e^{\mathrm N}_+=\mathrm{wall}]$\\
+root & active, $f_{\mathrm W}=1$ and $f_{\mathrm S}=1$\\
+charge & at active sites with $f_{\mathrm W}=1$ and $\mathrm{rc}\le79$: the switch $x_{\lfloor\mathrm{rc}/20\rfloor}$; otherwise $0$\\
+\bottomrule
+\end{tabularx}
+\caption{Quantities read from one site value.}
+\label{tab:derived}
+\end{table}
+
+\paragraph{Size.} The site alphabet is the product of the value sets of \cref{tab:fields}, with $|\Lambda^+_{\mathrm h}|=32|\mathcal S_M|$, $|\Lambda^+_{\mathrm v}|=10368|\mathcal S_M|^2$ and $|\mathcal K|=2^{17}\cdot81\,|\mathcal S_M|(|\mathcal S_M|+1)^2$, where $|\mathcal S_M|=|\Gamma_M|(|Q_M|+1)$, $|\Gamma_M|=96|\Gamma_U|$ and $|Q_M|=54+q_U$, with $q_U$ the number of non-halting states of $U$. It is finite and depends only on $U$. We do not use its size.

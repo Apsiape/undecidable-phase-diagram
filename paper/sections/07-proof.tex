@@ -1,0 +1,97 @@
+% =====================================================================
+\section{Proof of Theorem A and Corollary B}\label{sec:proof}
+% =====================================================================
+
+\subsection{Temperatures}
+
+\begin{lemma}[Rational windows]\label{prf:windows}
+Let $\lambda_K=2\sum_{j=0}^{K-1}\frac1{(2j+1)3^{2j+1}}$, $\beta_n=n\lambda_{n+3}$ and $J_n=(\beta_n-\frac1{1000},\beta_n+\frac1{1000})$.
+\begin{itemize}
+\item[(a)] $0<\log2-\lambda_K\le\frac{3}{4(2K+1)9^K}$ for $K\ge1$.
+\item[(b)] $0<n\log2-\beta_n\le\frac{3}{26244}<\frac1{1000}$ for $n\ge1$.
+\item[(c)] $\beta_{n+1}-\beta_n>\frac23$, and $\beta_1-\frac1{1000}>0$; so the intervals $J_n$ are pairwise disjoint and consist of positive numbers.
+\item[(d)] If $\beta\in J_n$, then $|\beta/\log2-n|<\frac1{250}$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(a) $\log2=\log\frac{1+1/3}{1-1/3}=2\sum_{j\ge0}\frac{1}{(2j+1)3^{2j+1}}$, a series of positive terms. Its tail after $K$ terms is at most $\frac{2}{(2K+1)3^{2K+1}}\sum_{i\ge0}9^{-i}=\frac{2\cdot9}{8(2K+1)\cdot3\cdot9^K}=\frac{3}{4(2K+1)9^K}$.
+
+(b) By (a), $0<n(\log2-\lambda_{n+3})\le\frac34\,n\,9^{-n-3}$. The sequence $n9^{-n}$ decreases for $n\ge1$, so the bound is at most $\frac34\cdot9^{-4}=\frac{3}{26244}$, and $26244>3000$.
+
+(c) $\beta_{n+1}-\beta_n=\lambda_{n+4}+n(\lambda_{n+4}-\lambda_{n+3})>\lambda_{n+4}\ge\lambda_1=\frac23$, and $\beta_1=\lambda_4>\frac23$.
+
+(d) By (b), $|\beta-n\log2|<\frac1{1000}+\frac{3}{26244}<\frac2{1000}$, and $\log2>\frac12$.
+\end{proof}
+
+\begin{lemma}[Thermal bounds]\label{prf:thermal}
+Let $\beta>0$, $s=\beta/\log2$ and $m\ge1$, and let $b_m$, $J_m$ be as in \cref{pay:sum}.
+\begin{itemize}
+\item[(a)] If $|s-m|<\frac1{20}$, then $b_m(\beta)\le\frac{81}{1024}<\frac18$ and $e^{J_m(\beta)}>3$.
+\item[(b)] If $|s-m|\ge\frac{19}{20}$, then $b_m(\beta)\ge2^{14}$ and $4\tanh J_m(\beta)\le\frac{4}{32769}<1$.
+\item[(c)] If $|s-m|>\frac{9}{20}$, then $b_m(\beta)>16$ and $4\tanh J_m(\beta)<\frac4{33}<1$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+Write $b_m=2^{-5}(u+u^{-1})+2^{-10}$ with $u=2^{20(s-m)}$. (a) Here $\frac12<u<2$, so $u+u^{-1}<\frac52$ and $b_m<\frac{80}{1024}+\frac1{1024}$. Then $e^{2J_m}=1+1/b_m>9$. (b) One of $u$, $u^{-1}$ equals $2^{20|s-m|}\ge2^{19}$, so $b_m\ge2^{14}$. From $e^{2J}=1+1/b$ we get $\tanh J=\frac{1}{2b+1}\le\frac1{2^{15}+1}$. (c) As in (b), $b_m>2^{9-5}=16$ and $\tanh J_m<\frac1{33}$.
+\end{proof}
+
+\subsection{The main theorem}
+
+Let $\mathcal D_n=\{d\ge1:\rho_d=1,\ n(d)=n\}$ be the set of ready depths with label $n$. It does not depend on the background. By \cref{bg:ready}, $\mathcal D_n$ is empty if $U$ does not halt on $n$ and infinite if it does.
+
+\begin{theorem}\label{thm:main}
+Let $\Phi$ be the interaction of \cref{int:def-phi}, $n\ge1$ and $\beta\in J_n$.
+\begin{itemize}
+\item[(i)] If $U$ does not halt on $n$, then $\beta\Phi$ has exactly one translation-invariant Gibbs measure.
+\item[(ii)] If $U$ halts on $n$, then $\beta\Phi$ has at least two translation-invariant Gibbs measures.
+\end{itemize}
+Moreover, for every $\beta>0$, $\beta\Phi$ has uncountably many Gibbs measures that are not translation invariant.
+\end{theorem}
+
+\begin{proof}
+Throughout, $\tau$ ranges over typical phases, $\mathfrak b_\tau$ is the background of \cref{prop:background}, $\Gamma_\tau=\Gamma_{\mathfrak b_\tau}$ is the graph of \cref{pay:effective}, and $L$ is the lift of \cref{pay:elim}, completed by the fixed coordinates. Let $s=\beta/\log2$; by \cref{prf:windows}(d), $|s-n|<\frac1{250}$, so $|s-m|>\frac{19}{20}$ for every integer $m\ne n$.
+
+\emph{Step 1: every translation-invariant Gibbs measure is an average over backgrounds.} Let $\mu$ be a translation-invariant Gibbs measure. By \cref{prop:background}(c) its background marginal is $\mathbb K$, so $\mu$ is concentrated on $X_{\mathrm{typ}}$, and by \cref{lem:freeze}(c) and \cref{pay:effective},
+\begin{equation}\label{prf:eq-disint}
+\mu=\int\delta_{\mathfrak b_\tau}\otimes L(\nu^\tau)\ \mathrm{Haar}(d\tau)
+\end{equation}
+for a measurable family $\tau\mapsto\nu^\tau$ in which $\nu^\tau$ is a Gibbs measure of the Ising model on $\Gamma_\tau$ for almost every $\tau$. Conversely, by \cref{lem:freeze}(c), every such integral is a Gibbs measure for $\beta\Phi$, and it is translation invariant if $\nu^{\tau+a}=T_a\nu^\tau$ for all $a\in\Z^2$ and almost every $\tau$, because $\mathfrak b_{\tau+a}=T_a\mathfrak b_\tau$ and Haar measure is invariant.
+
+\emph{Step 2: case (i).} If $U$ does not halt on $n$, every ready depth $d$ has $n(d)\ne n$, so every edge of $\Gamma_\tau$ has a coupling $J_{n(d)}(\beta)$ with $4\tanh J_{n(d)}(\beta)\le\frac4{32769}$ by \cref{prf:thermal}(b). Every vertex of $\Gamma_\tau$ has at most four neighbours. By \cref{set:dobrushin}, the Ising model on $\Gamma_\tau$ has exactly one Gibbs measure $\nu^\tau$. Its finite-dimensional marginals are limits of finite-volume kernels with any fixed boundary condition, so they are measurable in $\tau$; and $\nu^{\tau+a}=T_a\nu^\tau$, since $T_a\nu^\tau$ is a Gibbs measure for $\Gamma_{\tau+a}$, which is the translate of $\Gamma_\tau$. By Step~1, every translation-invariant Gibbs measure equals \eqref{prf:eq-disint} with this family, and that integral is a translation-invariant Gibbs measure. So there is exactly one.
+
+\emph{Step 3: case (ii).} Let $U$ halt on $n$, so $\mathcal D_n$ is infinite. The graph $\Gamma_\tau$ is the disjoint union of the square lattices $\Gamma_\tau^d$ of depths $d\in\mathcal D_n$ and of a graph $\Gamma_\tau^{\mathrm{rest}}$, formed by the lattices of the other ready depths and the isolated vertices. On $\Gamma^d_\tau$, $d\in\mathcal D_n$, the coupling is $J_n(\beta)$ with $e^{J_n(\beta)}>3$ by \cref{prf:thermal}(a). Let $\nu^{\tau,d,\pm}$ be the image of the plus and minus states of \cref{set:peierls} under the isomorphism $m\mapsto\mathbf r_d(m)$; it does not depend on the choice of the isomorphism, because the plus and minus states are translation invariant. On $\Gamma^{\mathrm{rest}}_\tau$ every coupling satisfies $4\tanh J\le\frac4{32769}$, so it has exactly one Gibbs measure $\nu^{\tau,\mathrm{rest}}$ by \cref{set:dobrushin}. Put
+\[
+\nu^{\tau,\pm}=\nu^{\tau,\mathrm{rest}}\otimes\bigotimes_{d\in\mathcal D_n}\nu^{\tau,d,\pm}.
+\]
+A product of Gibbs measures on the components of a graph is a Gibbs measure on the graph, because the kernel of a finite set is the product of the kernels of its intersections with the components. The family is measurable in $\tau$ and satisfies $\nu^{\tau+a,\pm}=T_a\nu^{\tau,\pm}$. By Step~1, $\mu^\pm=\int\delta_{\mathfrak b_\tau}\otimes L(\nu^{\tau,\pm})\,\mathrm{Haar}(d\tau)$ are translation-invariant Gibbs measures.
+
+They are different. Fix $d\in\mathcal D_n$ and let $E$ be the event that the origin is a root of depth $d$. It is the event $\tau_i\equiv-4^d-2\pmod{4^{d+1}}$ for $i=1,2$ (\cref{scf:frames}(d)), so it has Haar probability $4^{-2(d+1)}>0$, and by \cref{scf:quarter} it is determined by the quarters in a finite box. On $E$, \cref{set:peierls} gives $\nu^{\tau,+}(\sigma_0=+1)\ge\frac23$ and $\nu^{\tau,-}(\sigma_0=+1)\le\frac13$. Hence
+\[
+\mu^+\bigl(E\cap\{\sigma_0=+1\}\bigr)-\mu^-\bigl(E\cap\{\sigma_0=+1\}\bigr)\ge\tfrac13\,4^{-2(d+1)}>0,
+\]
+and the two measures differ on an event determined by finitely many sites.
+
+\emph{Step 4: Gibbs measures that are not translation invariant.} Let $\beta>0$ and $\tau$ typical. The Ising model on $\Gamma_\tau$ has a Gibbs measure $\nu$, by compactness. By \cref{lem:freeze}(c) with the background law $\delta_{\mathfrak b_\tau}$, the measure $\delta_{\mathfrak b_\tau}\otimes L(\nu)$ is a Gibbs measure for $\beta\Phi$. Its translate by $a\ne0$ has background $\mathfrak b_{\tau+a}$, whose quarters $Y_{\tau+a}$ differ from $Y_\tau$ because their phases differ. So it is not translation invariant, and different typical $\tau$ give different measures.
+\end{proof}
+
+Theorem~A is \cref{thm:main} together with \cref{prf:windows}: the interaction has a finite site set, is translation invariant and nearest-neighbour, takes values in $\{0,1,+\infty\}$, and contains $U$ only through the table of $M$.
+
+\begin{corollary}\label{cor:undecidable}
+The set $\mathcal U=\{\beta\in\Q_{>0}:\beta\Phi\text{ has exactly one translation-invariant Gibbs measure}\}$ is not decidable. The map $n\mapsto\beta_n$ is computable, and $\beta_n\in\mathcal U$ if and only if $U$ does not halt on $n$.
+\end{corollary}
+
+\begin{proof}
+The numbers $\beta_n$ are rational and computable from $n$ by their defining finite sum, and $\beta_n\in J_n$. By \cref{thm:main}, $\beta_n\in\mathcal U$ exactly when $n\notin\mathcal H_U$. An algorithm deciding $\mathcal U$ would decide $\mathcal H_U$.
+\end{proof}
+
+\subsection{Further properties}
+
+\begin{remark}[Windows of uniqueness]\label{prf:rem-midpoint}
+If $|\beta/\log2-(n+\frac12)|<\frac1{20}$ for an integer $n\ge0$, then every integer label $m$ has $|\beta/\log2-m|>\frac9{20}$, so by \cref{prf:thermal}(c) and the argument of Step~2, $\beta\Phi$ has exactly one translation-invariant Gibbs measure, whatever $U$ does. The halting set $\mathcal H_U$ is infinite, since it is undecidable. So the set of $\beta$ with at least two translation-invariant Gibbs measures, which meets $J_n$ for every $n\in\mathcal H_U$, and the set with exactly one, which contains these windows, both have infinitely many connected components.
+\end{remark}
+
+\begin{remark}[Spin-flip symmetry]\label{prf:rem-flip}
+The map that changes the sign of every spin and of every non-blank wire value, and fixes all other fields, preserves every rule and the charge: equality and copying of wire values, the reset $w^{\mathrm E}=\sigma$, $w^{\mathrm N}=\sigma$ at roots, blank wire values, and the alignment conditions of (P3) are all invariant. This holds at every site value, including site values that violate other rules. So the interaction is invariant under the global spin flip, term by term, and so is any interaction obtained from it by replacing $+\infty$ with a finite constant. The proof of \cref{thm:main} does not apply to such a replacement.
+\end{remark}

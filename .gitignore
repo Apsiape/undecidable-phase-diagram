@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+notes/
+*.aux
+*.log
+*.out
+*.toc
+*.fls

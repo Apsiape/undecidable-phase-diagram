@@ -1,0 +1,119 @@
+% =====================================================================
+\section{The interaction}\label{sec:interaction}
+% =====================================================================
+
+This section defines the interaction $\Phi$ of Theorem~A completely. A site value is a tuple of fields; the interaction consists of a set $\mathcal T$ of allowed site values, equality of designated edge components between neighbours, and a charge in $\{0,1\}$ on each site value. The set $\mathcal T$ is defined by the rules (O1)--(P3) and (C0)--(C9) below: a site value is allowed exactly when it satisfies all of them. Each rule is a Boolean condition on the fields of one site, so a reader can list $\mathcal T$ by checking the rules on the finite product of the value sets. The fields and colours are tabulated in \cref{app:tables}, and the machine $M$, with its local rule $f_M$, is given in \cref{app:machine}. \Cref{sec:background} explains what the rules produce.
+
+\subsection{Fields}\label{int:sub-fields}
+
+The machine $M$ of \cref{app:machine} has a finite set $\mathcal S_M$ of \emph{cell contents}: pairs of a tape symbol and either a state or the mark $\cdot$ for no head. It has a start state $q_{\mathrm{start}}$, an accepting state $q_{\mathrm{acc}}$, a local rule $f_M\colon(\mathcal S_M\cup\{\bot\})\times\mathcal S_M\times(\mathcal S_M\cup\{\bot\})\to\mathcal S_M$, an initialization map $\operatorname{init}\colon\{0,1\}^2\to\mathcal S_M$, and two \emph{mask bits} $\mathsf m^-(s),\mathsf m^+(s)\in\{0,1\}$ of each $s\in\mathcal S_M$. Let $\circ$ be a new symbol, the \emph{empty colour}.
+
+A site value $\omega_\xi$ consists of the following fields.
+\begin{itemize}
+\item[(F1)] A \emph{quarter} $\mathfrak q\in\mathbb A^{\mathrm q}$ (\cref{scf:def-quarter}).
+\item[(F2)] Four \emph{orientation tags} $o^{\mathrm W},o^{\mathrm E}\in\{\mathrm L,\mathrm R\}^2$ and $o^{\mathrm S},o^{\mathrm N}\in\{\mathrm B,\mathrm T\}^2$. A tag is a pair $o=(o_-,o_+)$.
+\item[(F3)] Four \emph{event tags} $e^{\mathrm W},e^{\mathrm E},e^{\mathrm S},e^{\mathrm N}\in\{\mathrm{cell},\mathrm{wall}\}^2\cup\{*\}$, a pair $e=(e_-,e_+)$ or the symbol $*$.
+\item[(F4)] Four \emph{logical colours} $\ell^{\mathrm W},\ell^{\mathrm E}\in\Lambda_{\mathrm h}=\{\circ\}\cup\Lambda_{\mathrm h}^+$ and $\ell^{\mathrm S},\ell^{\mathrm N}\in\Lambda_{\mathrm v}=\{\circ\}\cup\Lambda_{\mathrm v}^+$, where
+\begin{align*}
+\Lambda_{\mathrm h}^+&=\underbrace{\{0,1\}}_{\mathrm{ct}}\times\underbrace{\mathcal S_M}_{\mathrm{tb}}\times\underbrace{\{0,1\}}_{\mathrm{hot}}\times\underbrace{\{0,1\}}_{\mathrm{rdy}}\times\underbrace{\{0,1\}^2}_{g^-,\,g^+},\\
+\Lambda_{\mathrm v}^+&=\underbrace{\{0,1\}}_{\mathrm{cy}}\times\underbrace{\{0,1\}}_{\mathrm{ay}}\times\underbrace{[0,80]}_{\mathrm{rc}}\times\underbrace{\{0,1\}}_{\mathrm{rdy}}\times\underbrace{\mathcal S_M^2}_{\mathrm{tb}}\times\underbrace{\{0,1\}^4}_{x}.
+\end{align*}
+We write $\ell^{X}_{\mathrm{ct}}$, $\ell^X_{\mathrm{tb}}$, \dots\ for the components of $\ell^X\ne\circ$.
+\item[(F5)] A \emph{cell record} $\mathfrak k\in\mathcal K\cup\{\circ\}$, where an element of $\mathcal K$ has the components
+\[
+\mathrm{ct}_{\mathrm{in}},\mathrm{ct},\mathrm{cy},\mathrm{ay},\mathrm{sm},\mathrm{hot},\mathrm{rdy},g^-,g^+\in\{0,1\},\quad \mathrm{rc}\in[0,80],\quad t_{\mathrm S},t_{\mathrm N}\in\mathcal S_M\cup\{\bot\},\ t_{\mathrm C}\in\mathcal S_M,
+\]
+\[
+x=(x^-_{\mathrm h},x^+_{\mathrm h},x^-_{\mathrm v},x^+_{\mathrm v})\in\{0,1\}^4,\qquad y=(y^-_{\mathrm h},y^+_{\mathrm h},y^-_{\mathrm v},y^+_{\mathrm v})\in\{0,1\}^4 .
+\]
+\item[(F6)] A \emph{row marker} $\mathfrak r\in\{0,1\}$ and a \emph{column marker} $\mathfrak c\in\{0,1\}$.
+\item[(F7)] A \emph{spin} $\sigma\in\{+1,-1\}$.
+\item[(F8)] Four \emph{wire values} $w^{\mathrm W},w^{\mathrm E},w^{\mathrm S},w^{\mathrm N}\in\{+1,-1,\square\}$, where $\square$ is blank.
+\end{itemize}
+The site alphabet $\mathfrak S$ is the set of all such tuples, the product of the value sets listed.
+
+\subsection{Colours and the interaction}
+
+The four \emph{colours} of a site value are
+\[
+\begin{aligned}
+c_{\mathrm E}(\omega_\xi)&=(\mathfrak q_{\mathrm E},o^{\mathrm E},e^{\mathrm E},\ell^{\mathrm E},\mathfrak r,w^{\mathrm E}), &
+c_{\mathrm W}(\omega_\xi)&=(\mathfrak q_{\mathrm W},o^{\mathrm W},e^{\mathrm W},\ell^{\mathrm W},\mathfrak r,w^{\mathrm W}),\\
+c_{\mathrm N}(\omega_\xi)&=(\mathfrak q_{\mathrm N},o^{\mathrm N},e^{\mathrm N},\ell^{\mathrm N},\mathfrak c,w^{\mathrm N}), &
+c_{\mathrm S}(\omega_\xi)&=(\mathfrak q_{\mathrm S},o^{\mathrm S},e^{\mathrm S},\ell^{\mathrm S},\mathfrak c,w^{\mathrm S}),
+\end{aligned}
+\]
+where $\mathfrak q_X$ is the colour of $\mathfrak q$ in $\mathbb A^{\mathrm q}$.
+
+\begin{definition}[The interaction]\label{int:def-phi}
+Let $\mathcal T\subseteq\mathfrak S$ be the set of site values satisfying (O1)--(P3) and (C0)--(C9), and let $\operatorname{ch}\colon\mathfrak S\to\{0,1\}$ be the charge of \cref{int:sub-charge}. Put $\Omega=\mathfrak S^{\Z^2}$ and
+\[
+\Phi_{\{\xi\}}(\omega)=\begin{cases}\operatorname{ch}(\omega_\xi)&\omega_\xi\in\mathcal T,\\+\infty&\omega_\xi\notin\mathcal T,\end{cases}\qquad
+\Phi_{\{\xi,\xi+\mathbf e_1\}}(\omega)=\begin{cases}0&c_{\mathrm E}(\omega_\xi)=c_{\mathrm W}(\omega_{\xi+\mathbf e_1}),\\+\infty&\text{otherwise,}\end{cases}
+\]
+$\Phi_{\{\xi,\xi+\mathbf e_2\}}(\omega)=0$ if $c_{\mathrm N}(\omega_\xi)=c_{\mathrm S}(\omega_{\xi+\mathbf e_2})$ and $+\infty$ otherwise, and $\Phi_A=0$ for all other $A$.
+\end{definition}
+
+Restricting the alphabet to $\mathcal T$ gives an equivalent model; the single-site term is written out to show where the hard constraints sit. The charge is defined on all of $\mathfrak S$ by the formula of \cref{int:sub-charge}, read as $0$ when the cell record is $\circ$. $\Phi$ is nearest-neighbour and translation invariant, and its values lie in $\{0,1,+\infty\}$. A configuration is legal exactly when every site value lies in $\mathcal T$ and neighbouring colours agree. Matching colours makes the quarters a tiling of $\mathbb A^{\mathrm q}$, makes $\mathfrak r$ constant along rows and $\mathfrak c$ constant along columns, and identifies the tags, logical colours and wire values on the two sides of each edge.
+
+\subsection{Predicates read from a site value}\label{int:sub-predicates}
+
+The following quantities are functions of one site value.
+\begin{itemize}
+\item $\operatorname{VW}(\mathfrak q)\in\{-,\mathrm L,\mathrm R\}$: $\mathrm L$ if $\mathfrak q$ lies on a light vertical wall as a left side, $\mathrm R$ if as a right side, $-$ otherwise. $\operatorname{HW}(\mathfrak q)\in\{-,\mathrm B,\mathrm T\}$: likewise for light horizontal walls, with bottom and top sides (\cref{scf:def-walls}).
+\item The site is a \emph{horizontal carrier} if $\operatorname{VW}=-$ and $o^{\mathrm W}=(\mathrm L,\mathrm R)$, and a \emph{vertical carrier} if $\operatorname{HW}=-$ and $o^{\mathrm S}=(\mathrm B,\mathrm T)$. It is \emph{active} if it is both, \emph{horizontal} if it is only a horizontal carrier, \emph{vertical} if it is only a vertical carrier, and \emph{inert} if it is neither.
+\item At an active site, the \emph{boundary flags} are $f_{\mathrm W}=[e^{\mathrm W}_-=\mathrm{wall}]$, $f_{\mathrm E}=[e^{\mathrm E}_+=\mathrm{wall}]$, $f_{\mathrm S}=[e^{\mathrm S}_-=\mathrm{wall}]$ and $f_{\mathrm N}=[e^{\mathrm N}_+=\mathrm{wall}]$, where $[\cdot]$ is $1$ for true and $0$ for false. An active site with $f_{\mathrm W}=f_{\mathrm S}=1$ is a \emph{root}.
+\end{itemize}
+
+\subsection{Routing, markers and wires}\label{int:sub-routing}
+
+In a tag $o=(o_-,o_+)$ on a horizontal edge, $o_-$ is meant to be the side of the nearest light vertical wall to the west of the edge and $o_+$ that of the nearest one to the east; for vertical edges, south and north. In an event tag, $e_-$ and $e_+$ record whether the nearest event on that side is an active site ($\mathrm{cell}$) or a wall.
+
+\begin{itemize}
+\item[(O1)] If $\operatorname{VW}=-$, then $o^{\mathrm W}=o^{\mathrm E}$. If $\operatorname{VW}=\mathrm L$, then $o^{\mathrm W}_+=\mathrm L$ and $o^{\mathrm E}_-=\mathrm L$. If $\operatorname{VW}=\mathrm R$, then $o^{\mathrm W}_+=\mathrm R$ and $o^{\mathrm E}_-=\mathrm R$.
+\item[(O2)] If $\operatorname{HW}=-$, then $o^{\mathrm S}=o^{\mathrm N}$. If $\operatorname{HW}=\mathrm B$, then $o^{\mathrm S}_+=\mathrm B$ and $o^{\mathrm N}_-=\mathrm B$. If $\operatorname{HW}=\mathrm T$, then $o^{\mathrm S}_+=\mathrm T$ and $o^{\mathrm N}_-=\mathrm T$.
+\item[(E1)] $e^X=*$ if and only if $o^X\ne(\mathrm L,\mathrm R)$, for $X\in\{\mathrm W,\mathrm E\}$; and $e^X=*$ if and only if $o^X\ne(\mathrm B,\mathrm T)$, for $X\in\{\mathrm S,\mathrm N\}$.
+\item[(E2)] At a horizontal site, $e^{\mathrm W}=e^{\mathrm E}$. At an active site, $e^{\mathrm W}_+=\mathrm{cell}$ and $e^{\mathrm E}_-=\mathrm{cell}$. If $\operatorname{VW}=\mathrm L$ and $o^{\mathrm E}=(\mathrm L,\mathrm R)$, then $e^{\mathrm E}_-=\mathrm{wall}$. If $\operatorname{VW}=\mathrm R$ and $o^{\mathrm W}=(\mathrm L,\mathrm R)$, then $e^{\mathrm W}_+=\mathrm{wall}$.
+\item[(E3)] At a vertical site, $e^{\mathrm S}=e^{\mathrm N}$. At an active site, $e^{\mathrm S}_+=\mathrm{cell}$ and $e^{\mathrm N}_-=\mathrm{cell}$. If $\operatorname{HW}=\mathrm B$ and $o^{\mathrm N}=(\mathrm B,\mathrm T)$, then $e^{\mathrm N}_-=\mathrm{wall}$. If $\operatorname{HW}=\mathrm T$ and $o^{\mathrm S}=(\mathrm B,\mathrm T)$, then $e^{\mathrm S}_+=\mathrm{wall}$.
+\item[(K1)] At a site that is not a horizontal carrier, $\ell^{\mathrm W}=\ell^{\mathrm E}=\circ$. At a horizontal site, $\ell^{\mathrm W}=\ell^{\mathrm E}$.
+\item[(K2)] At a site that is not a vertical carrier, $\ell^{\mathrm S}=\ell^{\mathrm N}=\circ$. At a vertical site, $\ell^{\mathrm S}=\ell^{\mathrm N}$.
+\item[(K3)] At a site that is not active, $\mathfrak k=\circ$. At an active site, $\mathfrak k\in\mathcal K$ and (C0)--(C9) of \cref{int:sub-cells} hold.
+\item[(Q1)] At an active site, $\mathfrak r=f_{\mathrm S}$ and $\mathfrak c=f_{\mathrm W}$.
+\item[(Q2)] If $\operatorname{HW}\ne-$, then $\mathfrak r=0$. If $\operatorname{VW}\ne-$, then $\mathfrak c=0$.
+\item[(P1)] If $\mathfrak r=0$, then $w^{\mathrm W}=w^{\mathrm E}=\square$. If $\mathfrak r=1$, then $w^{\mathrm W},w^{\mathrm E}\in\{+1,-1\}$, and $w^{\mathrm E}=\sigma$ at a root and $w^{\mathrm E}=w^{\mathrm W}$ at every other site.
+\item[(P2)] If $\mathfrak c=0$, then $w^{\mathrm S}=w^{\mathrm N}=\square$. If $\mathfrak c=1$, then $w^{\mathrm S},w^{\mathrm N}\in\{+1,-1\}$, and $w^{\mathrm N}=\sigma$ at a root and $w^{\mathrm N}=w^{\mathrm S}$ at every other site.
+\item[(P3)] At a root with $\mathrm{rdy}=1$: if $(x^-_{\mathrm h},x^+_{\mathrm h})=(0,1)$ then $\sigma=w^{\mathrm W}$; if $(x^-_{\mathrm v},x^+_{\mathrm v})=(0,1)$ then $\sigma=w^{\mathrm S}$.
+\end{itemize}
+
+Rule (Q2) seeds the row marker with $0$ only on light \emph{horizontal} walls, and the column marker only on light \emph{vertical} walls. The orientation matters: a root row crosses light vertical walls (\cref{bg:markers}), so a seed testing every light wall would admit no legal configuration with a typical scaffold.
+
+\subsection{Cells}\label{int:sub-cells}
+
+The rules (C0)--(C9) apply at active sites, where $\mathfrak k\in\mathcal K$. A statement about a component of $\ell^X$ is required only when $\ell^X\ne\circ$; by (C0) this is when the corresponding boundary flag is $0$. Write $\oplus$ for addition modulo $2$, $\wedge$ for the product of bits, and $\operatorname{maj}$ for the majority of three bits.
+
+\begin{itemize}
+\item[(C0)] \emph{Boundaries.} $\ell^{\mathrm W}=\circ$ if and only if $f_{\mathrm W}=1$; $\ell^{\mathrm E}=\circ$ if and only if $f_{\mathrm E}=1$; $\ell^{\mathrm S}=\circ$ if and only if $f_{\mathrm S}=1$; $\ell^{\mathrm N}=\circ$ if and only if $f_{\mathrm N}=1$.
+\item[(C1)] \emph{Counter.} If $f_{\mathrm W}=1$: $\mathrm{ct}_{\mathrm{in}}=\mathrm{ct}=\mathrm{cy}=0$. If $f_{\mathrm W}=0$: $\mathrm{ct}_{\mathrm{in}}=\ell^{\mathrm W}_{\mathrm{ct}}$; $\mathrm{cy}=1$ if $f_{\mathrm S}=1$ and $\mathrm{cy}=\ell^{\mathrm S}_{\mathrm{cy}}$ if $f_{\mathrm S}=0$; $\mathrm{ct}=\mathrm{ct}_{\mathrm{in}}\oplus\mathrm{cy}$. In all cases $\ell^{\mathrm E}_{\mathrm{ct}}=\mathrm{ct}$ and $\ell^{\mathrm N}_{\mathrm{cy}}=\mathrm{ct}_{\mathrm{in}}\wedge\mathrm{cy}$.
+\item[(C2)] \emph{Row counter.} $\mathrm{rc}=0$ if $f_{\mathrm S}=1$, and $\mathrm{rc}=\min(\ell^{\mathrm S}_{\mathrm{rc}}+1,80)$ if $f_{\mathrm S}=0$. $\ell^{\mathrm N}_{\mathrm{rc}}=\mathrm{rc}$.
+\item[(C3)] \emph{Adder.} If $f_{\mathrm E}=0$: $\mathrm{ay}=\mathrm{sm}=0$ and $\ell^{\mathrm N}_{\mathrm{ay}}=0$. If $f_{\mathrm E}=1$: with $k=[\mathrm{rc}\le1]$, $\mathrm{ay}=0$ if $f_{\mathrm S}=1$ and $\mathrm{ay}=\ell^{\mathrm S}_{\mathrm{ay}}$ if $f_{\mathrm S}=0$; $\mathrm{sm}=\mathrm{ct}\oplus k\oplus\mathrm{ay}$; $\ell^{\mathrm N}_{\mathrm{ay}}=\operatorname{maj}(\mathrm{ct},k,\mathrm{ay})$.
+\item[(C4)] \emph{One-hot marker.} $\mathrm{hot}=\mathrm{sm}$ if $f_{\mathrm E}=1$, and $\mathrm{hot}=\ell^{\mathrm E}_{\mathrm{hot}}$ if $f_{\mathrm E}=0$. $\ell^{\mathrm W}_{\mathrm{hot}}=\mathrm{hot}$.
+\item[(C5)] \emph{Tableau of $M$.} $t_{\mathrm S}=\bot$ if $f_{\mathrm S}=1$, and $\ell^{\mathrm S}_{\mathrm{tb}}=(t_{\mathrm S},t_{\mathrm C})$ if $f_{\mathrm S}=0$. $t_{\mathrm N}=\bot$ if $f_{\mathrm N}=1$, and $\ell^{\mathrm N}_{\mathrm{tb}}=(t_{\mathrm C},t_{\mathrm N})$ if $f_{\mathrm N}=0$. $t_{\mathrm C}=\operatorname{init}(\mathrm{hot},f_{\mathrm S})$ if $f_{\mathrm W}=1$, and $t_{\mathrm C}=\ell^{\mathrm W}_{\mathrm{tb}}$ if $f_{\mathrm W}=0$. $\ell^{\mathrm E}_{\mathrm{tb}}=f_M(t_{\mathrm S},t_{\mathrm C},t_{\mathrm N})$.
+\item[(C6)] \emph{Readiness.} If $f_{\mathrm E}=1$: $\mathrm{rdy}=[t_{\mathrm C}\text{ carries the state }q_{\mathrm{acc}}]$ if $f_{\mathrm S}=1$, $\mathrm{rdy}=\ell^{\mathrm S}_{\mathrm{rdy}}$ if $f_{\mathrm S}=0$, and $\ell^{\mathrm N}_{\mathrm{rdy}}=\mathrm{rdy}$. If $f_{\mathrm E}=0$: $\mathrm{rdy}=\ell^{\mathrm E}_{\mathrm{rdy}}$ and $\ell^{\mathrm N}_{\mathrm{rdy}}=0$. In all cases $\ell^{\mathrm W}_{\mathrm{rdy}}=\mathrm{rdy}$.
+\item[(C7)] \emph{Masks.} If $f_{\mathrm E}=1$: $g^\pm=\mathrm{rdy}\wedge\mathsf m^\pm(t_{\mathrm C})$. If $f_{\mathrm E}=0$: $g^\pm=\ell^{\mathrm E}_{g^\pm}$. In all cases $\ell^{\mathrm W}_{g^\pm}=g^\pm$.
+\item[(C8)] \emph{Switches}, for each of the four components $x_\iota$ of $x$ separately. If $f_{\mathrm W}=0$: $x_\iota=0$ and $\ell^{\mathrm N}_{x_\iota}=0$. If $f_{\mathrm W}=1$ and $f_{\mathrm S}=1$: $x_\iota\in\{0,1\}$ is unconstrained if $\mathrm{rdy}=1$, and $x_\iota=0$ if $\mathrm{rdy}=0$. If $f_{\mathrm W}=1$ and $f_{\mathrm S}=0$: $x_\iota=\ell^{\mathrm S}_{x_\iota}$. If $f_{\mathrm W}=1$: $\ell^{\mathrm N}_{x_\iota}=x_\iota$.
+\item[(C9)] \emph{Free bits.} If $f_{\mathrm W}=0$: $y=0$. If $f_{\mathrm W}=1$: for $k\in\{\mathrm h,\mathrm v\}$ and each sign, $y^\pm_k\in\{0,1\}$ is unconstrained if $x^\pm_k=g^\pm=1$, and $y^\pm_k=0$ otherwise.
+\end{itemize}
+
+\subsection{The charge}\label{int:sub-charge}
+
+Order the switches as $(x_0,x_1,x_2,x_3)=(x^-_{\mathrm h},x^+_{\mathrm h},x^-_{\mathrm v},x^+_{\mathrm v})$. The charge of a site value is
+\[
+\operatorname{ch}(\omega_\xi)=\begin{cases}x_{\lfloor\mathrm{rc}/20\rfloor}&\text{if the site is active, }f_{\mathrm W}=1\text{ and }\mathrm{rc}\le79,\\0&\text{otherwise.}\end{cases}
+\]
+These are the only finite nonzero energies. At each site at most one switch is charged, so the energy of a site value is $0$, $1$ or $+\infty$.
+
+\subsection{Background and payload}\label{int:sub-split}
+
+The \emph{payload} coordinates of a site are its spin $\sigma$, its four wire values, the components $x$ and $y$ of its cell record, and the components $x$ of $\ell^{\mathrm S}$ and $\ell^{\mathrm N}$. All other fields and components form the \emph{background} of the site. A background configuration is a map from $\Z^2$ to background values; for a configuration $\omega$ we write $\omega=(\mathfrak b,p)$ with background $\mathfrak b$ and payload $p$.
+
+Only the rules (P1)--(P3), (C8), (C9) and the charge involve payload coordinates, and each of them is a conjunction of conditions of the following kinds: on the wire values, $\sigma$ and background fields; on one switch component and background fields; on one free bit, the switch of the same name and background fields; and, in (P3), on $\sigma$, one incoming wire value, the two switches of one sensor and background fields. This splitting is used in \cref{pay:factor}.
