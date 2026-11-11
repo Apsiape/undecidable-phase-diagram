@@ -1,0 +1,24 @@
+{
+  "exit": 0,
+  "seconds": 86.434,
+  "peak_tree_rss_bytes": 3804442624,
+  "peak_tree_vms_bytes": 13286232064,
+  "stop_rss_bytes": 9000000000,
+  "memory_stop": false,
+  "command": [
+    "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lake",
+    "comparator",
+    "--config",
+    "comparator.json"
+  ],
+  "sandbox_requested": true,
+  "supplied_exports": false,
+  "host_free_before_bytes": 11635773440,
+  "linux_available_before_bytes": 15917010944,
+  "threads": 1,
+  "lean_version": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "bwrap_version": "bubblewrap 0.9.0",
+  "lake_sha256": "8ba83c98f76562d03b8dbc33f1057151ba6cbb121679dde76b2260ccc90495e1",
+  "bwrap_sha256": "e318903862396f96de3df57264e0158682b952fd3fb53ac23d876413e7b30f71",
+  "log_sha256": "2bcf18ee5aca2ba8fb0435f5c757cb01c532060ed991f485c25f6262d77df1da"
+}

@@ -1,0 +1,14 @@
+Resolving dependencies
+Building Challenge
+ℹ [1/1] Ran UndecidablePhaseDiagram/Challenge
+info: stdout:
+REPLAY PASS 78 reachable modules; peak 18997248
+Build completed successfully (1 job).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, UPD.theorem_A, UPD.corollary_B, UPD.existsUniversal, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Challenge
+Building Solution
+ℹ [1/1] Ran UndecidablePhaseDiagram/Solution
+info: stdout:
+REPLAY PASS 78 reachable modules; peak 18919424
+Build completed successfully (1 job).
+error: Const does not match between challenge and target 'UPD.Ising.val'
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, UPD.theorem_A, UPD.corollary_B, UPD.existsUniversal, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Solution

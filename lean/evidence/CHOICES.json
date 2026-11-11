@@ -1,0 +1,151 @@
+{
+  "scope": "Every [choice] occurrence in the original project Lean source (commit f475c200b1fe55d01dcb1e582bd910fcc01ab2bc). The proof-side fidelity choices P-1 to P-51, the hypothesis choices H-1 to H-4 and QB's rulings are in STATUS.md and BLUEPRINT.md (Part D). Port-specific changes are in PORT.diff and REPORT.md; the port makes no new fidelity choice.",
+  "count": 29,
+  "choices": [
+    {
+      "file": "UndecidablePhaseDiagram/Compiler/Universal.lean",
+      "line": 29,
+      "text": "**[choice]** The universal code is chosen once by `Classical.choose` from Mathlib's existence"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Peierls/Contour.lean",
+      "line": 26,
+      "text": "**[choice] (proof side).** The count differs from the printed one (\"at most `k 3^k`\", `k ≥ 4`,"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Sanity.lean",
+      "line": 11,
+      "text": "first move is to the left never halts (`leftFirst_not_halts`, the **[choice]** of `Machine.step`)."
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Sanity.lean",
+      "line": 91,
+      "text": "/-- **[choice] check.** A left move from cell `0` ends the run without halting: `leftFirst`"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Scaffold/Legal.lean",
+      "line": 11,
+      "text": "**[choice] (proof side)** Patterns are total maps `ℤ² → α`; a pattern on `U` is such a map read"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Scaffold/Phase.lean",
+      "line": 14,
+      "text": "**[choice] (proof side)** (b) is proved directly (the parents of a block are read off the block,"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Scaffold/Substitution.lean",
+      "line": 21,
+      "text": "**[choice] (proof side)** A child `ς ∈ [0,2)²` is given by two Booleans `(ς₁ = 1, ς₂ = 1)`."
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Scaffold/TILaw.lean",
+      "line": 19,
+      "text": "**[choice] (proof side)** Existence is proved directly: the image of Haar measure is"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Scaffold/Tower.lean",
+      "line": 10,
+      "text": "(`IsInfTower`). **[choice] (proof side)** Patterns are total maps `ℤ² → Letter` (as in"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Scaffold/Typical.lean",
+      "line": 9,
+      "text": "**[choice] (proof side, as P-7)** The base-4 digit of `z - τ_i` at position `d` is read off its"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 14,
+      "text": "label it mirrors. Fidelity choices are marked **[choice]** and are collected in `BLUEPRINT.md`,"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 120,
+      "text": "**[choice]** It is defined at every `ω`; the paper evaluates it only at legal `ω`, where"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 131,
+      "text": "**[choice]** `F` is real-valued. -/"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 146,
+      "text": "**[choice]** Finite encoding: the states are `Fin (numStates + 1)` with initial state `0`; the"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 183,
+      "text": "**[choice]** A move left from cell `0` ends the run without halting (`none`); the paper's"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 405,
+      "text": "`𝔞`. **[choice]** `ς₁, ς₂` are `Bool` (`false` is `0`). -/"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 413,
+      "text": "/-- `scf:def-quarter`: east and west colours of quarters. **[choice]** The marks `∘` and `•` are"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 440,
+      "text": "south endpoints, if any. **[choice]** The north endpoint is read first; the paper notes that on"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 547,
+      "text": "**[choice]** `E2 i`, `E4 i`, `E5 i` stand for `E₂^{(i+1)}`, `E₄^{(i+1)}`, `E₅^{(i+1)}`; `H π`"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 724,
+      "text": "**[choice]** `x` is a map `Fin 4 → Bool` with `x 0, x 1, x 2, x 3 = x_h⁻, x_h⁺, x_v⁻, x_v⁺`"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 791,
+      "text": "`𝔖` is the product of the value sets. **[choice]** The empty colour `∘`, the empty cell record"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 916,
+      "text": "**[choice]** Read as `0` when `e^W = *`; the flags are used only at active sites, where (E1)"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 947,
+      "text": "`OnColour ℓ P` says that `P` holds of `ℓ` whenever `ℓ` is not `∘`. **[choice]** Every equation of"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 951,
+      "text": "/-- The first entry `e_-` of an event tag is `v`. **[choice]** \"`e_- = v`\" includes that the tag"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 1033,
+      "text": "`ℓ^N_rc = rc`. **[choice]** The minimum is taken in `ℕ` (in `Fin 81`, `80 + 1` would wrap). -/"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 1063,
+      "text": "**[choice]** `ℓ^S_tb = (t_S, t_C)` with `ℓ^S_tb ∈ 𝒮_M²` is read as `t_S = ℓ^S_tb.1` (so"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 1215,
+      "text": "**[choice]** Stated for every machine `U` (the proof of `thm:main` does not use universality;"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 1233,
+      "text": "decidable. **[choice]** The paper fixes `U` with `ℋ_U` `Σ⁰₁`-complete, \"in particular"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "line": 1246,
+      "text": "**[choice]** A rational is presented by a pair `(p, q)` of natural numbers, `q > 0`, as `p / q`"
+    }
+  ]
+}

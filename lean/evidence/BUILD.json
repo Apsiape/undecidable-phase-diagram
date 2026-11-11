@@ -1,0 +1,3201 @@
+{
+  "status": "PASS",
+  "lean_version": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "project_modules": 75,
+  "package_modules": 78,
+  "one_compiler_at_a_time": true,
+  "lean_heap_MiB": 6144,
+  "lean_threads": 1,
+  "timeout_seconds_per_module": 1800,
+  "linux_process_tree_stop_rss_bytes": 9000000000,
+  "peak_observed_tree_rss_bytes": 4198240256,
+  "minimum_available_before_build_bytes": 9640673280,
+  "memory_floor_bytes": 8589934592,
+  "module_options": {
+    "UndecidablePhaseDiagram.Statements": [
+      "-Dbackward.isDefEq.respectTransparency=false"
+    ]
+  },
+  "records_note": "Each peak is the cumulative process-tree peak of its serial replay invocation, hence an upper bound for the module. The port was done by resumed serial replays (port_history, including every failed attempt); the final record is one fresh full serial replay of all package modules from scratch (no --resume), final_by_module. free_before_bytes = min(Linux MemAvailable, Windows host heartbeat ullAvailPhys).",
+  "missing_modules": [],
+  "fresh_full_replay_records": 79,
+  "fresh_full_replay_all_exit_0": true,
+  "fresh_full_replay_seconds_total": 311.71,
+  "final_by_module": {
+    "UndecidablePhaseDiagram.Statements": {
+      "module": "UndecidablePhaseDiagram.Statements",
+      "exit": 0,
+      "seconds": 4.424,
+      "peak_tree_bytes": 3164131328,
+      "free_before_bytes": 11826270208,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-Dbackward.isDefEq.respectTransparency=false",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Statements.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Statements.ilean",
+        "UndecidablePhaseDiagram/Statements.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Hypotheses": {
+      "module": "UndecidablePhaseDiagram.Hypotheses",
+      "exit": 0,
+      "seconds": 1.618,
+      "peak_tree_bytes": 3164131328,
+      "free_before_bytes": 11601874944,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Hypotheses.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Hypotheses.ilean",
+        "UndecidablePhaseDiagram/Hypotheses.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Gibbs.Weights": {
+      "module": "UndecidablePhaseDiagram.Gibbs.Weights",
+      "exit": 0,
+      "seconds": 2.67,
+      "peak_tree_bytes": 3164131328,
+      "free_before_bytes": 11794468864,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Weights.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Weights.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Weights.lean"
+      ],
+      "log_sha256": "2b34d4f38c2fa4a81b9bd769550c7962ee55989f59301844a1723e65c32bd690"
+    },
+    "UndecidablePhaseDiagram.Gibbs.Dobrushin": {
+      "module": "UndecidablePhaseDiagram.Gibbs.Dobrushin",
+      "exit": 0,
+      "seconds": 3.171,
+      "peak_tree_bytes": 3164131328,
+      "free_before_bytes": 11813949440,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Dobrushin.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Dobrushin.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Dobrushin.lean"
+      ],
+      "log_sha256": "ae1b3714753b08116fdbaa66d94d2fa9aa9652cf17179f4a9c2d7ca821c28544"
+    },
+    "UndecidablePhaseDiagram.Gibbs.Site": {
+      "module": "UndecidablePhaseDiagram.Gibbs.Site",
+      "exit": 0,
+      "seconds": 2.018,
+      "peak_tree_bytes": 3164131328,
+      "free_before_bytes": 11797577728,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Site.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Site.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Site.lean"
+      ],
+      "log_sha256": "7e40b45908fd6113d71119eea34c0a5e2db0365d147e74d0a869914f4222a0ad"
+    },
+    "UndecidablePhaseDiagram.Gibbs.Existence": {
+      "module": "UndecidablePhaseDiagram.Gibbs.Existence",
+      "exit": 0,
+      "seconds": 2.319,
+      "peak_tree_bytes": 3164131328,
+      "free_before_bytes": 11766546432,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Existence.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Existence.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Existence.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Gibbs.Hard": {
+      "module": "UndecidablePhaseDiagram.Gibbs.Hard",
+      "exit": 0,
+      "seconds": 2.219,
+      "peak_tree_bytes": 3164131328,
+      "free_before_bytes": 11547570176,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Hard.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Hard.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Hard.lean"
+      ],
+      "log_sha256": "c91de1a2a573a0608cffb23b485b0a04776744059b78c8a9b73c19f54e1d87fb"
+    },
+    "UndecidablePhaseDiagram.Gibbs.Product": {
+      "module": "UndecidablePhaseDiagram.Gibbs.Product",
+      "exit": 0,
+      "seconds": 3.221,
+      "peak_tree_bytes": 3462373376,
+      "free_before_bytes": 11537203200,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Product.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Product.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Product.lean"
+      ],
+      "log_sha256": "e3968cfb8bdd9401d1b6c6e3364be05987eeeabd6287e7b2c27c80254917a2cd"
+    },
+    "UndecidablePhaseDiagram.Gibbs.Transport": {
+      "module": "UndecidablePhaseDiagram.Gibbs.Transport",
+      "exit": 0,
+      "seconds": 1.467,
+      "peak_tree_bytes": 3462373376,
+      "free_before_bytes": 11480223744,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Transport.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Transport.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Transport.lean"
+      ],
+      "log_sha256": "8de9f068c63ea15a1539fd0666358d1479b9f42a306521ef28289ab2f3990c12"
+    },
+    "UndecidablePhaseDiagram.Gibbs.Cylinder": {
+      "module": "UndecidablePhaseDiagram.Gibbs.Cylinder",
+      "exit": 0,
+      "seconds": 2.369,
+      "peak_tree_bytes": 3462373376,
+      "free_before_bytes": 11489386496,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Cylinder.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Cylinder.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Cylinder.lean"
+      ],
+      "log_sha256": "435fea874a85a399c47025b3f6d04dc360cce1aba7440907ca49688830db883a"
+    },
+    "UndecidablePhaseDiagram.Gibbs.Average": {
+      "module": "UndecidablePhaseDiagram.Gibbs.Average",
+      "exit": 0,
+      "seconds": 3.271,
+      "peak_tree_bytes": 3462373376,
+      "free_before_bytes": 11415584768,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Average.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Average.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Average.lean"
+      ],
+      "log_sha256": "e03e63905515e93fa4f25e4346b2aec2b95bdebc43fcf9c6c2d0a6cb2cb80e47"
+    },
+    "UndecidablePhaseDiagram.Gibbs.Compare": {
+      "module": "UndecidablePhaseDiagram.Gibbs.Compare",
+      "exit": 0,
+      "seconds": 1.768,
+      "peak_tree_bytes": 3462373376,
+      "free_before_bytes": 11382067200,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Compare.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Compare.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Compare.lean"
+      ],
+      "log_sha256": "4a5b1754944ff55f88b1727239a1bf447a880a098e361a6b5aff9403fa6451e8"
+    },
+    "UndecidablePhaseDiagram.Gibbs.Factor": {
+      "module": "UndecidablePhaseDiagram.Gibbs.Factor",
+      "exit": 0,
+      "seconds": 1.668,
+      "peak_tree_bytes": 3462373376,
+      "free_before_bytes": 11387244544,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Factor.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Factor.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Factor.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Gibbs.Elim": {
+      "module": "UndecidablePhaseDiagram.Gibbs.Elim",
+      "exit": 0,
+      "seconds": 4.574,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11585560576,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Elim.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Elim.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Elim.lean"
+      ],
+      "log_sha256": "a6dbffd8df20a9c8093c8c1c57b18bd058c7f08c3dcfaac1a65d9f160236f9ce"
+    },
+    "UndecidablePhaseDiagram.Gibbs.Recode": {
+      "module": "UndecidablePhaseDiagram.Gibbs.Recode",
+      "exit": 0,
+      "seconds": 1.868,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11762073600,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Recode.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Recode.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Recode.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Peierls.Parity": {
+      "module": "UndecidablePhaseDiagram.Peierls.Parity",
+      "exit": 0,
+      "seconds": 2.57,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11771342848,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Parity.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Parity.ilean",
+        "UndecidablePhaseDiagram/Peierls/Parity.lean"
+      ],
+      "log_sha256": "2f2564b734303ec8afee04b8d8a3ba3dd1d47520088dbd0975d4926cc5cf9a5b"
+    },
+    "UndecidablePhaseDiagram.Peierls.Flip": {
+      "module": "UndecidablePhaseDiagram.Peierls.Flip",
+      "exit": 0,
+      "seconds": 2.62,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11835494400,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Flip.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Flip.ilean",
+        "UndecidablePhaseDiagram/Peierls/Flip.lean"
+      ],
+      "log_sha256": "1a5699c173974866755941214f2e4eefbbf777f3640a9e04ece6ec5c605d60cd"
+    },
+    "UndecidablePhaseDiagram.Peierls.Contour": {
+      "module": "UndecidablePhaseDiagram.Peierls.Contour",
+      "exit": 0,
+      "seconds": 3.873,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11839668224,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Contour.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Contour.ilean",
+        "UndecidablePhaseDiagram/Peierls/Contour.lean"
+      ],
+      "log_sha256": "e1c9182c3637c495b2c78ff027f7fb711390cc66913b5ea66090d32cb0295ef8"
+    },
+    "UndecidablePhaseDiagram.Peierls.Limit": {
+      "module": "UndecidablePhaseDiagram.Peierls.Limit",
+      "exit": 0,
+      "seconds": 2.018,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11713036288,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Limit.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Limit.ilean",
+        "UndecidablePhaseDiagram/Peierls/Limit.lean"
+      ],
+      "log_sha256": "3dfeed8133192eeb2cf3b4f3bb7a36349977200d9f01e3e9103018709f3dbd19"
+    },
+    "UndecidablePhaseDiagram.Peierls.Lattice": {
+      "module": "UndecidablePhaseDiagram.Peierls.Lattice",
+      "exit": 0,
+      "seconds": 1.868,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11650039808,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Lattice.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Lattice.ilean",
+        "UndecidablePhaseDiagram/Peierls/Lattice.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Background.Machine": {
+      "module": "UndecidablePhaseDiagram.Background.Machine",
+      "exit": 0,
+      "seconds": 3.572,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11652685824,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Machine.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Machine.ilean",
+        "UndecidablePhaseDiagram/Background/Machine.lean"
+      ],
+      "log_sha256": "dbfbdfe9be0330e789e5b3ca5bb37694ccc57d039f6d00efce5746817e6e8bd9"
+    },
+    "UndecidablePhaseDiagram.Background.Run": {
+      "module": "UndecidablePhaseDiagram.Background.Run",
+      "exit": 0,
+      "seconds": 3.021,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11519078400,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Run.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Run.ilean",
+        "UndecidablePhaseDiagram/Background/Run.lean"
+      ],
+      "log_sha256": "3f6ebcc16b5381c936e32224c9b428ed7930f81636f70523ccbebff439405bab"
+    },
+    "UndecidablePhaseDiagram.Background.Label": {
+      "module": "UndecidablePhaseDiagram.Background.Label",
+      "exit": 0,
+      "seconds": 3.973,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11487191040,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Label.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Label.ilean",
+        "UndecidablePhaseDiagram/Background/Label.lean"
+      ],
+      "log_sha256": "9bf38337c5a8d28635fd6b9fca9ffcb88a15e7d179aa22f39e77ce43f06be3ca"
+    },
+    "UndecidablePhaseDiagram.Background.Ready": {
+      "module": "UndecidablePhaseDiagram.Background.Ready",
+      "exit": 0,
+      "seconds": 17.305,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11487748096,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Ready.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Ready.ilean",
+        "UndecidablePhaseDiagram/Background/Ready.lean"
+      ],
+      "log_sha256": "613c3cfa06977bbd0368428bc29e95a3f14f3a8c1a44f5283e7e59d8682908f2"
+    },
+    "UndecidablePhaseDiagram.AuditCommand": {
+      "module": "UndecidablePhaseDiagram.AuditCommand",
+      "exit": 0,
+      "seconds": 0.766,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11323092992,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/AuditCommand.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/AuditCommand.ilean",
+        "UndecidablePhaseDiagram/AuditCommand.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Scaffold.Tables": {
+      "module": "UndecidablePhaseDiagram.Scaffold.Tables",
+      "exit": 0,
+      "seconds": 2.42,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11288059904,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Tables.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Tables.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Tables.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Scaffold.Legal": {
+      "module": "UndecidablePhaseDiagram.Scaffold.Legal",
+      "exit": 0,
+      "seconds": 1.568,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11127033856,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Legal.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Legal.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Legal.lean"
+      ],
+      "log_sha256": "b493b4ceb8ec0c7fc052483a59bd719ba3fa37718dc6f3b7b811850208730001"
+    },
+    "UndecidablePhaseDiagram.Scaffold.Substitution": {
+      "module": "UndecidablePhaseDiagram.Scaffold.Substitution",
+      "exit": 0,
+      "seconds": 6.178,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 10731048960,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Substitution.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Substitution.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Substitution.lean"
+      ],
+      "log_sha256": "845dbeba4f21f2425a630dbfa94163d23546523e9c2cfeb737f46bd4c71e2e44"
+    },
+    "UndecidablePhaseDiagram.Scaffold.Tower": {
+      "module": "UndecidablePhaseDiagram.Scaffold.Tower",
+      "exit": 0,
+      "seconds": 2.67,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 10715680768,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Tower.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Tower.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Tower.lean"
+      ],
+      "log_sha256": "e8c07546ff096918a040fb3e1028d963eecfc40a4b3ba4cc910dea2589587278"
+    },
+    "UndecidablePhaseDiagram.Scaffold.Red": {
+      "module": "UndecidablePhaseDiagram.Scaffold.Red",
+      "exit": 0,
+      "seconds": 3.622,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 10837196800,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Red.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Red.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Red.lean"
+      ],
+      "log_sha256": "2597aee86d653e4e8e50c93fe0e4f5dc3f8c7194ae7f8ce82bf35130845f5403"
+    },
+    "UndecidablePhaseDiagram.Scaffold.Quarters": {
+      "module": "UndecidablePhaseDiagram.Scaffold.Quarters",
+      "exit": 0,
+      "seconds": 7.231,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11064889344,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Quarters.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Quarters.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Quarters.lean"
+      ],
+      "log_sha256": "4f12025e626445b66bfcd8f974da584bd3784199a21e8f40ff2ec7191df235fc"
+    },
+    "UndecidablePhaseDiagram.Scaffold.Frames": {
+      "module": "UndecidablePhaseDiagram.Scaffold.Frames",
+      "exit": 0,
+      "seconds": 4.875,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11429015552,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Frames.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Frames.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Frames.lean"
+      ],
+      "log_sha256": "d5fad63ede2223630ef4dd189d4482de53fa45aad5d197f5b41928469a175547"
+    },
+    "UndecidablePhaseDiagram.Scaffold.Desub": {
+      "module": "UndecidablePhaseDiagram.Scaffold.Desub",
+      "exit": 0,
+      "seconds": 4.675,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11370921984,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Desub.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Desub.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Desub.lean"
+      ],
+      "log_sha256": "d76e42a01d7d6a13e9afe5079d59436e161f70641cf97bb63f8b55871b12458e"
+    },
+    "UndecidablePhaseDiagram.Scaffold.Phase": {
+      "module": "UndecidablePhaseDiagram.Scaffold.Phase",
+      "exit": 0,
+      "seconds": 2.62,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11601580032,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Phase.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Phase.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Phase.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Scaffold.QuarterPhase": {
+      "module": "UndecidablePhaseDiagram.Scaffold.QuarterPhase",
+      "exit": 0,
+      "seconds": 3.522,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11615723520,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/QuarterPhase.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/QuarterPhase.ilean",
+        "UndecidablePhaseDiagram/Scaffold/QuarterPhase.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Scaffold.Walls": {
+      "module": "UndecidablePhaseDiagram.Scaffold.Walls",
+      "exit": 0,
+      "seconds": 1.818,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11598118912,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Walls.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Walls.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Walls.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Scaffold.Typical": {
+      "module": "UndecidablePhaseDiagram.Scaffold.Typical",
+      "exit": 0,
+      "seconds": 1.718,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11524198400,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Typical.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Typical.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Typical.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Scaffold.Haar": {
+      "module": "UndecidablePhaseDiagram.Scaffold.Haar",
+      "exit": 0,
+      "seconds": 2.921,
+      "peak_tree_bytes": 3475800064,
+      "free_before_bytes": 11506446336,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Haar.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Haar.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Haar.lean"
+      ],
+      "log_sha256": "d40a7930097f67a674e600e1c5009ca9b66b5055151b7b926406ba6e8f964a28"
+    },
+    "UndecidablePhaseDiagram.Scaffold.TILaw": {
+      "module": "UndecidablePhaseDiagram.Scaffold.TILaw",
+      "exit": 0,
+      "seconds": 3.121,
+      "peak_tree_bytes": 3476832256,
+      "free_before_bytes": 11572203520,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/TILaw.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/TILaw.ilean",
+        "UndecidablePhaseDiagram/Scaffold/TILaw.lean"
+      ],
+      "log_sha256": "1bd339ce6671428af0efaff16c3ce6437ce40690c8e213c34332d0c42fd143c5"
+    },
+    "UndecidablePhaseDiagram.Sanity": {
+      "module": "UndecidablePhaseDiagram.Sanity",
+      "exit": 0,
+      "seconds": 1.618,
+      "peak_tree_bytes": 3476832256,
+      "free_before_bytes": 11549265920,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Sanity.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Sanity.ilean",
+        "UndecidablePhaseDiagram/Sanity.lean"
+      ],
+      "log_sha256": "e383a1a159bbf28739483627713a47673e9ca54715fcf76ae7268c7cf8d518e6"
+    },
+    "UndecidablePhaseDiagram.Interaction.Basic": {
+      "module": "UndecidablePhaseDiagram.Interaction.Basic",
+      "exit": 0,
+      "seconds": 1.968,
+      "peak_tree_bytes": 3476832256,
+      "free_before_bytes": 11819450368,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Interaction/Basic.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Interaction/Basic.ilean",
+        "UndecidablePhaseDiagram/Interaction/Basic.lean"
+      ],
+      "log_sha256": "3b282e86f7add4d0fe5cc2e32332e41bc9c9b7a4a20cefd9aa950485d16e8892"
+    },
+    "UndecidablePhaseDiagram.Background.Line": {
+      "module": "UndecidablePhaseDiagram.Background.Line",
+      "exit": 0,
+      "seconds": 2.72,
+      "peak_tree_bytes": 3476832256,
+      "free_before_bytes": 11724394496,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Line.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Line.ilean",
+        "UndecidablePhaseDiagram/Background/Line.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Background.Routing": {
+      "module": "UndecidablePhaseDiagram.Background.Routing",
+      "exit": 0,
+      "seconds": 2.52,
+      "peak_tree_bytes": 3476832256,
+      "free_before_bytes": 11554082816,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Routing.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Routing.ilean",
+        "UndecidablePhaseDiagram/Background/Routing.lean"
+      ],
+      "log_sha256": "4df3fb497e0d556f12b13d1800007b8e093fde53fe32247634090d5582155664"
+    },
+    "UndecidablePhaseDiagram.Background.Grids": {
+      "module": "UndecidablePhaseDiagram.Background.Grids",
+      "exit": 0,
+      "seconds": 4.023,
+      "peak_tree_bytes": 3476832256,
+      "free_before_bytes": 11478958080,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Grids.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Grids.ilean",
+        "UndecidablePhaseDiagram/Background/Grids.lean"
+      ],
+      "log_sha256": "8402a31428b75bf4eca06905d4ab998552328b4779fcf8106e04e9db344fbae4"
+    },
+    "UndecidablePhaseDiagram.Background.Markers": {
+      "module": "UndecidablePhaseDiagram.Background.Markers",
+      "exit": 0,
+      "seconds": 1.918,
+      "peak_tree_bytes": 3476832256,
+      "free_before_bytes": 11673833472,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Markers.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Markers.ilean",
+        "UndecidablePhaseDiagram/Background/Markers.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Background.Computation": {
+      "module": "UndecidablePhaseDiagram.Background.Computation",
+      "exit": 0,
+      "seconds": 3.973,
+      "peak_tree_bytes": 3476832256,
+      "free_before_bytes": 11712937984,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Computation.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Computation.ilean",
+        "UndecidablePhaseDiagram/Background/Computation.lean"
+      ],
+      "log_sha256": "7510f943f0a71144084a002eae19d103cd43dc403cdffce89ab7a8a8195653ef"
+    },
+    "UndecidablePhaseDiagram.Background.Split": {
+      "module": "UndecidablePhaseDiagram.Background.Split",
+      "exit": 0,
+      "seconds": 1.918,
+      "peak_tree_bytes": 3476832256,
+      "free_before_bytes": 11920764928,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Split.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Split.ilean",
+        "UndecidablePhaseDiagram/Background/Split.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Background.Unique": {
+      "module": "UndecidablePhaseDiagram.Background.Unique",
+      "exit": 0,
+      "seconds": 3.12,
+      "peak_tree_bytes": 3476832256,
+      "free_before_bytes": 11857158144,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Unique.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Unique.ilean",
+        "UndecidablePhaseDiagram/Background/Unique.lean"
+      ],
+      "log_sha256": "5606513acfa7442dd6535ee6a4330bd3fc3a492d1554648b7cdce6592e5700c6"
+    },
+    "UndecidablePhaseDiagram.Background.Freeze": {
+      "module": "UndecidablePhaseDiagram.Background.Freeze",
+      "exit": 0,
+      "seconds": 1.417,
+      "peak_tree_bytes": 3476832256,
+      "free_before_bytes": 11793072128,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Freeze.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Freeze.ilean",
+        "UndecidablePhaseDiagram/Background/Freeze.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Background.Construct": {
+      "module": "UndecidablePhaseDiagram.Background.Construct",
+      "exit": 0,
+      "seconds": 8.683,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11793788928,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Construct.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Construct.ilean",
+        "UndecidablePhaseDiagram/Background/Construct.lean"
+      ],
+      "log_sha256": "c85874fa899c99cca4d5e60281a955a66dfd8494020f8ebaab8024b2190cb846"
+    },
+    "UndecidablePhaseDiagram.Background.BgMap": {
+      "module": "UndecidablePhaseDiagram.Background.BgMap",
+      "exit": 0,
+      "seconds": 3.472,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 12032737280,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/BgMap.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/BgMap.ilean",
+        "UndecidablePhaseDiagram/Background/BgMap.lean"
+      ],
+      "log_sha256": "5036658a591c71d0d9a9f474df8ceed661fe76846c9750b8fc41d3f8fdf9aa00"
+    },
+    "UndecidablePhaseDiagram.Background.Conditioning": {
+      "module": "UndecidablePhaseDiagram.Background.Conditioning",
+      "exit": 0,
+      "seconds": 3.221,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11945422848,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Conditioning.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Conditioning.ilean",
+        "UndecidablePhaseDiagram/Background/Conditioning.lean"
+      ],
+      "log_sha256": "bb7638f143baf9d3d903ea6079b113ddddfcb98af6baca7681e5566ca35b1e21"
+    },
+    "UndecidablePhaseDiagram.Payload.Coords": {
+      "module": "UndecidablePhaseDiagram.Payload.Coords",
+      "exit": 0,
+      "seconds": 2.57,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11940372480,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Coords.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Coords.ilean",
+        "UndecidablePhaseDiagram/Payload/Coords.lean"
+      ],
+      "log_sha256": "1749ce5f01c77d5fb32a8fe3ca4a5a083a29cf4f93e6e8992fc713835bb0bec8"
+    },
+    "UndecidablePhaseDiagram.Payload.Bridge": {
+      "module": "UndecidablePhaseDiagram.Payload.Bridge",
+      "exit": 0,
+      "seconds": 1.968,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11912601600,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Bridge.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Bridge.ilean",
+        "UndecidablePhaseDiagram/Payload/Bridge.lean"
+      ],
+      "log_sha256": "23f92c8a5bd2608478a06387caef8cd8fec3522d13624c182fbbe7f87c21e361"
+    },
+    "UndecidablePhaseDiagram.Proof.Windows": {
+      "module": "UndecidablePhaseDiagram.Proof.Windows",
+      "exit": 0,
+      "seconds": 3.622,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11929657344,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Windows.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Windows.ilean",
+        "UndecidablePhaseDiagram/Proof/Windows.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Proof.Thermal": {
+      "module": "UndecidablePhaseDiagram.Proof.Thermal",
+      "exit": 0,
+      "seconds": 3.973,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11916148736,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Thermal.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Thermal.ilean",
+        "UndecidablePhaseDiagram/Proof/Thermal.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Payload.Sensor": {
+      "module": "UndecidablePhaseDiagram.Payload.Sensor",
+      "exit": 0,
+      "seconds": 2.469,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11740864512,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Sensor.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Sensor.ilean",
+        "UndecidablePhaseDiagram/Payload/Sensor.lean"
+      ],
+      "log_sha256": "32965c27156c9f680c523755a85e02ba1cb93fa964c5fa9021445c713b79cb85"
+    },
+    "UndecidablePhaseDiagram.Payload.Graph": {
+      "module": "UndecidablePhaseDiagram.Payload.Graph",
+      "exit": 0,
+      "seconds": 2.169,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11655036928,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Graph.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Graph.ilean",
+        "UndecidablePhaseDiagram/Payload/Graph.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Payload.PayX": {
+      "module": "UndecidablePhaseDiagram.Payload.PayX",
+      "exit": 0,
+      "seconds": 1.568,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11605807104,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/PayX.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/PayX.ilean",
+        "UndecidablePhaseDiagram/Payload/PayX.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Payload.Legal": {
+      "module": "UndecidablePhaseDiagram.Payload.Legal",
+      "exit": 0,
+      "seconds": 4.775,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11605807104,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Legal.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Legal.ilean",
+        "UndecidablePhaseDiagram/Payload/Legal.lean"
+      ],
+      "log_sha256": "76c7b101e87fffef4faafb1c2a016a0728f296c93968c0522f02dc975a39136d"
+    },
+    "UndecidablePhaseDiagram.Payload.Edges": {
+      "module": "UndecidablePhaseDiagram.Payload.Edges",
+      "exit": 0,
+      "seconds": 4.274,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11920125952,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Edges.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Edges.ilean",
+        "UndecidablePhaseDiagram/Payload/Edges.lean"
+      ],
+      "log_sha256": "cc59fb4dc076e581faef3673fe6f0cc10f6030eb8e77f532fdeda313f1d3d879"
+    },
+    "UndecidablePhaseDiagram.Payload.Factor": {
+      "module": "UndecidablePhaseDiagram.Payload.Factor",
+      "exit": 0,
+      "seconds": 3.873,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11842170880,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Factor.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Factor.ilean",
+        "UndecidablePhaseDiagram/Payload/Factor.lean"
+      ],
+      "log_sha256": "4def9bf79e9a285bfd2b264ac78315698b10f32b4efe77a3b281a1ca80026f00"
+    },
+    "UndecidablePhaseDiagram.Payload.EdgeSums": {
+      "module": "UndecidablePhaseDiagram.Payload.EdgeSums",
+      "exit": 0,
+      "seconds": 3.973,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11800051712,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/EdgeSums.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/EdgeSums.ilean",
+        "UndecidablePhaseDiagram/Payload/EdgeSums.lean"
+      ],
+      "log_sha256": "7bafd3c56e28fd4cb1035883b95400a39efa8f7ecb114dc14bba457ad9433fbc"
+    },
+    "UndecidablePhaseDiagram.Payload.Effective": {
+      "module": "UndecidablePhaseDiagram.Payload.Effective",
+      "exit": 0,
+      "seconds": 2.47,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11713245184,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Effective.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Effective.ilean",
+        "UndecidablePhaseDiagram/Payload/Effective.lean"
+      ],
+      "log_sha256": "8daf7e9c6688db781748b9b798ed227f3b113c44d99252df8a55085537a8f246"
+    },
+    "UndecidablePhaseDiagram.Proof.Steps": {
+      "module": "UndecidablePhaseDiagram.Proof.Steps",
+      "exit": 0,
+      "seconds": 2.269,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11680866304,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Steps.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Steps.ilean",
+        "UndecidablePhaseDiagram/Proof/Steps.lean"
+      ],
+      "log_sha256": "836d42f957186116a63dedfc624e0a2378bb49aed795220c198e71e10aee705e"
+    },
+    "UndecidablePhaseDiagram.Proof.Main2": {
+      "module": "UndecidablePhaseDiagram.Proof.Main2",
+      "exit": 0,
+      "seconds": 2.921,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11638972416,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Main2.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Main2.ilean",
+        "UndecidablePhaseDiagram/Proof/Main2.lean"
+      ],
+      "log_sha256": "2c200f91f4d9fa4d5fd6cfad05a10e9e9144f1167c867f1ea295dc6d798e6b32"
+    },
+    "UndecidablePhaseDiagram.Compiler.OneSided": {
+      "module": "UndecidablePhaseDiagram.Compiler.OneSided",
+      "exit": 0,
+      "seconds": 1.467,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11564068864,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/OneSided.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/OneSided.ilean",
+        "UndecidablePhaseDiagram/Compiler/OneSided.lean"
+      ],
+      "log_sha256": "ef81682dbbdc05b71d448cfbbbbce4c4490559ee2e36f96f92e875b9534538ec"
+    },
+    "UndecidablePhaseDiagram.Compiler.Encode": {
+      "module": "UndecidablePhaseDiagram.Compiler.Encode",
+      "exit": 0,
+      "seconds": 1.768,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11564068864,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Encode.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Encode.ilean",
+        "UndecidablePhaseDiagram/Compiler/Encode.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Compiler.Fold": {
+      "module": "UndecidablePhaseDiagram.Compiler.Fold",
+      "exit": 0,
+      "seconds": 2.52,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11581001728,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Fold.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Fold.ilean",
+        "UndecidablePhaseDiagram/Compiler/Fold.lean"
+      ],
+      "log_sha256": "f3443831b1d89f85774f948a1b1fc704055d566f36c8c60095d6a446d420ae22"
+    },
+    "UndecidablePhaseDiagram.Compiler.Universal": {
+      "module": "UndecidablePhaseDiagram.Compiler.Universal",
+      "exit": 0,
+      "seconds": 1.918,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11614367744,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Universal.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Universal.ilean",
+        "UndecidablePhaseDiagram/Compiler/Universal.lean"
+      ],
+      "log_sha256": "9caed870107a5d98040d9700033261d7d43701329e73179929ada17b06cae05c"
+    },
+    "UndecidablePhaseDiagram.Proof.CorollaryB": {
+      "module": "UndecidablePhaseDiagram.Proof.CorollaryB",
+      "exit": 0,
+      "seconds": 1.868,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11614367744,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/CorollaryB.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/CorollaryB.ilean",
+        "UndecidablePhaseDiagram/Proof/CorollaryB.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Proof.MainTheorem": {
+      "module": "UndecidablePhaseDiagram.Proof.MainTheorem",
+      "exit": 0,
+      "seconds": 1.617,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11887808512,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/MainTheorem.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/MainTheorem.ilean",
+        "UndecidablePhaseDiagram/Proof/MainTheorem.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Main": {
+      "module": "UndecidablePhaseDiagram.Main",
+      "exit": 0,
+      "seconds": 1.617,
+      "peak_tree_bytes": 3588677632,
+      "free_before_bytes": 11760857088,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Main.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Main.ilean",
+        "UndecidablePhaseDiagram/Main.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UndecidablePhaseDiagram.Audit": {
+      "module": "UndecidablePhaseDiagram.Audit",
+      "exit": 0,
+      "seconds": 3.122,
+      "peak_tree_bytes": 3951345664,
+      "free_before_bytes": 11646132224,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Audit.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Audit.ilean",
+        "UndecidablePhaseDiagram/Audit.lean"
+      ],
+      "log_sha256": "701bd72fd4f72c7dc99839a65d97c0a28c0732392535c9e5a69ccc20e9104fab"
+    },
+    "UndecidablePhaseDiagram": {
+      "module": "UndecidablePhaseDiagram",
+      "exit": 0,
+      "seconds": 1.919,
+      "peak_tree_bytes": 3951345664,
+      "free_before_bytes": 11243040768,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram.ilean",
+        "UndecidablePhaseDiagram.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Challenge": {
+      "module": "Challenge",
+      "exit": 0,
+      "seconds": 4.675,
+      "peak_tree_bytes": 3195490304,
+      "free_before_bytes": 11738386432,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/Challenge.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/Challenge.ilean",
+        "Challenge.lean"
+      ],
+      "log_sha256": "7405e90b982060b42cb12b1dd85298080aecdbacad6a9b76ea8b287c74ca1e9d"
+    },
+    "Solution": {
+      "module": "Solution",
+      "exit": 0,
+      "seconds": 1.568,
+      "peak_tree_bytes": 3951345664,
+      "free_before_bytes": 11236433920,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/Solution.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/Solution.ilean",
+        "Solution.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Audit": {
+      "module": "Audit",
+      "exit": 0,
+      "seconds": 69.92,
+      "peak_tree_bytes": 4198240256,
+      "free_before_bytes": 10905747456,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/Audit.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/Audit.ilean",
+        "Audit.lean"
+      ],
+      "log_sha256": "f650c3eeaba775737e4a963eb819e1be967870e491a7ddb641ae8d018587a5b3"
+    }
+  },
+  "port_attempts": 98,
+  "port_failed_attempts": 20,
+  "port_history": [
+    {
+      "module": "UndecidablePhaseDiagram.Statements",
+      "exit": 1,
+      "seconds": 19.298,
+      "peak_tree_bytes": 3089100800,
+      "free_before_bytes": 15935328256,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Statements.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Statements.ilean",
+        "UndecidablePhaseDiagram/Statements.lean"
+      ],
+      "log_sha256": "3762c7f8c1ce68f6119af61100a4dfe7cb53eed1d32f32ad5cfca2014441c369"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Statements",
+      "exit": 0,
+      "seconds": 4.424,
+      "peak_tree_bytes": 3160383488,
+      "free_before_bytes": 12997816320,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-Dbackward.isDefEq.respectTransparency=false",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Statements.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Statements.ilean",
+        "UndecidablePhaseDiagram/Statements.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Hypotheses",
+      "exit": 0,
+      "seconds": 1.617,
+      "peak_tree_bytes": 3160383488,
+      "free_before_bytes": 12550164480,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Hypotheses.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Hypotheses.ilean",
+        "UndecidablePhaseDiagram/Hypotheses.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Weights",
+      "exit": 1,
+      "seconds": 2.921,
+      "peak_tree_bytes": 3160383488,
+      "free_before_bytes": 12462424064,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Weights.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Weights.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Weights.lean"
+      ],
+      "log_sha256": "f9bb50b2321118c337fc29498d2077addd8b61d648dce088028a6d339aaf90bf"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Weights",
+      "exit": 0,
+      "seconds": 2.619,
+      "peak_tree_bytes": 3107479552,
+      "free_before_bytes": 12999303168,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Weights.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Weights.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Weights.lean"
+      ],
+      "log_sha256": "2b34d4f38c2fa4a81b9bd769550c7962ee55989f59301844a1723e65c32bd690"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Dobrushin",
+      "exit": 0,
+      "seconds": 3.17,
+      "peak_tree_bytes": 3107479552,
+      "free_before_bytes": 12744499200,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Dobrushin.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Dobrushin.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Dobrushin.lean"
+      ],
+      "log_sha256": "ae1b3714753b08116fdbaa66d94d2fa9aa9652cf17179f4a9c2d7ca821c28544"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Site",
+      "exit": 0,
+      "seconds": 2.019,
+      "peak_tree_bytes": 3107479552,
+      "free_before_bytes": 12642099200,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Site.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Site.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Site.lean"
+      ],
+      "log_sha256": "7e40b45908fd6113d71119eea34c0a5e2db0365d147e74d0a869914f4222a0ad"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Existence",
+      "exit": 1,
+      "seconds": 2.57,
+      "peak_tree_bytes": 3145064448,
+      "free_before_bytes": 12416798720,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Existence.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Existence.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Existence.lean"
+      ],
+      "log_sha256": "8c06ac79d71bc30a498ba7380f41f79496df538f22a78489c9e53bb97efe178d"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Existence",
+      "exit": 0,
+      "seconds": 2.269,
+      "peak_tree_bytes": 3142139904,
+      "free_before_bytes": 12881788928,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Existence.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Existence.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Existence.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Hard",
+      "exit": 1,
+      "seconds": 2.068,
+      "peak_tree_bytes": 3142139904,
+      "free_before_bytes": 12686401536,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Hard.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Hard.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Hard.lean"
+      ],
+      "log_sha256": "c234732ff9828412d890336b983d2456be7e0c1aa473f6fef47d72639ba7b651"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Hard",
+      "exit": 0,
+      "seconds": 2.319,
+      "peak_tree_bytes": 3101380608,
+      "free_before_bytes": 13125726208,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Hard.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Hard.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Hard.lean"
+      ],
+      "log_sha256": "c91de1a2a573a0608cffb23b485b0a04776744059b78c8a9b73c19f54e1d87fb"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Product",
+      "exit": 1,
+      "seconds": 4.474,
+      "peak_tree_bytes": 3447394304,
+      "free_before_bytes": 12832382976,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Product.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Product.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Product.lean"
+      ],
+      "log_sha256": "0ca2ce1806ae45f3b8d31f0cdbaac306e054600cc131d79914aa62cd008c0e6d"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Product",
+      "exit": 1,
+      "seconds": 21.066,
+      "peak_tree_bytes": 3421761536,
+      "free_before_bytes": 15925137408,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Product.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Product.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Product.lean"
+      ],
+      "log_sha256": "f9744a9a29748ba9d9c9512d1069f810b0fc3252062c5a511f466a9ff69587ff"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Product",
+      "exit": 0,
+      "seconds": 3.271,
+      "peak_tree_bytes": 3477921792,
+      "free_before_bytes": 12992364544,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Product.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Product.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Product.lean"
+      ],
+      "log_sha256": "e3968cfb8bdd9401d1b6c6e3364be05987eeeabd6287e7b2c27c80254917a2cd"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Transport",
+      "exit": 0,
+      "seconds": 1.517,
+      "peak_tree_bytes": 3477921792,
+      "free_before_bytes": 12646187008,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Transport.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Transport.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Transport.lean"
+      ],
+      "log_sha256": "8de9f068c63ea15a1539fd0666358d1479b9f42a306521ef28289ab2f3990c12"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Cylinder",
+      "exit": 0,
+      "seconds": 2.369,
+      "peak_tree_bytes": 3477921792,
+      "free_before_bytes": 12646187008,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Cylinder.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Cylinder.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Cylinder.lean"
+      ],
+      "log_sha256": "435fea874a85a399c47025b3f6d04dc360cce1aba7440907ca49688830db883a"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Average",
+      "exit": 0,
+      "seconds": 3.522,
+      "peak_tree_bytes": 3477921792,
+      "free_before_bytes": 12508282880,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Average.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Average.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Average.lean"
+      ],
+      "log_sha256": "e03e63905515e93fa4f25e4346b2aec2b95bdebc43fcf9c6c2d0a6cb2cb80e47"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Compare",
+      "exit": 0,
+      "seconds": 1.868,
+      "peak_tree_bytes": 3477921792,
+      "free_before_bytes": 12467941376,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Compare.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Compare.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Compare.lean"
+      ],
+      "log_sha256": "4a5b1754944ff55f88b1727239a1bf447a880a098e361a6b5aff9403fa6451e8"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Factor",
+      "exit": 0,
+      "seconds": 1.567,
+      "peak_tree_bytes": 3477921792,
+      "free_before_bytes": 12402221056,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Factor.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Factor.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Factor.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Elim",
+      "exit": 1,
+      "seconds": 4.224,
+      "peak_tree_bytes": 3477921792,
+      "free_before_bytes": 12250587136,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Elim.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Elim.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Elim.lean"
+      ],
+      "log_sha256": "143ca6ff070f659ca550824fe7a24c23e03cc5f3d6fd4289d15944bc33368b02"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Elim",
+      "exit": 0,
+      "seconds": 4.675,
+      "peak_tree_bytes": 3472629760,
+      "free_before_bytes": 12723785728,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Elim.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Elim.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Elim.lean"
+      ],
+      "log_sha256": "a6dbffd8df20a9c8093c8c1c57b18bd058c7f08c3dcfaac1a65d9f160236f9ce"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Gibbs.Recode",
+      "exit": 0,
+      "seconds": 1.818,
+      "peak_tree_bytes": 3472629760,
+      "free_before_bytes": 12523667456,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Recode.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Gibbs/Recode.ilean",
+        "UndecidablePhaseDiagram/Gibbs/Recode.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Peierls.Parity",
+      "exit": 0,
+      "seconds": 2.62,
+      "peak_tree_bytes": 3472629760,
+      "free_before_bytes": 12560904192,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Parity.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Parity.ilean",
+        "UndecidablePhaseDiagram/Peierls/Parity.lean"
+      ],
+      "log_sha256": "2f2564b734303ec8afee04b8d8a3ba3dd1d47520088dbd0975d4926cc5cf9a5b"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Peierls.Flip",
+      "exit": 0,
+      "seconds": 2.62,
+      "peak_tree_bytes": 3472629760,
+      "free_before_bytes": 12520898560,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Flip.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Flip.ilean",
+        "UndecidablePhaseDiagram/Peierls/Flip.lean"
+      ],
+      "log_sha256": "1a5699c173974866755941214f2e4eefbbf777f3640a9e04ece6ec5c605d60cd"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Peierls.Contour",
+      "exit": 1,
+      "seconds": 3.923,
+      "peak_tree_bytes": 3472629760,
+      "free_before_bytes": 12383285248,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Contour.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Contour.ilean",
+        "UndecidablePhaseDiagram/Peierls/Contour.lean"
+      ],
+      "log_sha256": "91c3fac74d8acadffaa0aa967fe446841a678cbb28f020a373240754a5e791f8"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Peierls.Contour",
+      "exit": 0,
+      "seconds": 4.074,
+      "peak_tree_bytes": 3123646464,
+      "free_before_bytes": 12603793408,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Contour.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Contour.ilean",
+        "UndecidablePhaseDiagram/Peierls/Contour.lean"
+      ],
+      "log_sha256": "e1c9182c3637c495b2c78ff027f7fb711390cc66913b5ea66090d32cb0295ef8"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Peierls.Limit",
+      "exit": 0,
+      "seconds": 2.019,
+      "peak_tree_bytes": 3123646464,
+      "free_before_bytes": 12297396224,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Limit.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Limit.ilean",
+        "UndecidablePhaseDiagram/Peierls/Limit.lean"
+      ],
+      "log_sha256": "3dfeed8133192eeb2cf3b4f3bb7a36349977200d9f01e3e9103018709f3dbd19"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Peierls.Lattice",
+      "exit": 0,
+      "seconds": 2.369,
+      "peak_tree_bytes": 3133845504,
+      "free_before_bytes": 12366856192,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Lattice.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Peierls/Lattice.ilean",
+        "UndecidablePhaseDiagram/Peierls/Lattice.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Machine",
+      "exit": 0,
+      "seconds": 3.673,
+      "peak_tree_bytes": 3133845504,
+      "free_before_bytes": 12247871488,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Machine.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Machine.ilean",
+        "UndecidablePhaseDiagram/Background/Machine.lean"
+      ],
+      "log_sha256": "dbfbdfe9be0330e789e5b3ca5bb37694ccc57d039f6d00efce5746817e6e8bd9"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Run",
+      "exit": 0,
+      "seconds": 3.121,
+      "peak_tree_bytes": 3133845504,
+      "free_before_bytes": 11928637440,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Run.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Run.ilean",
+        "UndecidablePhaseDiagram/Background/Run.lean"
+      ],
+      "log_sha256": "3f6ebcc16b5381c936e32224c9b428ed7930f81636f70523ccbebff439405bab"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Label",
+      "exit": 0,
+      "seconds": 3.923,
+      "peak_tree_bytes": 3133845504,
+      "free_before_bytes": 11985432576,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Label.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Label.ilean",
+        "UndecidablePhaseDiagram/Background/Label.lean"
+      ],
+      "log_sha256": "9bf38337c5a8d28635fd6b9fca9ffcb88a15e7d179aa22f39e77ce43f06be3ca"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Ready",
+      "exit": 0,
+      "seconds": 17.204,
+      "peak_tree_bytes": 3178729472,
+      "free_before_bytes": 12381495296,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Ready.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Ready.ilean",
+        "UndecidablePhaseDiagram/Background/Ready.lean"
+      ],
+      "log_sha256": "613c3cfa06977bbd0368428bc29e95a3f14f3a8c1a44f5283e7e59d8682908f2"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.AuditCommand",
+      "exit": 0,
+      "seconds": 3.021,
+      "peak_tree_bytes": 3178729472,
+      "free_before_bytes": 12212940800,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/AuditCommand.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/AuditCommand.ilean",
+        "UndecidablePhaseDiagram/AuditCommand.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Tables",
+      "exit": 0,
+      "seconds": 2.369,
+      "peak_tree_bytes": 3192033280,
+      "free_before_bytes": 11995074560,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Tables.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Tables.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Tables.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Legal",
+      "exit": 0,
+      "seconds": 1.517,
+      "peak_tree_bytes": 3192033280,
+      "free_before_bytes": 11672752128,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Legal.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Legal.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Legal.lean"
+      ],
+      "log_sha256": "b493b4ceb8ec0c7fc052483a59bd719ba3fa37718dc6f3b7b811850208730001"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Substitution",
+      "exit": 0,
+      "seconds": 5.677,
+      "peak_tree_bytes": 3333545984,
+      "free_before_bytes": 11451375616,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Substitution.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Substitution.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Substitution.lean"
+      ],
+      "log_sha256": "845dbeba4f21f2425a630dbfa94163d23546523e9c2cfeb737f46bd4c71e2e44"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Tower",
+      "exit": 0,
+      "seconds": 2.469,
+      "peak_tree_bytes": 3333545984,
+      "free_before_bytes": 11746840576,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Tower.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Tower.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Tower.lean"
+      ],
+      "log_sha256": "e8c07546ff096918a040fb3e1028d963eecfc40a4b3ba4cc910dea2589587278"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Red",
+      "exit": 0,
+      "seconds": 3.622,
+      "peak_tree_bytes": 3333545984,
+      "free_before_bytes": 11587047424,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Red.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Red.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Red.lean"
+      ],
+      "log_sha256": "2597aee86d653e4e8e50c93fe0e4f5dc3f8c7194ae7f8ce82bf35130845f5403"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Quarters",
+      "exit": 0,
+      "seconds": 7.18,
+      "peak_tree_bytes": 3333545984,
+      "free_before_bytes": 11358650368,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Quarters.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Quarters.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Quarters.lean"
+      ],
+      "log_sha256": "4f12025e626445b66bfcd8f974da584bd3784199a21e8f40ff2ec7191df235fc"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Frames",
+      "exit": 0,
+      "seconds": 4.725,
+      "peak_tree_bytes": 3333545984,
+      "free_before_bytes": 11276926976,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Frames.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Frames.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Frames.lean"
+      ],
+      "log_sha256": "d5fad63ede2223630ef4dd189d4482de53fa45aad5d197f5b41928469a175547"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Desub",
+      "exit": 0,
+      "seconds": 4.524,
+      "peak_tree_bytes": 3333545984,
+      "free_before_bytes": 11479498752,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Desub.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Desub.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Desub.lean"
+      ],
+      "log_sha256": "d76e42a01d7d6a13e9afe5079d59436e161f70641cf97bb63f8b55871b12458e"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Phase",
+      "exit": 1,
+      "seconds": 2.419,
+      "peak_tree_bytes": 3333545984,
+      "free_before_bytes": 11360157696,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Phase.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Phase.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Phase.lean"
+      ],
+      "log_sha256": "1af4af32ba0eff99869b6b56da769024e2b3683ad58e65c7448c310ed8b4ecce"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Phase",
+      "exit": 0,
+      "seconds": 2.871,
+      "peak_tree_bytes": 3077824512,
+      "free_before_bytes": 12171005952,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Phase.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Phase.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Phase.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.QuarterPhase",
+      "exit": 1,
+      "seconds": 3.473,
+      "peak_tree_bytes": 3077824512,
+      "free_before_bytes": 11781906432,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/QuarterPhase.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/QuarterPhase.ilean",
+        "UndecidablePhaseDiagram/Scaffold/QuarterPhase.lean"
+      ],
+      "log_sha256": "52f7b05b6bbe3481192ab06fbb57d941f6e532ae8b1b1cb9b8328aef6b5e83b5"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.QuarterPhase",
+      "exit": 0,
+      "seconds": 3.724,
+      "peak_tree_bytes": 3069296640,
+      "free_before_bytes": 11987619840,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/QuarterPhase.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/QuarterPhase.ilean",
+        "UndecidablePhaseDiagram/Scaffold/QuarterPhase.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Walls",
+      "exit": 0,
+      "seconds": 2.019,
+      "peak_tree_bytes": 3069296640,
+      "free_before_bytes": 11641643008,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Walls.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Walls.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Walls.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Typical",
+      "exit": 0,
+      "seconds": 1.869,
+      "peak_tree_bytes": 3069296640,
+      "free_before_bytes": 11618545664,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Typical.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Typical.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Typical.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Haar",
+      "exit": 1,
+      "seconds": 4.725,
+      "peak_tree_bytes": 3438051328,
+      "free_before_bytes": 11517890560,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Haar.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Haar.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Haar.lean"
+      ],
+      "log_sha256": "1b590e05bf8bd5920417bb418975659309f79f1998129d1b067302276faa6b65"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Haar",
+      "exit": 1,
+      "seconds": 2.921,
+      "peak_tree_bytes": 3446452224,
+      "free_before_bytes": 11596804096,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Haar.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Haar.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Haar.lean"
+      ],
+      "log_sha256": "bd96c938bee8a904e34eb5163d5f07b22a23e96a3cc6630e04d3fc7f877ee812"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.Haar",
+      "exit": 0,
+      "seconds": 2.821,
+      "peak_tree_bytes": 3459198976,
+      "free_before_bytes": 11460075520,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Haar.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/Haar.ilean",
+        "UndecidablePhaseDiagram/Scaffold/Haar.lean"
+      ],
+      "log_sha256": "d40a7930097f67a674e600e1c5009ca9b66b5055151b7b926406ba6e8f964a28"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Scaffold.TILaw",
+      "exit": 0,
+      "seconds": 3.021,
+      "peak_tree_bytes": 3478736896,
+      "free_before_bytes": 11036008448,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/TILaw.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Scaffold/TILaw.ilean",
+        "UndecidablePhaseDiagram/Scaffold/TILaw.lean"
+      ],
+      "log_sha256": "1bd339ce6671428af0efaff16c3ce6437ce40690c8e213c34332d0c42fd143c5"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Sanity",
+      "exit": 1,
+      "seconds": 1.467,
+      "peak_tree_bytes": 3478736896,
+      "free_before_bytes": 10826330112,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Sanity.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Sanity.ilean",
+        "UndecidablePhaseDiagram/Sanity.lean"
+      ],
+      "log_sha256": "024a04f495e11e4d189a6dd678b31d46bf9aed88c3f24522bddc866a19d2b903"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Sanity",
+      "exit": 0,
+      "seconds": 1.768,
+      "peak_tree_bytes": 3044360192,
+      "free_before_bytes": 11633684480,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Sanity.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Sanity.ilean",
+        "UndecidablePhaseDiagram/Sanity.lean"
+      ],
+      "log_sha256": "e383a1a159bbf28739483627713a47673e9ca54715fcf76ae7268c7cf8d518e6"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Interaction.Basic",
+      "exit": 0,
+      "seconds": 2.069,
+      "peak_tree_bytes": 3053010944,
+      "free_before_bytes": 11332501504,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Interaction/Basic.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Interaction/Basic.ilean",
+        "UndecidablePhaseDiagram/Interaction/Basic.lean"
+      ],
+      "log_sha256": "3b282e86f7add4d0fe5cc2e32332e41bc9c9b7a4a20cefd9aa950485d16e8892"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Line",
+      "exit": 0,
+      "seconds": 2.72,
+      "peak_tree_bytes": 3081093120,
+      "free_before_bytes": 11038789632,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Line.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Line.ilean",
+        "UndecidablePhaseDiagram/Background/Line.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Routing",
+      "exit": 0,
+      "seconds": 2.62,
+      "peak_tree_bytes": 3087450112,
+      "free_before_bytes": 10739380224,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Routing.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Routing.ilean",
+        "UndecidablePhaseDiagram/Background/Routing.lean"
+      ],
+      "log_sha256": "4df3fb497e0d556f12b13d1800007b8e093fde53fe32247634090d5582155664"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Grids",
+      "exit": 0,
+      "seconds": 4.224,
+      "peak_tree_bytes": 3088306176,
+      "free_before_bytes": 10924191744,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Grids.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Grids.ilean",
+        "UndecidablePhaseDiagram/Background/Grids.lean"
+      ],
+      "log_sha256": "8402a31428b75bf4eca06905d4ab998552328b4779fcf8106e04e9db344fbae4"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Markers",
+      "exit": 0,
+      "seconds": 1.969,
+      "peak_tree_bytes": 3088306176,
+      "free_before_bytes": 10669821952,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Markers.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Markers.ilean",
+        "UndecidablePhaseDiagram/Background/Markers.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Computation",
+      "exit": 0,
+      "seconds": 4.023,
+      "peak_tree_bytes": 3129098240,
+      "free_before_bytes": 11411759104,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Computation.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Computation.ilean",
+        "UndecidablePhaseDiagram/Background/Computation.lean"
+      ],
+      "log_sha256": "7510f943f0a71144084a002eae19d103cd43dc403cdffce89ab7a8a8195653ef"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Split",
+      "exit": 0,
+      "seconds": 2.069,
+      "peak_tree_bytes": 3129098240,
+      "free_before_bytes": 11183505408,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Split.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Split.ilean",
+        "UndecidablePhaseDiagram/Background/Split.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Unique",
+      "exit": 1,
+      "seconds": 2.97,
+      "peak_tree_bytes": 3129098240,
+      "free_before_bytes": 10870734848,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Unique.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Unique.ilean",
+        "UndecidablePhaseDiagram/Background/Unique.lean"
+      ],
+      "log_sha256": "c0a1f82a2c845edb61a15f5ede3e9663f105f79e8f20b5ab4f3b1600b06ce84a"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Unique",
+      "exit": 0,
+      "seconds": 3.221,
+      "peak_tree_bytes": 3123802112,
+      "free_before_bytes": 11678478336,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Unique.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Unique.ilean",
+        "UndecidablePhaseDiagram/Background/Unique.lean"
+      ],
+      "log_sha256": "5606513acfa7442dd6535ee6a4330bd3fc3a492d1554648b7cdce6592e5700c6"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Freeze",
+      "exit": 0,
+      "seconds": 1.467,
+      "peak_tree_bytes": 3123802112,
+      "free_before_bytes": 11311120384,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Freeze.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Freeze.ilean",
+        "UndecidablePhaseDiagram/Background/Freeze.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Construct",
+      "exit": 0,
+      "seconds": 8.835,
+      "peak_tree_bytes": 3586949120,
+      "free_before_bytes": 11311120384,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Construct.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Construct.ilean",
+        "UndecidablePhaseDiagram/Background/Construct.lean"
+      ],
+      "log_sha256": "c85874fa899c99cca4d5e60281a955a66dfd8494020f8ebaab8024b2190cb846"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.BgMap",
+      "exit": 1,
+      "seconds": 3.422,
+      "peak_tree_bytes": 3586949120,
+      "free_before_bytes": 10537869312,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/BgMap.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/BgMap.ilean",
+        "UndecidablePhaseDiagram/Background/BgMap.lean"
+      ],
+      "log_sha256": "7031808d27e6087ed018b4508512bd4ab0cd854056afd841bc4a0cf575aa6d4a"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.BgMap",
+      "exit": 0,
+      "seconds": 3.472,
+      "peak_tree_bytes": 3480010752,
+      "free_before_bytes": 11644862464,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/BgMap.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/BgMap.ilean",
+        "UndecidablePhaseDiagram/Background/BgMap.lean"
+      ],
+      "log_sha256": "5036658a591c71d0d9a9f474df8ceed661fe76846c9750b8fc41d3f8fdf9aa00"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Conditioning",
+      "exit": 1,
+      "seconds": 3.02,
+      "peak_tree_bytes": 3480010752,
+      "free_before_bytes": 11213107200,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Conditioning.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Conditioning.ilean",
+        "UndecidablePhaseDiagram/Background/Conditioning.lean"
+      ],
+      "log_sha256": "79c0a9f2eb388cb0b40da165fb992881cb0af962102c5bcc927db5baf6deb0f6"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Background.Conditioning",
+      "exit": 0,
+      "seconds": 3.372,
+      "peak_tree_bytes": 3485732864,
+      "free_before_bytes": 10298494976,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Conditioning.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Background/Conditioning.ilean",
+        "UndecidablePhaseDiagram/Background/Conditioning.lean"
+      ],
+      "log_sha256": "bb7638f143baf9d3d903ea6079b113ddddfcb98af6baca7681e5566ca35b1e21"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Payload.Coords",
+      "exit": 0,
+      "seconds": 2.821,
+      "peak_tree_bytes": 3485732864,
+      "free_before_bytes": 9890988032,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Coords.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Coords.ilean",
+        "UndecidablePhaseDiagram/Payload/Coords.lean"
+      ],
+      "log_sha256": "1749ce5f01c77d5fb32a8fe3ca4a5a083a29cf4f93e6e8992fc713835bb0bec8"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Payload.Bridge",
+      "exit": 0,
+      "seconds": 2.069,
+      "peak_tree_bytes": 3485732864,
+      "free_before_bytes": 9768226816,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Bridge.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Bridge.ilean",
+        "UndecidablePhaseDiagram/Payload/Bridge.lean"
+      ],
+      "log_sha256": "23f92c8a5bd2608478a06387caef8cd8fec3522d13624c182fbbe7f87c21e361"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Proof.Windows",
+      "exit": 0,
+      "seconds": 3.723,
+      "peak_tree_bytes": 3485732864,
+      "free_before_bytes": 9999785984,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Windows.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Windows.ilean",
+        "UndecidablePhaseDiagram/Proof/Windows.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Proof.Thermal",
+      "exit": 0,
+      "seconds": 4.073,
+      "peak_tree_bytes": 3485732864,
+      "free_before_bytes": 10464862208,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Thermal.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Thermal.ilean",
+        "UndecidablePhaseDiagram/Proof/Thermal.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Payload.Sensor",
+      "exit": 0,
+      "seconds": 2.419,
+      "peak_tree_bytes": 3485732864,
+      "free_before_bytes": 10416209920,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Sensor.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Sensor.ilean",
+        "UndecidablePhaseDiagram/Payload/Sensor.lean"
+      ],
+      "log_sha256": "32965c27156c9f680c523755a85e02ba1cb93fa964c5fa9021445c713b79cb85"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Payload.Graph",
+      "exit": 0,
+      "seconds": 2.068,
+      "peak_tree_bytes": 3485732864,
+      "free_before_bytes": 10432032768,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Graph.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Graph.ilean",
+        "UndecidablePhaseDiagram/Payload/Graph.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Payload.PayX",
+      "exit": 0,
+      "seconds": 1.517,
+      "peak_tree_bytes": 3485732864,
+      "free_before_bytes": 10340528128,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/PayX.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/PayX.ilean",
+        "UndecidablePhaseDiagram/Payload/PayX.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Payload.Legal",
+      "exit": 0,
+      "seconds": 4.423,
+      "peak_tree_bytes": 3533680640,
+      "free_before_bytes": 10250051584,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Legal.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Legal.ilean",
+        "UndecidablePhaseDiagram/Payload/Legal.lean"
+      ],
+      "log_sha256": "76c7b101e87fffef4faafb1c2a016a0728f296c93968c0522f02dc975a39136d"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Payload.Edges",
+      "exit": 0,
+      "seconds": 4.023,
+      "peak_tree_bytes": 3549372416,
+      "free_before_bytes": 10145337344,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Edges.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Edges.ilean",
+        "UndecidablePhaseDiagram/Payload/Edges.lean"
+      ],
+      "log_sha256": "cc59fb4dc076e581faef3673fe6f0cc10f6030eb8e77f532fdeda313f1d3d879"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Payload.Factor",
+      "exit": 0,
+      "seconds": 4.074,
+      "peak_tree_bytes": 3567169536,
+      "free_before_bytes": 10113855488,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Factor.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Factor.ilean",
+        "UndecidablePhaseDiagram/Payload/Factor.lean"
+      ],
+      "log_sha256": "4def9bf79e9a285bfd2b264ac78315698b10f32b4efe77a3b281a1ca80026f00"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Payload.EdgeSums",
+      "exit": 0,
+      "seconds": 4.374,
+      "peak_tree_bytes": 3567169536,
+      "free_before_bytes": 10001022976,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/EdgeSums.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/EdgeSums.ilean",
+        "UndecidablePhaseDiagram/Payload/EdgeSums.lean"
+      ],
+      "log_sha256": "7bafd3c56e28fd4cb1035883b95400a39efa8f7ecb114dc14bba457ad9433fbc"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Payload.Effective",
+      "exit": 0,
+      "seconds": 2.57,
+      "peak_tree_bytes": 3567169536,
+      "free_before_bytes": 9890775040,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Effective.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Payload/Effective.ilean",
+        "UndecidablePhaseDiagram/Payload/Effective.lean"
+      ],
+      "log_sha256": "8daf7e9c6688db781748b9b798ed227f3b113c44d99252df8a55085537a8f246"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Proof.Steps",
+      "exit": 1,
+      "seconds": 2.269,
+      "peak_tree_bytes": 3567169536,
+      "free_before_bytes": 9959809024,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Steps.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Steps.ilean",
+        "UndecidablePhaseDiagram/Proof/Steps.lean"
+      ],
+      "log_sha256": "df26263c81d26d4dabc19b065551497967f51f3a0b1e16a73ac3e5cd80cc8ecc"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Proof.Steps",
+      "exit": 0,
+      "seconds": 2.42,
+      "peak_tree_bytes": 3495051264,
+      "free_before_bytes": 10285731840,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Steps.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Steps.ilean",
+        "UndecidablePhaseDiagram/Proof/Steps.lean"
+      ],
+      "log_sha256": "836d42f957186116a63dedfc624e0a2378bb49aed795220c198e71e10aee705e"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Proof.Main2",
+      "exit": 0,
+      "seconds": 2.821,
+      "peak_tree_bytes": 3507023872,
+      "free_before_bytes": 10057093120,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Main2.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/Main2.ilean",
+        "UndecidablePhaseDiagram/Proof/Main2.lean"
+      ],
+      "log_sha256": "2c200f91f4d9fa4d5fd6cfad05a10e9e9144f1167c867f1ea295dc6d798e6b32"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Compiler.OneSided",
+      "exit": 0,
+      "seconds": 1.517,
+      "peak_tree_bytes": 3507023872,
+      "free_before_bytes": 10023215104,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/OneSided.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/OneSided.ilean",
+        "UndecidablePhaseDiagram/Compiler/OneSided.lean"
+      ],
+      "log_sha256": "ef81682dbbdc05b71d448cfbbbbce4c4490559ee2e36f96f92e875b9534538ec"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Compiler.Encode",
+      "exit": 1,
+      "seconds": 1.768,
+      "peak_tree_bytes": 3507023872,
+      "free_before_bytes": 10023215104,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Encode.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Encode.ilean",
+        "UndecidablePhaseDiagram/Compiler/Encode.lean"
+      ],
+      "log_sha256": "006bda6ba39201a49932c94ba10d401a65714c6c82ed257b2e3111faf5c367e0"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Compiler.Encode",
+      "exit": 0,
+      "seconds": 1.772,
+      "peak_tree_bytes": 3036368896,
+      "free_before_bytes": 10019241984,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Encode.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Encode.ilean",
+        "UndecidablePhaseDiagram/Compiler/Encode.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Compiler.Fold",
+      "exit": 0,
+      "seconds": 2.62,
+      "peak_tree_bytes": 3092094976,
+      "free_before_bytes": 9933393920,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Fold.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Fold.ilean",
+        "UndecidablePhaseDiagram/Compiler/Fold.lean"
+      ],
+      "log_sha256": "f3443831b1d89f85774f948a1b1fc704055d566f36c8c60095d6a446d420ae22"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Compiler.Universal",
+      "exit": 1,
+      "seconds": 1.969,
+      "peak_tree_bytes": 3092094976,
+      "free_before_bytes": 9640673280,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Universal.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Universal.ilean",
+        "UndecidablePhaseDiagram/Compiler/Universal.lean"
+      ],
+      "log_sha256": "93021f384fc96361f0b1172ef094440a8abb768fdcf1b9038c6a53d33eef376b"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Compiler.Universal",
+      "exit": 0,
+      "seconds": 1.969,
+      "peak_tree_bytes": 3074990080,
+      "free_before_bytes": 10674290688,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Universal.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Compiler/Universal.ilean",
+        "UndecidablePhaseDiagram/Compiler/Universal.lean"
+      ],
+      "log_sha256": "9caed870107a5d98040d9700033261d7d43701329e73179929ada17b06cae05c"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Proof.CorollaryB",
+      "exit": 1,
+      "seconds": 1.918,
+      "peak_tree_bytes": 3116281856,
+      "free_before_bytes": 10475806720,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/CorollaryB.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/CorollaryB.ilean",
+        "UndecidablePhaseDiagram/Proof/CorollaryB.lean"
+      ],
+      "log_sha256": "87b81c50ac515115e8545a9e91d38b93def4fd0f3da43ed9e534cfb7bd6035b6"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Proof.CorollaryB",
+      "exit": 0,
+      "seconds": 1.919,
+      "peak_tree_bytes": 3117207552,
+      "free_before_bytes": 10927910912,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/CorollaryB.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/CorollaryB.ilean",
+        "UndecidablePhaseDiagram/Proof/CorollaryB.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Proof.MainTheorem",
+      "exit": 0,
+      "seconds": 1.567,
+      "peak_tree_bytes": 3504316416,
+      "free_before_bytes": 10772221952,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/MainTheorem.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Proof/MainTheorem.ilean",
+        "UndecidablePhaseDiagram/Proof/MainTheorem.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Main",
+      "exit": 0,
+      "seconds": 1.618,
+      "peak_tree_bytes": 3504316416,
+      "free_before_bytes": 10545893376,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Main.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Main.ilean",
+        "UndecidablePhaseDiagram/Main.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Audit",
+      "exit": 0,
+      "seconds": 2.921,
+      "peak_tree_bytes": 3949887488,
+      "free_before_bytes": 10515988480,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Audit.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Audit.ilean",
+        "UndecidablePhaseDiagram/Audit.lean"
+      ],
+      "log_sha256": "701bd72fd4f72c7dc99839a65d97c0a28c0732392535c9e5a69ccc20e9104fab"
+    },
+    {
+      "module": "UndecidablePhaseDiagram",
+      "exit": 0,
+      "seconds": 1.818,
+      "peak_tree_bytes": 3949887488,
+      "free_before_bytes": 10304528384,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/UndecidablePhaseDiagram.ilean",
+        "UndecidablePhaseDiagram.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "Challenge",
+      "exit": 0,
+      "seconds": 4.725,
+      "peak_tree_bytes": 3949887488,
+      "free_before_bytes": 10202460160,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/Challenge.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/Challenge.ilean",
+        "Challenge.lean"
+      ],
+      "log_sha256": "28e9c7648c6e5e88feb417e0ab31ed99d4e19c1dec151c81f0236eaf61d75b34"
+    },
+    {
+      "module": "Solution",
+      "exit": 0,
+      "seconds": 1.517,
+      "peak_tree_bytes": 3949887488,
+      "free_before_bytes": 10031087616,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/Solution.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/Solution.ilean",
+        "Solution.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "Audit",
+      "exit": 0,
+      "seconds": 69.421,
+      "peak_tree_bytes": 4196978688,
+      "free_before_bytes": 10031087616,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/Audit.olean",
+        "-i",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project/.lake/build/lib/lean/Audit.ilean",
+        "Audit.lean"
+      ],
+      "log_sha256": "f650c3eeaba775737e4a963eb819e1be967870e491a7ddb641ae8d018587a5b3"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+% =====================================================================
+\section{A formal proof of Theorem A and Corollary B}\label{app:lean}
+% =====================================================================
+
+Theorem~A and Corollary~B are proved in the proof assistant Lean~4 \cite{Lean4} with its mathematical library Mathlib \cite{Mathlib20}, together with the existence of a machine $U$ as in \cref{set:sub-tm}. Theorem~A and Corollary~B are proved from two published results that Mathlib lacks, which enter as named hypotheses. This appendix says what is stated, what is assumed, which choices a reader must know to compare the formal statements with the printed ones, and how the proofs were checked.
+
+\paragraph{The statements.} A statement file defines, with no proofs of substance, every object that occurs in Theorem~A and Corollary~B: interactions, legal configurations, energies, Gibbs kernels and Gibbs measures (\cref{set:def-interaction,set:def-gibbs}), Turing machines (\cref{set:sub-tm}), the scaffold alphabet of \cref{sec:scaffold} and \cref{app:scaffold}, the fields, rules, colours and charge of \cref{sec:interaction}, the machine $M$ of \cref{app:machine}, the interaction $\Phi$ (\cref{int:def-phi}), and $\lambda_K$, $\beta_n$ and $J_n$ (\cref{prf:windows}). Each definition carries a comment that names the definition of this paper it mirrors. The file states three propositions.
+\begin{itemize}
+\item \texttt{TheoremA}: for every machine $U$ and the interaction $\Phi$ built from it, $\Phi$ is an interaction, translation invariant and nearest-neighbour, with values in $\{0,1,+\infty\}$; the intervals $J_n$, $n\ge1$, consist of positive numbers and are pairwise disjoint; for every $n\ge1$ and every real $\beta\in J_n$, (i) and (ii) of \cref{thm:main} hold; and for every $\beta>0$ the set of Gibbs measures for $\beta\Phi$ that are not translation invariant is not countable.
+\item \texttt{CorollaryB}: for every machine $U$ whose halting set $\mathcal H_U$ is undecidable, the set $\mathcal U$ of \cref{cor:undecidable} is not decidable, the map $n\mapsto\beta_n$ is computable, and $\beta_n\in\mathcal U$ if and only if $U$ does not halt on $n$, for every $n\ge1$.
+\item \texttt{ExistsUniversal}: some machine has an undecidable halting set.
+\end{itemize}
+The statement file was written in the first session of the work and has not changed since. The final theorems are
+\begingroup\small
+\begin{verbatim}
+theorem UPD.theorem_A (h1 : H1) (h2 : H2) : TheoremA
+theorem UPD.corollary_B (h1 : H1) (h2 : H2) : CorollaryB
+theorem UPD.existsUniversal : ExistsUniversal
+\end{verbatim}
+\endgroup
+
+\paragraph{The hypotheses.} \texttt{H1} and \texttt{H2} are propositions, stated in a second file, the only place where a theorem of other authors enters. They are arguments of the two theorems, not axioms: the formal Theorem~A and Corollary~B are implications from them.
+\begin{itemize}
+\item \texttt{H1}, Dobrushin's uniqueness theorem. Let the index set be countable and the spin set finite, and let a specification, a consistent family of proper probability kernels, be quasilocal with $\sup_i\sum_jc_{ij}<1$, where $c_{ij}$ is the largest total-variation distance between the laws of the spin at $i$ under two boundary conditions that differ only at $j$. Then any two probability measures compatible with the specification are equal. The source is \cite[Theorem~6.31]{FriedliVelenik17}, with Definitions~6.9, 6.11, 6.12 and~6.25 there. It is stated there for $\Z^d$ and the spins $\pm1$, with the remark that the proofs apply essentially verbatim to any finite spin set.
+\item \texttt{H2}, the plus state of the two-dimensional Ising model. For every coupling $J\ge0$ there is a probability measure $\nu$ on $\{+1,-1\}^{\Z^2}$ with three properties: along every increasing sequence of finite sets whose union is $\Z^2$, the expectation of every local function under the finite-volume measures with coupling $J$, zero field and plus boundary condition converges to its $\nu$-integral; $\nu$ is invariant under all translations; and $\nu$ satisfies the identity of \cref{set:def-gibbs} for the Ising model with coupling $J$, for every finite set and every bounded measurable function. The sources are Theorems~3.17 and~6.5, Example~6.51 and Lemma~6.65 of \cite{FriedliVelenik17}.
+\end{itemize}
+The quotations in the hypothesis file were checked against the authors' revised chapter files of \cite{FriedliVelenik17}. Everything else is proved: the specialization of \texttt{H1} to the Ising models of \cref{set:dobrushin}, the existence of Gibbs measures by compactness, and \cref{set:peierls} from \texttt{H2}, including the minus state, the spin flip and the bound $\nu^+(\sigma_0=-1)\le1/3$. The existence of a universal machine uses neither hypothesis.
+
+\paragraph{Choices.} The formal statements render the printed ones with the following choices, and the proof takes one route that differs from the text.
+\begin{itemize}
+\item Theorem~A is stated for every machine $U$; the proof of \cref{thm:main} does not use universality. Corollary~B assumes only that $\mathcal H_U$ is undecidable, which is what its proof uses; the $\Sigma^0_1$-completeness of $\mathcal H_U$ is not formalized.
+\item A machine has the states $0,\dots,k$, with initial state $0$, which is not halting, and the tape symbols $0,\dots,m+1$, with blank $0$ and the symbol $1$. A move left from cell $0$ ends the run without halting. The machine constructed for \texttt{ExistsUniversal} never makes such a move. It is obtained from Mathlib's theorem that the halting problem for its partial recursive codes is undecidable, through Mathlib's simulation of these codes by Turing machines and a fold onto a one-sided tape with unary input.
+\item Gibbs kernels are finite sums over the fillings of $\Lambda$ and are defined at every boundary condition, with the value $0$ where $Z_\Lambda=0$; such boundary conditions are illegal, and Gibbs measures give them measure $0$. Test functions are real valued. ``Exactly one'' is unique existence, ``at least two'' is the existence of two different measures, and ``uncountably many'' is ``not countable''.
+\item A rational number is presented by a pair $(p,q)$ of natural numbers with $q>0$. That $\mathcal U$ is not decidable means that $p/q\in\mathcal U$ is not a computable predicate of $(p,q)$; that $n\mapsto\beta_n$ is computable means that a computable map gives a pair presenting $\beta_n$.
+\item The interaction is defined as a function of the machine; the remark that $U$ enters it only through the table of $M$ is not formalized. Colours, marks, bits and empty values are encoded by sum, option and Boolean types. Each choice of this kind is marked in a comment of the statement file.
+\item The existence halves of Steps~2 and~3 of the proof of \cref{thm:main} take another route. The formal proof starts from one Gibbs measure $\delta_{\mathfrak b_\tau}\otimes L(\nu)$, for one typical phase $\tau$, averages its translates over boxes and takes a cluster point, instead of forming the integral \eqref{prf:eq-disint} over Haar measure. In Step~3 it puts the plus and minus states on the lattice of one depth $d\in\mathcal D_n$, and it separates the two limits by the expected number of plus spins in the block $[0,4^{d+1})^2$, every translate of which contains a root of depth $d$.
+\end{itemize}
+
+\paragraph{What is proved.} The proof follows the paper. It formalizes every step that Theorem~A and Corollary~B use: \cref{sec:setting}, with \cref{set:dobrushin} from \texttt{H1} and \cref{set:peierls} from \texttt{H2}; \cref{sec:scaffold} with \cref{app:scaffold}; the properties of $\Phi$; \cref{sec:background} with the machine $M$ of \cref{app:machine}; \cref{sec:payload}; and \cref{sec:proof} up to \cref{cor:undecidable}. The parts of \cref{sec:scaffold} shared with \cite{DM26forget}, and the passage from Mathlib's partial recursive codes to Turing machines, are adapted from the authors' Lean formalization of that paper, published with its version~1.4.0. Three points take a different form: inside a contour, in \cref{set:peierls}, is defined by the parity of the crossings of a ray, so that the Jordan curve theorem is not needed; contours are counted more crudely than in the text, and only the bound $1/3$ is proved; and Haar measure on phases is the law of a sequence of independent uniform binary digits. The finite claim in the proof of \cref{app:parents} is checked by the Lean kernel by evaluation. The proof contains no unproved step (\texttt{sorry}).
+
+The formalization found no false step. It found three sentences of version~1.1.0 that were imprecise; they are corrected in this version (see ``How this work was done''). \Cref{sec:exact}, \cref{prf:rem-midpoint,prf:rem-flip}, the $\Sigma^0_1$-completeness of $\mathcal H_U$, which only \cref{prop:exact} uses, and the measurability clause of \cref{lem:freeze}(b), which the formal proof does not use, are not formalized.
+
+\paragraph{Toolchain and release.} The proof was developed with Lean v4.30.0 and an earlier Mathlib. For release it was ported to Lean~4.35.0 and Mathlib, with the commits
+\begin{flushleft}\small\leftskip1.5em
+Lean: \nolinkurl{eb6cafb7290e8bd5f2937522d8d804f58f02bafc},\\
+Mathlib: \nolinkurl{56a005855ea17e0b0958f73ec801ae140b0a1679}.
+\end{flushleft}
+The port changed the proofs of $70$ of the $1592$ theorems and lemmas of the source, in $26$ of its $75$ files, the proofs inside four instances, the construction of one auxiliary measure that occurs only in proofs (the same measure, built with a Mathlib construction that replaced a removed one), and the name of one class that Mathlib renamed. It changed no theorem statement. The statement file and the hypothesis file are byte for byte those of the development. The statement file is compiled with one elaboration option, \texttt{backward.isDefEq.respectTransparency} set to \texttt{false}, which Mathlib sets for the same derivation of finite enumerations. The sources, the pins and the records of the checks below are in the directory \texttt{lean/} of release v1.2.0 of the repository,
+\begin{flushleft}\small\leftskip1.5em
+\url{https://github.com/Apsiape/undecidable-phase-diagram/tree/v1.2.0/lean},
+\end{flushleft}
+whose \texttt{README.md} says how to reproduce them.
+\begin{itemize}
+\item \emph{The comparator.} A challenge file imports only Mathlib. It contains the statement file and the hypothesis file verbatim, each preceded by a command that sets the module name under which its definitions are recorded, so that their internal names agree with those of the development, which it does not import. It sets the elaboration option above for the copy of the statement file, and for the copy of the hypothesis file an option that keeps Lean from reusing an auxiliary definition generated in the copy of the statement file, as in the separate hypothesis module. It then states the three theorems above and leaves their proofs open. The comparator was run on Linux inside a bubblewrap sandbox, with the command
+\begin{flushleft}\small\leftskip1.5em
+\texttt{lake comparator -{}-config comparator.json}.
+\end{flushleft}
+It made its own exports of the challenge and of a solution file that imports the proofs, checked that the three proved theorems have exactly the statements of the challenge, with the same definitions, checked that their proofs use no axiom other than \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, and replayed the proofs in Lean's kernel. It accepted all three.
+\item \emph{Two kernel checkers.} An export of the solution, of $360{,}261{,}042$ bytes with SHA-256
+\begin{flushleft}\small\leftskip1.5em
+\nolinkurl{82e35c6a00ef8668bee634d50b92251cad5727bb371cf7b15c4adef1e3178ddf},
+\end{flushleft}
+contains the three theorems and every declaration on which they depend, those of Mathlib included. Two kernel checkers re-checked every declaration of this export and accepted it: \texttt{leanchecker} of Lean~4.35.0, which runs Lean's own kernel on its own, and \texttt{nanoda}, a separate implementation of Lean's type checker, set to reject any axiom other than the three above. With \texttt{Classical.choice} not permitted, \texttt{nanoda} rejects the export.
+\item \emph{Axioms and admissions.} The axiom audit of the build prints the axioms of $1269$ named results, the three final theorems first, checks the axioms of all $6276$ declarations of the development, private and generated ones included, and checks the types of the three final theorems. Only \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound} occur. For the final theorems it prints
+\begingroup\scriptsize
+\begin{verbatim}
+'UPD.theorem_A' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UPD.corollary_B' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UPD.existsUniversal' depends on axioms: [propext, Classical.choice, Quot.sound]
+\end{verbatim}
+\endgroup
+\noindent Apart from the three open proofs of the challenge, no proof uses \texttt{sorry}, and no file declares an axiom or uses \texttt{native\_decide}, \texttt{implemented\_by} or \texttt{extern}.
+\item \emph{Dependencies.} The $10{,}268$ source files of the dependencies agree with the list of hashes published with version~1.4.0 of \cite{DM26forget}, whose check found Mathlib's library sources byte for byte equal to those of the official commit above. The build reused prebuilt Mathlib objects; the two kernel checkers re-check every declaration of Mathlib that the proofs use.
+\end{itemize}

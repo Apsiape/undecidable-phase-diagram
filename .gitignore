@@ -6,3 +6,8 @@ notes/
 *.out
 *.toc
 *.fls
+lean/vendor/
+lean/.lake/
+lean/.build/
+lean/Solution.ndjson
+!lean/relay/**/*.log

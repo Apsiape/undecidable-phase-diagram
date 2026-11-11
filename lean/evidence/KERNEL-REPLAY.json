@@ -1,0 +1,112 @@
+{
+  "export_sha256": "82e35c6a00ef8668bee634d50b92251cad5727bb371cf7b15c4adef1e3178ddf",
+  "export_bytes": 360261042,
+  "export_receipt": "results/export-receipt.json",
+  "export_command": [
+    "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/leanexport",
+    "Solution",
+    "--",
+    "Quot",
+    "Quot.mk",
+    "Quot.lift",
+    "Quot.ind",
+    "UPD.theorem_A",
+    "UPD.corollary_B",
+    "UPD.existsUniversal",
+    "propext",
+    "Quot.sound",
+    "Classical.choice",
+    "Nat.add",
+    "Nat.sub",
+    "Nat.mul",
+    "Nat.pow",
+    "Nat.gcd",
+    "Nat.div",
+    "Nat.mod",
+    "Nat.beq",
+    "Nat.ble",
+    "Nat.land",
+    "Nat.lor",
+    "Nat.xor",
+    "Nat.shiftLeft",
+    "Nat.shiftRight",
+    "String.ofList",
+    "Char.ofNat",
+    "List",
+    "eagerReduce",
+    "Nat",
+    "String",
+    "String.mk",
+    "Char",
+    "optParam",
+    "autoParam",
+    "semiOutParam",
+    "outParam"
+  ],
+  "export_seconds": 15.057,
+  "export_peak_tree_rss_bytes": 3695329280,
+  "roots": [
+    "UPD.theorem_A",
+    "UPD.corollary_B",
+    "UPD.existsUniversal"
+  ],
+  "kernel_replays": {
+    "leanchecker": {
+      "exit": 0,
+      "seconds": 46.464,
+      "peak_tree_rss_bytes": 779800576,
+      "peak_tree_vms_bytes": 3534888960,
+      "stop_rss_bytes": 9000000000,
+      "memory_stop": false,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/leanchecker",
+        "--from-export",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/results/Solution.ndjson"
+      ],
+      "binary_path": "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/leanchecker",
+      "binary_sha256": "12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6",
+      "export_sha256": "82e35c6a00ef8668bee634d50b92251cad5727bb371cf7b15c4adef1e3178ddf",
+      "export_bytes": 360261042,
+      "host_free_before_bytes": 13124055040,
+      "linux_available_before_bytes": 15905783808,
+      "threads": 1,
+      "log_sha256": "b4a5a2119e1d34b46527d63317f417c74261b65eeb93f14026389da2519c2ead"
+    },
+    "nanoda": {
+      "exit": 0,
+      "seconds": 26.635,
+      "peak_tree_rss_bytes": 542973952,
+      "peak_tree_vms_bytes": 627597312,
+      "stop_rss_bytes": 9000000000,
+      "memory_stop": false,
+      "command": [
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/nanoda_bin",
+        "/opt/undecidable-phase-diagram-arxiv-2026-11-11/kernels/nanoda.json"
+      ],
+      "binary_path": "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/nanoda_bin",
+      "binary_sha256": "cbf13950fc4a48f635a0beceeb5ed32dd82568b870cfd081b6391c1f2cf02ba5",
+      "export_sha256": "82e35c6a00ef8668bee634d50b92251cad5727bb371cf7b15c4adef1e3178ddf",
+      "export_bytes": 360261042,
+      "host_free_before_bytes": 14385012736,
+      "linux_available_before_bytes": 15914397696,
+      "threads": 1,
+      "stack_rlimit_bytes": 134217728,
+      "config": {
+        "use_stdin": false,
+        "export_file_path": "/opt/undecidable-phase-diagram-arxiv-2026-11-11/results/Solution.ndjson",
+        "num_threads": 1,
+        "nat_extension": true,
+        "string_extension": true,
+        "permitted_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "unpermitted_axiom_hard_error": true
+      },
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "note": "Both replays use the Linux binaries of the pinned toolchain (the forgetting relay's Windows binaries live in a directory this relay may not read). Each runs serially under the process-tree RSS watchdog (stop at 9.0 GB, below the forgetting relay's 9.9 GB cap). nanoda runs with num_threads 1 (serial on the main thread) and a 128 MiB main-thread stack (RLIMIT_STACK), the stack of the forgetting relay's stack-reserve nanoda build.",
+  "status": "PASS"
+}

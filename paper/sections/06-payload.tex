@@ -9,7 +9,7 @@ Fix a typical $\tau$ and write $\mathfrak b=\mathfrak b_\tau$. This section show
 For $d\ge1$, the roots of depth $d$ are the sites $\mathbf r_d(m_1,m_2)$, $(m_1,m_2)\in\Z^2$ (\cref{bg:grids}(d)). For each $d$, $m_1$, $m_2$ there are two \emph{edges} with \emph{head} $v=\mathbf r_d(m_1,m_2)$: the horizontal edge with \emph{tail} $u=\mathbf r_d(m_1-1,m_2)$ and the vertical edge with tail $u=\mathbf r_d(m_1,m_2-1)$. Let $\xi(i,j)$ be the sites of the grid whose root is $v$, and let $N=N_d$. The \emph{private coordinates} $\eta_e$ of the horizontal edge $e$ are:
 \begin{itemize}
 \item the \emph{arm}: the wire values $w^{\mathrm E}(z,v_2)$ for $u_1\le z<v_1$ and $w^{\mathrm W}(z,v_2)$ for $u_1<z\le v_1$;
-\item if $\rho_d=1$, the \emph{sensor}: the components $x^-_{\mathrm h},x^+_{\mathrm h},y^-_{\mathrm h},y^+_{\mathrm h}$ of the cell records at $\xi(0,j)$, $j\in[0,N)$, and the components $x^-_{\mathrm h},x^+_{\mathrm h}$ of $\ell^{\mathrm S}$ and $\ell^{\mathrm N}$ at the sites of the column of $v$ from $\xi(0,0)$ to $\xi(0,N-1)$.
+\item if $\rho_d=1$, the \emph{sensor}: the components $x^-_{\mathrm h},x^+_{\mathrm h},y^-_{\mathrm h},y^+_{\mathrm h}$ of the cell records at $\xi(0,j)$, $j\in[0,N)$, and the components $x^-_{\mathrm h},x^+_{\mathrm h}$ of $\ell^{\mathrm S}$ and $\ell^{\mathrm N}$ at the sites of the column of $v$ from $\xi(0,0)$ to $\xi(0,N-1)$ where these colours are not $\circ$.
 \end{itemize}
 The private coordinates of the vertical edge are defined in the same way, with the wire values $w^{\mathrm N}$, $w^{\mathrm S}$ along the column of $v$ and the sensor components with subscript $\mathrm v$.
 
@@ -30,7 +30,7 @@ where ``arm $\equiv\sigma_u$'' means that all wire values of the arm equal $\sig
 
 Fixed coordinates: on an unmarked row all wire values are $\square$ by (P1), and every wire coordinate on a marked row lies in an arm. Outside the first logical column of a grid, (C8) and (C9) set $x=y=0$ and $\ell^{\mathrm N}_x=0$ at every active site, so by (K2) and matching every $x$ component of a vertical colour there is $0$, and at non-carriers the vertical colour is $\circ$. In the first column of a grid with $\rho_d=0$, (C8) sets $x=0$ at the root, the copies along the column are then $0$, and (C9) gives $y=0$. These are all the payload coordinates outside the arms, the sensors of ready grids and the spins.
 
-(b) The payload enters only (P1)--(P3), (C8), (C9) and the charge, and these split into conditions of the kinds listed in \cref{int:sub-split}. We go through them, given the background.
+(b) The payload enters only (K2), (P1)--(P3), (C8), (C9), the matching of colours and the charge, and these split into conditions of the kinds listed in \cref{int:sub-split}. We go through them, given the background.
 \begin{itemize}
 \item (P1) on a root row: at the tail root $w^{\mathrm E}(u)=\sigma_u$, and at every other site $w^{\mathrm E}=w^{\mathrm W}$; with matching across edges, the arm of $e$ has all values equal to $\sigma_u$, and all values lie in $\{+1,-1\}$. These are conditions on the arm and $\sigma_u$.
 \item (C8) along the first column of a ready grid, with (K2) along its channels: the copies of each switch equal its value at the root, and the root value is free. These are conditions on one switch of one sensor.

@@ -1,0 +1,23 @@
+{
+  "exit": 1,
+  "seconds": 0.102,
+  "peak_tree_rss_bytes": 3203072,
+  "peak_tree_vms_bytes": 5275648,
+  "stop_rss_bytes": 9000000000,
+  "memory_stop": false,
+  "purpose": "negative control: same export, Classical.choice removed from permitted_axioms; nanoda must reject",
+  "config": {
+    "use_stdin": false,
+    "export_file_path": "/opt/undecidable-phase-diagram-arxiv-2026-11-11/results/Solution.ndjson",
+    "num_threads": 1,
+    "nat_extension": true,
+    "string_extension": true,
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "unpermitted_axiom_hard_error": true
+  },
+  "expected": "nonzero exit",
+  "log_tail": "Error: export file declares unpermitted axiom \"Classical.choice\"\n\nrun with `-h` or `--help` for help\n"
+}

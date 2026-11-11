@@ -1,0 +1,21 @@
+{
+  "exit": 0,
+  "seconds": 46.464,
+  "peak_tree_rss_bytes": 779800576,
+  "peak_tree_vms_bytes": 3534888960,
+  "stop_rss_bytes": 9000000000,
+  "memory_stop": false,
+  "command": [
+    "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/leanchecker",
+    "--from-export",
+    "/opt/undecidable-phase-diagram-arxiv-2026-11-11/results/Solution.ndjson"
+  ],
+  "binary_path": "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/leanchecker",
+  "binary_sha256": "12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6",
+  "export_sha256": "82e35c6a00ef8668bee634d50b92251cad5727bb371cf7b15c4adef1e3178ddf",
+  "export_bytes": 360261042,
+  "host_free_before_bytes": 13124055040,
+  "linux_available_before_bytes": 15905783808,
+  "threads": 1,
+  "log_sha256": "b4a5a2119e1d34b46527d63317f417c74261b65eeb93f14026389da2519c2ead"
+}

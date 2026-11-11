@@ -1,0 +1,7 @@
+#!/usr/bin/python3
+from pathlib import Path
+import os,sys,time,json
+W=Path(__file__).resolve().parent
+args=sys.argv[1:];i=args.index('--');args=args[:i]+['--setenv','LEAN_NUM_THREADS','1']+args[i:]
+with (W/'bwrap-invocations.ndjson').open('a') as f:f.write(json.dumps({'utc_epoch':time.time(),'pid':os.getpid(),'arguments':args})+'\n')
+exe=str(W/'bubblewrap/usr/bin/bwrap');os.execv(exe,[exe,*args])

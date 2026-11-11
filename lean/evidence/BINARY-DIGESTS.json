@@ -1,0 +1,41 @@
+{
+  "records": [
+    {
+      "path": "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lean",
+      "bytes": 9024,
+      "sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+      "same_as_forgetting_relay_binary": true
+    },
+    {
+      "path": "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/lake",
+      "bytes": 13416,
+      "sha256": "8ba83c98f76562d03b8dbc33f1057151ba6cbb121679dde76b2260ccc90495e1",
+      "same_as_forgetting_relay_binary": true
+    },
+    {
+      "path": "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/leanexport",
+      "bytes": 700728,
+      "sha256": "f6a6483d518a11b323c28b9bac176d2220df0e9fc3230833815db9586669c074",
+      "same_as_forgetting_relay_binary": true
+    },
+    {
+      "path": "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/leanchecker",
+      "bytes": 59656,
+      "sha256": "12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6",
+      "same_as_forgetting_relay_binary": true
+    },
+    {
+      "path": "/opt/undecidable-phase-diagram-arxiv-2026-11-11/toolchain/bin/nanoda_bin",
+      "bytes": 1339280,
+      "sha256": "cbf13950fc4a48f635a0beceeb5ed32dd82568b870cfd081b6391c1f2cf02ba5",
+      "same_as_forgetting_relay_binary": true
+    },
+    {
+      "path": "/opt/undecidable-phase-diagram-arxiv-2026-11-11/bubblewrap/usr/bin/bwrap",
+      "bytes": 72160,
+      "sha256": "e318903862396f96de3df57264e0158682b952fd3fb53ac23d876413e7b30f71",
+      "same_as_forgetting_relay_binary": true
+    }
+  ],
+  "toolchain": "cp -a of /opt/forgetting-arxiv-2026-11-10/toolchain (Lean 4.35.0, eb6cafb7290e8bd5f2937522d8d804f58f02bafc)"
+}

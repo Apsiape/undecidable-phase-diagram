@@ -1,0 +1,12 @@
+{
+  "use_stdin": false,
+  "export_file_path": "/opt/undecidable-phase-diagram-arxiv-2026-11-11/results/Solution.ndjson",
+  "num_threads": 1,
+  "nat_extension": true,
+  "string_extension": true,
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound"
+  ],
+  "unpermitted_axiom_hard_error": true
+}

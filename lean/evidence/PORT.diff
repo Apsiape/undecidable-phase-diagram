@@ -1,0 +1,770 @@
+--- original/UndecidablePhaseDiagram/Background/BgMap.lean
++++ ported/UndecidablePhaseDiagram/Background/BgMap.lean
+@@ -136,6 +136,7 @@
+     MLevel (fun ω => decide (P ω)) := by
+   have := MLevel.ite (α := Bool) hP (MLevel.const true) (MLevel.const false)
+   convert this using 2 with ω
++  by_cases h : P ω <;> simp [h]
+ 
+ theorem MLevel.wdL {S : Type} {W : Ω → ℤ → Option S} (hW : ∀ x, MLevel fun ω => W ω x) (z : ℤ) :
+     MLevel (fun ω => UPD.BG.wdL (W ω) z) := by
+@@ -473,7 +474,7 @@
+ 
+ /-- **`prop:background`(a)**: `τ ↦ 𝔟_τ` is measurable. -/
+ theorem measurable_bgMap : Measurable (bgMap U) :=
+-  measurable_pi_lambda _ fun ξ => measurable_to_countable' fun v => mlevel_bgMap ξ v
++  Measurable.of_eval fun ξ => measurable_to_countable' fun v => mlevel_bgMap ξ v
+ 
+ /-! ## `prop:background`(c): the law of the background -/
+ 
+@@ -484,14 +485,14 @@
+ def phaseMap (ω : Config (SiteVal U)) : ℕ → Bool × Bool := qphaseOf (quartersOf ω)
+ 
+ theorem measurable_quartersOf : Measurable (quartersOf (U := U)) :=
+-  measurable_pi_lambda _ fun ξ => (measurable_from_top (f := fun s : SiteVal U => s.q)).comp
++  Measurable.of_eval fun ξ => (measurable_from_top (f := fun s : SiteVal U => s.q)).comp
+     (measurable_pi_apply ξ)
+ 
+ theorem measurable_phaseMap : Measurable (phaseMap (U := U)) :=
+   measurable_qphaseOf.comp measurable_quartersOf
+ 
+ theorem measurable_bgOf : Measurable (bgOf (U := U)) :=
+-  measurable_pi_lambda _ fun ξ => (measurable_from_top (f := fun s : SiteVal U => bgPart s)).comp
++  Measurable.of_eval fun ξ => (measurable_from_top (f := fun s : SiteVal U => bgPart s)).comp
+     (measurable_pi_apply ξ)
+ 
+ theorem quartersOf_shift (a : Plane) (ω : Config (SiteVal U)) :
+@@ -518,7 +519,7 @@
+ translation-invariant law of `𝔸^q`. -/
+ theorem isTILaw_quarters : IsTILaw {Y : Plane → Quarter | IsQTiling Y} (μ.map quartersOf) := by
+   have hm := measurable_quartersOf (U := U)
+-  refine ⟨Measure.isProbabilityMeasure_map hm.aemeasurable, ?_, fun a => ?_⟩
++  refine ⟨(Measure.isProbabilityMeasure_map_iff hm.aemeasurable).2 inferInstance, ?_, fun a => ?_⟩
+   · rw [Measure.map_apply hm measurableSet_qTilings]
+     refine le_antisymm prob_le_one ?_
+     rw [← hleg]
+--- original/UndecidablePhaseDiagram/Background/Conditioning.lean
++++ ported/UndecidablePhaseDiagram/Background/Conditioning.lean
+@@ -318,15 +318,15 @@
+   measurable_phaseMap.prodMk measurable_id
+ 
+ instance : IsProbabilityMeasure (jointLaw μ) :=
+-  Measure.isProbabilityMeasure_map measurable_phase_id.aemeasurable
++  (Measure.isProbabilityMeasure_map_iff measurable_phase_id.aemeasurable).2 inferInstance
+ 
+ omit [IsProbabilityMeasure μ] in
+ theorem jointLaw_fst : (jointLaw μ).fst = μ.map phaseMap :=
+-  Measure.fst_map_prodMk measurable_id
++  Measure.fst_map_prodMk measurable_phaseMap measurable_id
+ 
+ omit [IsProbabilityMeasure μ] in
+ theorem jointLaw_snd : (jointLaw μ).snd = μ := by
+-  rw [jointLaw, Measure.snd_map_prodMk measurable_phaseMap, Measure.map_id']
++  rw [jointLaw, Measure.snd_map_prodMk measurable_phaseMap measurable_id', Measure.map_id']
+ 
+ /-- The conditional laws `μ^τ` of `μ` given the phase `τ(ω)`. -/
+ def condLaw : Kernel (ℕ → Bool × Bool) (Config (SiteVal U)) := (jointLaw μ).condKernel
+@@ -334,7 +334,7 @@
+ instance : IsMarkovKernel (condLaw μ) := by unfold condLaw; infer_instance
+ 
+ instance : IsProbabilityMeasure (μ.map phaseMap) :=
+-  Measure.isProbabilityMeasure_map measurable_phaseMap.aemeasurable
++  (Measure.isProbabilityMeasure_map_iff measurable_phaseMap.aemeasurable).2 inferInstance
+ 
+ theorem jointLaw_eq : jointLaw μ = (μ.map phaseMap) ⊗ₘ condLaw μ := by
+   rw [← jointLaw_fst]; exact (Measure.disintegrate (jointLaw μ) (jointLaw μ).condKernel).symm
+--- original/UndecidablePhaseDiagram/Background/Unique.lean
++++ ported/UndecidablePhaseDiagram/Background/Unique.lean
+@@ -522,7 +522,6 @@
+     by_cases ha : (ω (x, y)).IsActive
+     · right
+       obtain ⟨d, m1, m2, i, j, hd, hi, hj, e⟩ := hs.active_grid ha
+-      simp only
+       rw [e, hs.lE_grid hd m1 m2 hi hj, hs'.lE_grid hd m1 m2 hi hj]
+     · left
+       have ha' : ¬ (ω' (x, y)).IsActive := by rwa [← hs.active_iff hs']
+@@ -550,18 +549,16 @@
+     refine corridor (f := fun y => (ω (x, y)).lN.map VCol.bg)
+       (g := fun y => (ω (x, y)).lS.map VCol.bg)
+       (f' := fun y => (ω' (x, y)).lN.map VCol.bg) (g' := fun y => (ω' (x, y)).lS.map VCol.bg)
+-      (fun y => by simp only; rw [hs.lN_eq x y]) (fun y => by simp only; rw [hs'.lN_eq x y])
++      (fun y => by rw [hs.lN_eq x y]) (fun y => by rw [hs'.lN_eq x y])
+       (by simp only; rw [hwall hs, hwall hs']) (fun y hy1 hy2 => ?_) z h1.le h2
+     have hVy : (ω (x, y)).IsVCarrier := (hs.routing_b_v (x, y)).2 ⟨m, hy1, hy2⟩
+     by_cases ha : (ω (x, y)).IsActive
+     · right
+       obtain ⟨d, m1, m2, i, j, hd, hi, hj, e⟩ := hs.active_grid ha
+-      simp only
+       rw [e, hs.lN_grid hd m1 m2 hi hj, hs'.lN_grid hd m1 m2 hi hj]
+     · left
+       have ha' : ¬ (ω' (x, y)).IsActive := by rwa [← hs.active_iff hs']
+       have hVy' : (ω' (x, y)).IsVCarrier := (hs.vcarrier_iff hs' _).1 hVy
+-      simp only
+       rw [(hs.K2 _).2 ⟨hVy, fun hH => ha ⟨hH, hVy⟩⟩, (hs'.K2 _).2 ⟨hVy', fun hH => ha' ⟨hH, hVy'⟩⟩]
+       exact ⟨rfl, rfl⟩
+   · have hV' : ¬ (ω' (x, z)).IsVCarrier := by rwa [← hs.vcarrier_iff hs']
+--- original/UndecidablePhaseDiagram/Compiler/Encode.lean
++++ ported/UndecidablePhaseDiagram/Compiler/Encode.lean
+@@ -110,7 +110,8 @@
+ 
+ /-- One step of the numbered machine is the numbered image of one step of `A`. -/
+ theorem step_cfgMap (c : Cfg σ γ) :
+-    (A.toMachine h0 h1).step (A.cfgMap h0 h1 c) = (A.step c).map (A.cfgMap h0 h1) := by
++    (A.toMachine h0 h1).step (A.cfgMap h0 h1 c) = (A.step c).map (A.cfgMap h0 h1) :=
++  set_option backward.isDefEq.respectTransparency false in by
+   obtain ⟨s, h, τ⟩ := c
+   simp only [Machine.step, step, cfgMap, toMachine, Function.comp_apply, Equiv.symm_apply_apply]
+   generalize A.trans s (τ h) = t
+@@ -120,12 +121,11 @@
+     · simp [hh]
+     · simp only [hh, Bool.false_eq_true, ↓reduceIte, Option.map_some, cfgMap,
+         Function.comp_update]
+-      rfl
+   · simp only [↓reduceIte, Option.map_some, cfgMap, Function.comp_update]
+-    rfl
+ 
+ /-- The numbered machine starts at the numbered image of the start of `A`. -/
+-theorem start_cfgMap (n : ℕ) : (A.toMachine h0 h1).start n = A.cfgMap h0 h1 (A.start n) := by
++theorem start_cfgMap (n : ℕ) : (A.toMachine h0 h1).start n = A.cfgMap h0 h1 (A.start n) :=
++  set_option backward.isDefEq.respectTransparency false in by
+   simp only [Machine.start, start, cfgMap]
+   congr 1
+   · exact A.stateEquiv_init.symm
+--- original/UndecidablePhaseDiagram/Compiler/Universal.lean
++++ ported/UndecidablePhaseDiagram/Compiler/Universal.lean
+@@ -226,7 +226,8 @@
+ 
+ /-- `M₀` halts on `input m` iff `lenFun` is defined at `m`. -/
+ theorem eval_dom (m : ℕ) : (TM0.eval M₀ (input m)).Dom ↔ (lenFun m).Dom := by
+-  rw [M₀, TM1to0.tr_eval, input, M₁, TM2to1.tr_eval_dom]
++  rw [M₀, TM1to0.tr_eval, input, M₁]
++  erw [TM2to1.tr_eval_dom]
+   change (StateTransition.eval (TM2.step tr) (TM2.init K'.main (trList [m]))).Dom ↔ _
+   rw [init_eq, tr_eval, lenCode_eval]
+   exact Iff.rfl
+@@ -293,6 +294,7 @@
+   simp only [input, TM2to1.trInit, trList, trNat_ones, List.reverse_append,
+     List.reverse_cons, List.reverse_nil, List.nil_append, List.reverse_replicate,
+     List.singleton_append, List.map_cons, List.map_replicate, List.headI_cons, List.tail_cons]
++  erw [List.map_cons, List.headI_cons, List.tail_cons, List.map_replicate]
+   rfl
+ 
+ theorem a1_ne : a1 ≠ default := by
+--- original/UndecidablePhaseDiagram/Gibbs/Average.lean
++++ ported/UndecidablePhaseDiagram/Gibbs/Average.lean
+@@ -153,7 +153,7 @@
+ 
+ /-- `T_a` is measurable. -/
+ theorem measurable_shiftConfig (a : Plane) : Measurable (shift a : Config S → Config S) :=
+-  measurable_pi_lambda _ fun ξ => measurable_pi_apply (ξ - a)
++  Measurable.of_eval fun ξ => measurable_pi_apply (ξ - a)
+ 
+ /-- `T_a (T_b μ) = T_{a+b} μ`. -/
+ theorem map_shift_map_shift (μ : Measure (Config S)) (a b : Plane) :
+@@ -205,7 +205,7 @@
+   obtain ⟨hP, hL, hD⟩ := hμ
+   haveI := hP
+   have hm := measurable_shiftConfig (S := S) a
+-  refine ⟨Measure.isProbabilityMeasure_map hm.aemeasurable, ?_, fun Λ F hF ⟨C, hC⟩ => ?_⟩
++  refine ⟨(Measure.isProbabilityMeasure_map_iff hm.aemeasurable).2 inferInstance, ?_, fun Λ F hF ⟨C, hC⟩ => ?_⟩
+   · rw [Measure.map_apply hm (measurableSet_legal hΦ)]
+     have e : shift a ⁻¹' {ω : Config S | IsLegal Φ ω} = {ω | IsLegal Φ ω} := by
+       ext ω
+@@ -346,7 +346,7 @@
+     {f : Config S → ℝ} (hf : Measurable f) {C : ℝ} (hC : ∀ ω, |f ω| ≤ C) :
+     ∫ ω, f ω ∂(avgMeasure μ n) = boxAvg μ f n := by
+   have hint : ∀ a ∈ avgBox n, Integrable f (μ.map (shift a)) := fun a _ => by
+-    haveI := Measure.isProbabilityMeasure_map (μ := μ) (measurable_shiftConfig a).aemeasurable
++    haveI := (Measure.isProbabilityMeasure_map_iff (μ := μ) (measurable_shiftConfig a).aemeasurable).2 inferInstance
+     exact Integrable.of_bound hf.aestronglyMeasurable C
+       (ae_of_all _ fun ω => by rw [Real.norm_eq_abs]; exact hC ω)
+   rw [avgMeasure, integral_smul_measure, integral_finsetSum_measure hint, ENNReal.toReal_inv,
+--- original/UndecidablePhaseDiagram/Gibbs/Compare.lean
++++ ported/UndecidablePhaseDiagram/Gibbs/Compare.lean
+@@ -134,7 +134,7 @@
+ 
+ theorem measurable_comp_equiv {α β : Type} (f : α ≃ β) :
+     Measurable (fun (x : α → E) (b : β) => x (f.symm b)) :=
+-  measurable_pi_lambda _ fun _ => measurable_pi_apply _
++  Measurable.of_eval fun _ => measurable_pi_apply _
+ 
+ /-- **Same supports and weight ratios give the same Gibbs measures** (along `x ↦ x ∘ e.symm`). -/
+ theorem isGibbs_iff_of_ratio [Countable I] [Countable I']
+--- original/UndecidablePhaseDiagram/Gibbs/Elim.lean
++++ ported/UndecidablePhaseDiagram/Gibbs/Elim.lean
+@@ -108,6 +108,7 @@
+ omit [DecidableEq V] in
+ theorem mem_privSet {e : Ed} {i : ECoord V Ed Q} : i ∈ privSet e ↔ ∃ q, i = Sum.inr ⟨e, q⟩ := by
+   simp [privSet, eq_comm]
++  exact Iff.rfl
+ 
+ /-- **The specification `γ` of `pay:elim`**: the factors `W_e` (`Sum.inl e`) and `κ_v`
+ (`Sum.inr v`) on all coordinates. -/
+@@ -426,7 +427,7 @@
+   | Sum.inr ⟨e, q⟩ => p.2 (e, p.1 (D.tail e), p.1 (D.head e)) q
+ 
+ theorem measurable_assembleL : Measurable D.assembleL := by
+-  refine measurable_pi_lambda _ fun i => ?_
++  refine Measurable.of_eval fun i => ?_
+   rcases i with v | ⟨e, q⟩
+   · exact (measurable_pi_apply v).comp measurable_fst
+   · have hg : Measurable fun r : (∀ k : Ed × E × E, Q k.1 → E) × (E × E) =>
+@@ -444,12 +445,12 @@
+   (ν.prod D.samples).map D.assembleL
+ 
+ instance (ν : Measure (V → E)) [IsProbabilityMeasure ν] : IsProbabilityMeasure (D.lift ν) :=
+-  Measure.isProbabilityMeasure_map D.measurable_assembleL.aemeasurable
++  (Measure.isProbabilityMeasure_map_iff D.measurable_assembleL.aemeasurable).2 inferInstance
+ 
+ omit [DecidableEq V] [DecidableEq Ed] [∀ e, Fintype (Q e)] [∀ e, DecidableEq (Q e)]
+   [Fintype E] [DecidableEq E] [DiscreteMeasurableSpace E] in
+ theorem measurable_spins : Measurable (spins : (ECoord V Ed Q → E) → V → E) :=
+-  measurable_pi_lambda _ fun _ => measurable_pi_apply _
++  Measurable.of_eval fun _ => measurable_pi_apply _
+ 
+ /-- The spin marginal of `L(ν)` is `ν`. -/
+ theorem map_spins_lift (ν : Measure (V → E)) [IsProbabilityMeasure ν] :
+@@ -756,7 +757,7 @@
+     (hμ : D.gamma.toHard.IsGibbs μ) : D.gammaBar.toHard.IsGibbs (μ.map spins) := by
+   haveI := hμ.1
+   haveI : IsProbabilityMeasure (μ.map spins) :=
+-    Measure.isProbabilityMeasure_map measurable_spins.aemeasurable
++    (Measure.isProbabilityMeasure_map_iff measurable_spins.aemeasurable).2 inferInstance
+   refine D.gammaBar.toHard.isGibbs_of_db ?_ fun T => ⟨T, Finset.Subset.refl _, fun J₀ => ?_⟩
+   · rw [ae_map_iff measurable_spins.aemeasurable D.gammaBar.toHard.measurableSet_pos]
+     filter_upwards [hμ.2.1] with x hx
+@@ -830,7 +831,7 @@
+   classical
+   haveI := hμ.1
+   haveI : IsProbabilityMeasure (μ.map spins) :=
+-    Measure.isProbabilityMeasure_map measurable_spins.aemeasurable
++    (Measure.isProbabilityMeasure_map_iff measurable_spins.aemeasurable).2 inferInstance
+   refine D.ext_closed fun T F hTF a => ?_
+   rw [D.lift_cyl_real _ hTF a, map_spins_real]
+   obtain ⟨Fp, hFp⟩ : ∃ Fp : Finset Ed, Fp = F.filter fun e => Nonempty (Q e) := ⟨_, rfl⟩
+--- original/UndecidablePhaseDiagram/Gibbs/Existence.lean
++++ ported/UndecidablePhaseDiagram/Gibbs/Existence.lean
+@@ -214,7 +214,6 @@
+     · simp [Set.indicator, hω, mt hiff.2 hω]
+   refine ⟨ν, ws.isDLR_of_isGibbsMeasure ⟨inferInstance, fun Λ A hA => ?_⟩⟩
+   have h := congrArg (fun m : Measure (I → E) => m A) (hcomp Λ)
+-  simp only at h
+   rw [Measure.bind_apply hA (ws.markovKernel Λ).aemeasurable] at h
+   exact h
+ 
+--- original/UndecidablePhaseDiagram/Gibbs/Hard.lean
++++ ported/UndecidablePhaseDiagram/Gibbs/Hard.lean
+@@ -129,7 +129,7 @@
+               rw [if_pos hself]
+           _ ≤ ∑ ζ' : Δ → E, if AgreeOff Λ ζ' ζ'' then ws.W Λ (f ζ') else 0 :=
+               Finset.single_le_sum (f := fun ζ' => if AgreeOff Λ ζ' ζ'' then ws.W Λ (f ζ') else 0)
+-                (fun ζ' _ => by dsimp only; split_ifs; exacts [ws.nonneg _ _, le_rfl])
++                (fun ζ' _ => by split_ifs; exacts [ws.nonneg _ _, le_rfl])
+                 (Finset.mem_univ ζ'')
+       have hW : ws.W Λ (f ζ'') = 0 := le_antisymm (hz ▸ hle) (ws.nonneg _ _)
+       have hWΔ : ws.W Δ (f ζ'') = 0 := ws.support Λ Δ hΛΔ _ hW
+--- original/UndecidablePhaseDiagram/Gibbs/Product.lean
++++ ported/UndecidablePhaseDiagram/Gibbs/Product.lean
+@@ -289,13 +289,13 @@
+ 
+ omit [DecidableEq V] [DecidableEq ι] in
+ theorem measurable_splitAt (c : V → ι) (i : ι) : Measurable (splitAt (E := E) c i) :=
+-  (measurable_pi_lambda _ fun v => measurable_pi_apply v.1).prodMk
+-    (measurable_pi_lambda _ fun v => measurable_pi_apply v.1)
++  (Measurable.of_eval fun v => measurable_pi_apply v.1).prodMk
++    (Measurable.of_eval fun v => measurable_pi_apply v.1)
+ 
+ omit [DecidableEq V] in
+ theorem measurable_joinAt (c : V → ι) (i : ι) :
+     Measurable (fun p : ({v // c v = i} → E) × ({v // c v ≠ i} → E) => joinAt c i p.1 p.2) := by
+-  refine measurable_pi_lambda _ fun v => ?_
++  refine Measurable.of_eval fun v => ?_
+   by_cases h : c v = i
+   · simp only [joinAt, h, dif_pos]
+     exact (measurable_pi_apply _).comp measurable_fst
+@@ -308,7 +308,7 @@
+ 
+ omit [DecidableEq V] [DecidableEq ι] in
+ theorem measurable_glue (c : V → ι) : Measurable (glue (E := E) c) :=
+-  measurable_pi_lambda _ fun v => (measurable_pi_apply v).comp (measurable_pi_apply (c v))
++  Measurable.of_eval fun v => (measurable_pi_apply v).comp (measurable_pi_apply (c v))
+ 
+ omit [DecidableEq V] [DecidableEq ι] in
+ /-- **Independence of the components** under the product measure: the law of the split of the
+@@ -324,9 +324,9 @@
+   let rF : (V → E) → ({v // c v = i} → E) := fun σ v => σ v.1
+   let g : ({j // j ≠ i} → V → E) → ({v // c v ≠ i} → E) := fun y v => y ⟨c v.1, v.2⟩ v.1
+   have hX : Measurable X := measurable_pi_apply i
+-  have hY : Measurable Y := measurable_pi_lambda _ fun j => measurable_pi_apply j.1
+-  have hrF : Measurable rF := measurable_pi_lambda _ fun v => measurable_pi_apply v.1
+-  have hg : Measurable g := measurable_pi_lambda _ fun v =>
++  have hY : Measurable Y := Measurable.of_eval fun j => measurable_pi_apply j.1
++  have hrF : Measurable rF := Measurable.of_eval fun v => measurable_pi_apply v.1
++  have hg : Measurable g := Measurable.of_eval fun v =>
+     (measurable_pi_apply v.1).comp (measurable_pi_apply (⟨c v.1, v.2⟩ : {j // j ≠ i}))
+   have hsplit : splitAt c i ∘ glue c = Prod.map rF g ∘ (fun x => (X x, Y x)) := by
+     funext x
+@@ -358,7 +358,7 @@
+     exact indep_of_indep_of_le_right (indep_of_indep_of_le_left h1 hle1) hle2
+   have hjoint := (indepFun_iff_map_prod_eq_prod_map_map hX.aemeasurable hY.aemeasurable).1 hind
+   have hR : Measurable (fun σ : V → E => fun v : {v // c v ≠ i} => σ v.1) :=
+-    measurable_pi_lambda _ fun v => measurable_pi_apply v.1
++    Measurable.of_eval fun v => measurable_pi_apply v.1
+   rw [Measure.map_map (measurable_splitAt c i) (measurable_glue c), hsplit,
+     ← Measure.map_map (hrF.prodMap hg) (hX.prodMk hY), hjoint,
+     ← Measure.map_prod_map _ _ hrF hg]
+@@ -504,12 +504,11 @@
+       ((ν i).map (fun σ (v : {v // c v = i}) => σ v.1))) :
+     G.toWeightSystem.IsDLR ((Measure.infinitePi ν).map (glue c)) := by
+   have : IsProbabilityMeasure ((Measure.infinitePi ν).map (glue c)) :=
+-    Measure.isProbabilityMeasure_map (measurable_glue c).aemeasurable
++    (Measure.isProbabilityMeasure_map_iff (measurable_glue c).aemeasurable).2 inferInstance
+   refine G.isDLR_of_components hc fun i A F hF hb => ?_
+   have : IsProbabilityMeasure (((Measure.infinitePi ν).map (glue c)).map
+       (fun σ (v : {v // c v ≠ i}) => σ v.1)) :=
+-    Measure.isProbabilityMeasure_map
+-      (measurable_pi_lambda _ fun v => measurable_pi_apply v.1).aemeasurable
++    (Measure.isProbabilityMeasure_map_iff (Measurable.of_eval fun v => measurable_pi_apply v.1).aemeasurable).2 inferInstance
+   exact G.dlr_component hc i (map_splitAt_glue c ν i) (hν i) A hF hb
+ 
+ end IsingGraph
+@@ -607,8 +606,8 @@
+     G'.toWeightSystem.IsDLR (ν.map (fun σ => σ ∘ φ.e.symm)) := by
+   obtain ⟨hν, hdlr⟩ := h
+   have hm : Measurable (fun σ : V → Spin => σ ∘ φ.e.symm) :=
+-    measurable_pi_lambda _ fun w => measurable_pi_apply _
+-  refine ⟨Measure.isProbabilityMeasure_map hm.aemeasurable, fun Λ' F hF hb => ?_⟩
++    Measurable.of_eval fun w => measurable_pi_apply _
++  refine ⟨(Measure.isProbabilityMeasure_map_iff hm.aemeasurable).2 inferInstance, fun Λ' F hF hb => ?_⟩
+   have hΛ : (Λ'.map φ.e.symm.toEmbedding).map φ.e.toEmbedding = Λ' := by
+     ext w; simp
+   have hH : Measurable (fun σ' => G'.toWeightSystem.expect Λ' σ' F) :=
+--- original/UndecidablePhaseDiagram/Gibbs/Recode.lean
++++ ported/UndecidablePhaseDiagram/Gibbs/Recode.lean
+@@ -154,11 +154,11 @@
+ omit [DecidableEq V] [DecidableEq K] [Fintype E] [DecidableEq E] [DiscreteMeasurableSpace E]
+   [Countable V] in
+ theorem measurable_recode : Measurable (fun (σ : V → Spin) (v : V) => ι (σ v)) :=
+-  measurable_pi_lambda _ fun v => Measurable.of_discrete.comp (measurable_pi_apply v)
++  Measurable.of_eval fun v => Measurable.of_discrete.comp (measurable_pi_apply v)
+ 
+ omit [DecidableEq V] [DecidableEq K] [Fintype E] [DecidableEq E] [Countable V] in
+ theorem measurable_decode : Measurable (fun (x : V → E) (v : V) => r (x v)) :=
+-  measurable_pi_lambda _ fun v => Measurable.of_discrete.comp (measurable_pi_apply v)
++  Measurable.of_eval fun v => Measurable.of_discrete.comp (measurable_pi_apply v)
+ 
+ /-- **`pay:effective`, the recoding (Ising to factors)**: the image `ν.map (ι ∘ ·)` of a Gibbs
+ measure `ν` of the Ising model on `G` is Gibbs for the factor system. -/
+--- original/UndecidablePhaseDiagram/Gibbs/Transport.lean
++++ ported/UndecidablePhaseDiagram/Gibbs/Transport.lean
+@@ -60,7 +60,7 @@
+       ∀ x ∈ A, ∀ G : (I' → E') → ℝ, ws'.expect Λ'' (f x) G = ws.expect Λ x (fun y => G (f y)))
+     {μ : Measure (I → E)} (hμ : ws.IsGibbs μ) (hA : ∀ᵐ x ∂μ, x ∈ A) : ws'.IsGibbs (μ.map f) := by
+   haveI := hμ.1
+-  refine ⟨Measure.isProbabilityMeasure_map hf.aemeasurable, ?_, fun Λ' G hG hb => ?_⟩
++  refine ⟨(Measure.isProbabilityMeasure_map_iff hf.aemeasurable).2 inferInstance, ?_, fun Λ' G hG hb => ?_⟩
+   · rw [ae_map_iff hf.aemeasurable ws'.measurableSet_pos]
+     filter_upwards [hA] with x hx using hpos x hx
+   · obtain ⟨Λ'', hsub, Λ, hk⟩ := hker Λ'
+--- original/UndecidablePhaseDiagram/Gibbs/Weights.lean
++++ ported/UndecidablePhaseDiagram/Gibbs/Weights.lean
+@@ -141,7 +141,7 @@
+       exact hf ω _ (fun i hi => by simp [fillOn, hi])
+     rw [hfac]
+     exact (measurable_of_countable _).comp
+-      (measurable_pi_lambda _ (fun x => measurable_pi_apply x.1))
++      (Measurable.of_eval (fun x => measurable_pi_apply x.1))
+ 
+ /-- A set of configurations that depends on finitely many coordinates is measurable. -/
+ theorem measurableSet_of_dependsOn [Finite E] [DiscreteMeasurableSpace E] (D : Finset I)
+--- original/UndecidablePhaseDiagram/Payload/Bridge.lean
++++ ported/UndecidablePhaseDiagram/Payload/Bridge.lean
+@@ -48,12 +48,12 @@
+ def ofCoords (b : Plane → BgVal U) (c : Coord → PV) : Config (SiteVal U) := assemble b (decodeC c)
+ 
+ theorem measurable_toCoords : Measurable (toCoords (U := U)) := by
+-  refine measurable_pi_lambda _ fun x => ?_
++  refine Measurable.of_eval fun x => ?_
+   exact (measurable_of_countable (fun s : SiteVal U => encode (payPart s) x.2)).comp
+     (measurable_pi_apply x.1)
+ 
+ theorem measurable_ofCoords (b : Plane → BgVal U) : Measurable (ofCoords b) := by
+-  refine measurable_pi_lambda _ fun ξ => ?_
++  refine Measurable.of_eval fun ξ => ?_
+   refine Gibbs.measurable_of_dependsOn (Finset.univ.image fun f : PFld => (ξ, f)) _
+     fun c c' h => ?_
+   exact assemble_congr b fun f => h _ (Finset.mem_image.2 ⟨f, Finset.mem_univ _, rfl⟩)
+--- original/UndecidablePhaseDiagram/Payload/Effective.lean
++++ ported/UndecidablePhaseDiagram/Payload/Effective.lean
+@@ -273,12 +273,12 @@
+ 
+ theorem measurable_unrelabel :
+     Measurable fun (x : Gibbs.ECoord Plane Ed (Q τ U) → PV) (c : Coord) => x (relabel τ U c) :=
+-  measurable_pi_lambda _ fun _ => measurable_pi_apply _
++  Measurable.of_eval fun _ => measurable_pi_apply _
+ 
+ theorem measurable_relabelC :
+     Measurable fun (c : Coord → PV) (i : Gibbs.ECoord Plane Ed (Q τ U)) =>
+       c ((relabel τ U).symm i) :=
+-  measurable_pi_lambda _ fun _ => measurable_pi_apply _
++  Measurable.of_eval fun _ => measurable_pi_apply _
+ 
+ theorem map_unrelabel_map_relabelC (m : Measure (Coord → PV)) :
+     (m.map fun c i => c ((relabel τ U).symm i)).map (fun x c => x (relabel τ U c)) = m := by
+@@ -360,9 +360,9 @@
+     (liftCfg U τ β ν).map (fun ω ξ => (ω ξ).spin) = ν := by
+   haveI : IsProbabilityMeasure ν := hν.1
+   haveI : IsProbabilityMeasure (ν.map fun σ v => PV.sp (σ v)) :=
+-    Measure.isProbabilityMeasure_map (Gibbs.measurable_recode PV.sp).aemeasurable
++    (Measure.isProbabilityMeasure_map_iff (Gibbs.measurable_recode PV.sp).aemeasurable).2 inferInstance
+   have hsp : Measurable (fun (ω : Config (SiteVal U)) (ξ : Plane) => (ω ξ).spin) :=
+-    measurable_pi_lambda _ fun ξ =>
++    Measurable.of_eval fun ξ =>
+       (Measurable.of_discrete (f := fun s : SiteVal U => s.spin)).comp (measurable_pi_apply ξ)
+   have hso : Measurable (fun (s : Plane → PV) (ξ : Plane) => (s ξ).spinOf) :=
+     Gibbs.measurable_decode PV.spinOf
+--- original/UndecidablePhaseDiagram/Peierls/Contour.lean
++++ ported/UndecidablePhaseDiagram/Peierls/Contour.lean
+@@ -45,6 +45,7 @@
+ 
+ /-! ## Walks on the dual lattice -/
+ 
++set_option backward.isDefEq.respectTransparency false in
+ /-- A unit step of the dual lattice. -/
+ inductive Dir where
+   | R | L | U | D
+@@ -473,7 +474,7 @@
+         rw [Finset.mem_image]
+         refine ⟨(j, ⟨ds, hds.trans hcard⟩), ?_, hγ'⟩
+         simp only [Finset.mem_product, Finset.mem_range, Finset.mem_univ, and_true]
+-        omega
++        exact ⟨by omega, Finset.mem_univ _⟩
+     _ ≤ (Finset.range m ×ˢ (Finset.univ : Finset (List.Vector Dir (2 * m)))).card :=
+         Finset.card_image_le
+     _ = m * 4 ^ (2 * m) := by
+--- original/UndecidablePhaseDiagram/Peierls/Limit.lean
++++ ported/UndecidablePhaseDiagram/Peierls/Limit.lean
+@@ -48,7 +48,7 @@
+ theorem flipConfig_minusConfig : flipConfig minusConfig = plusConfig := rfl
+ 
+ theorem measurable_flipConfig : Measurable flipConfig :=
+-  measurable_pi_lambda _ fun x => (Measurable.of_discrete (f := flipSpin)).comp
++  Measurable.of_eval fun x => (Measurable.of_discrete (f := flipSpin)).comp
+     (measurable_pi_apply x)
+ 
+ /-- The global spin flip as a measurable involution. -/
+@@ -63,7 +63,7 @@
+ theorem coe_flipEquiv : (flipEquiv : Config Spin → Config Spin) = flipConfig := rfl
+ 
+ theorem measurable_shift (a : Plane) : Measurable (shift (S := Spin) a) :=
+-  measurable_pi_lambda _ fun x => measurable_pi_apply (x - a)
++  Measurable.of_eval fun x => measurable_pi_apply (x - a)
+ 
+ theorem val_flipSpin (s : Spin) : val (flipSpin s) = -val s := by
+   cases s <;> simp [val, flipSpin]
+@@ -120,7 +120,7 @@
+ 
+ theorem isProbabilityMeasure_map_flip {ν : Measure (Config Spin)} [IsProbabilityMeasure ν] :
+     IsProbabilityMeasure (ν.map flipConfig) :=
+-  Measure.isProbabilityMeasure_map measurable_flipConfig.aemeasurable
++  (Measure.isProbabilityMeasure_map_iff measurable_flipConfig.aemeasurable).2 inferInstance
+ 
+ /-- The flip image of a Gibbs measure is a Gibbs measure. -/
+ theorem IsIsingGibbs.map_flip {J : ℝ} {ν : Measure (Config Spin)} (h : IsIsingGibbs J ν) :
+--- original/UndecidablePhaseDiagram/Proof/CorollaryB.lean
++++ ported/UndecidablePhaseDiagram/Proof/CorollaryB.lean
+@@ -133,7 +133,6 @@
+   have hP : (0 < (betaPair n).2 ∧ (((betaPair n).1 : ℚ) / (betaPair n).2) ∈ UniqueSet U) ↔
+       g (betaPair n) = true := by
+     have := congrFun hgeq (betaPair n)
+-    simp only at this
+     rw [this]
+   obtain ⟨hpos, heq⟩ := betaPair_spec n
+   rw [heq] at hP
+--- original/UndecidablePhaseDiagram/Proof/Main2.lean
++++ ported/UndecidablePhaseDiagram/Proof/Main2.lean
+@@ -97,7 +97,7 @@
+   fun v => if h : c v = i then σ ⟨v, h⟩ else .plus
+ 
+ theorem measurable_extLabel (i : ι) : Measurable (extLabel c i) := by
+-  refine measurable_pi_lambda _ fun v => ?_
++  refine Measurable.of_eval fun v => ?_
+   by_cases h : c v = i
+   · simp only [extLabel, h, dif_pos]
+     exact measurable_pi_apply _
+@@ -121,14 +121,14 @@
+ theorem map_restr_compMeas (ρ : ∀ i, Measure ({v // c v = i} → Spin)) (i : ι) :
+     (compMeas c ρ i).map (fun σ (v : {v // c v = i}) => σ v.1) = ρ i := by
+   rw [compMeas, Measure.map_map (g := fun σ (v : {v // c v = i}) => σ v.1)
+-    (measurable_pi_lambda _ fun v => measurable_pi_apply v.1) (measurable_extLabel c i)]
++    (Measurable.of_eval fun v => measurable_pi_apply v.1) (measurable_extLabel c i)]
+   have : ((fun σ (v : {v // c v = i}) => σ v.1) ∘ extLabel c i) = id :=
+     funext fun σ => restr_extLabel c i σ
+   rw [this, Measure.map_id]
+ 
+ theorem isProbabilityMeasure_compMeas (ρ : ∀ i, Measure ({v // c v = i} → Spin))
+     [∀ i, IsProbabilityMeasure (ρ i)] (i : ι) : IsProbabilityMeasure (compMeas c ρ i) :=
+-  Measure.isProbabilityMeasure_map (measurable_extLabel c i).aemeasurable
++  (Measure.isProbabilityMeasure_map_iff (measurable_extLabel c i).aemeasurable).2 inferInstance
+ 
+ /-- **Products of Gibbs measures of the components** (`isDLR_glue`): if `c` is a component map and
+ every `ρ i` is a Gibbs measure of the induced subgraph on the label set of `i`, the product is a
+@@ -193,7 +193,7 @@
+ /-- The spin field `ω ↦ (σ_ξ(ω))_ξ` is measurable. -/
+ theorem measurable_spinField :
+     Measurable (fun (ω : Config (SiteVal U)) (ξ : Plane) => (ω ξ).spin) :=
+-  measurable_pi_lambda _ fun ξ =>
++  Measurable.of_eval fun ξ =>
+     (Measurable.of_discrete (f := fun s : SiteVal U => s.spin)).comp (measurable_pi_apply ξ)
+ 
+ /-- `∫ (number of spins + in B) ∘ T_a dμ = ∑_{b ∈ B} ν(σ_{b - a} = +)` when the spin marginal of
+@@ -204,7 +204,7 @@
+     ∫ ω, blockF B (shift a ω) ∂μ = ∑ b ∈ B, ν.real {σ | σ (b - a) = .plus} := by
+   subst hS
+   haveI : IsProbabilityMeasure (μ.map (fun ω ξ => (ω ξ).spin)) :=
+-    Measure.isProbabilityMeasure_map measurable_spinField.aemeasurable
++    (Measure.isProbabilityMeasure_map_iff measurable_spinField.aemeasurable).2 inferInstance
+   have hm : ∀ ξ, Measurable (fun ω : Config (SiteVal U) => plusInd (ω ξ).spin) := fun ξ =>
+     (Measurable.of_discrete (f := fun s : SiteVal U => plusInd s.spin)).comp (measurable_pi_apply ξ)
+   have hint : ∀ b ∈ B, Integrable (fun ω : Config (SiteVal U) => plusInd (shift a ω b).spin) μ :=
+@@ -308,7 +308,7 @@
+     linarith
+   let φ := squareIso U τ β hd hr hJ
+   have hφm : Measurable (fun σ : Plane → Spin => σ ∘ φ.e.symm) :=
+-    measurable_pi_lambda _ fun w => measurable_pi_apply _
++    Measurable.of_eval fun w => measurable_pi_apply _
+   have hex := fun i => Gibbs.IsingGraph.exists_isDLR ((Gamma U τ β).restrict (depthOf U τ) i)
+   let ρ : ∀ i, Measure ({v // depthOf U τ v = i} → Spin) := fun i => Classical.choose (hex i)
+   have hρ : ∀ i, ((Gamma U τ β).restrict (depthOf U τ) i).toWeightSystem.IsDLR (ρ i) :=
+--- original/UndecidablePhaseDiagram/Proof/Steps.lean
++++ ported/UndecidablePhaseDiagram/Proof/Steps.lean
+@@ -191,7 +191,7 @@
+     zero_le
+ 
+ /-- Haar measure on phases has no atoms. -/
+-instance haar_noAtoms : NoAtoms haar := ⟨haar_singleton⟩
++instance haar_noAtoms : NullSingletonClass haar := ⟨haar_singleton⟩
+ 
+ /-- The typical phases are uncountable (Haar measure has no atoms and gives them measure `1`). -/
+ theorem not_countable_typical : ¬ {τ : ℕ → Bool × Bool | Typical τ}.Countable := by
+--- original/UndecidablePhaseDiagram/Sanity.lean
++++ ported/UndecidablePhaseDiagram/Sanity.lean
+@@ -54,7 +54,8 @@
+   init_not_halting := rfl
+ 
+ theorem walker_run (n t : ℕ) (ht : t ≤ n) :
+-    walker.run n t = some ⟨0, t, fun j => if j < n then 1 else 0⟩ := by
++    walker.run n t = some ⟨0, t, fun j => if j < n then 1 else 0⟩ :=
++  set_option backward.isDefEq.respectTransparency false in by
+   induction t with
+   | zero => rfl
+   | succ t ih =>
+@@ -67,7 +68,8 @@
+     by_cases hj : j = t <;> simp [Function.update_apply, hj, this]
+ 
+ /-- `walker` halts on every input `n` (after `n + 1` steps, on the first blank cell `n`). -/
+-theorem walker_halts (n : ℕ) : walker.HaltsOn n := by
++theorem walker_halts (n : ℕ) : walker.HaltsOn n :=
++  set_option backward.isDefEq.respectTransparency false in by
+   refine ⟨n + 1, ⟨1, n + 1, fun j => if j < n then 1 else 0⟩, ?_, rfl⟩
+   rw [Machine.run, walker_run n n le_rfl]
+   simp only [Option.bind_some, Machine.step, walker, lt_irrefl, if_false, if_true]
+@@ -90,7 +92,8 @@
+ 
+ /-- **[choice] check.** A left move from cell `0` ends the run without halting: `leftFirst`
+ would enter its halting state only by moving left from cell `0`, so it halts on no input. -/
+-theorem leftFirst_not_halts (n : ℕ) : ¬ leftFirst.HaltsOn n := by
++theorem leftFirst_not_halts (n : ℕ) : ¬ leftFirst.HaltsOn n :=
++  set_option backward.isDefEq.respectTransparency false in by
+   rintro ⟨t, c, hc, hh⟩
+   cases t with
+   | zero =>
+--- original/UndecidablePhaseDiagram/Scaffold/Haar.lean
++++ ported/UndecidablePhaseDiagram/Scaffold/Haar.lean
+@@ -39,9 +39,14 @@
+ variable (B : Type) [Fintype B] [Nonempty B] [MeasurableSpace B] [MeasurableSingletonClass B]
+ 
+ /-- The uniform probability measure on a finite set. -/
+-def unif : Measure B := (PMF.uniformOfFintype B).toMeasure
++def unif : Measure B := Measure.uniformOfFinset (Finset.univ : Finset B)
+ 
+-instance : IsProbabilityMeasure (unif B) := by unfold unif; infer_instance
++instance : IsProbabilityMeasure (unif B) := by
++  constructor
++  rw [unif, Measure.uniformOfFinset, Measure.finsetSum_apply]
++  simp only [Measure.smul_apply, measure_univ, smul_eq_mul, mul_one, Finset.sum_const,
++    nsmul_eq_mul, Finset.card_univ]
++  exact ENNReal.mul_inv_cancel (by simp) (by simp)
+ 
+ /-- I.i.d. uniform sequences: the product of uniform measures on `B^ℕ`. -/
+ def unifSeq : Measure (ℕ → B) := Measure.infinitePi (fun _ : ℕ => unif B)
+@@ -51,8 +56,7 @@
+ variable {B}
+ 
+ theorem unif_singleton (b : B) : unif B {b} = (Fintype.card B : ℝ≥0∞)⁻¹ := by
+-  rw [unif, PMF.toMeasure_apply_singleton _ _ (measurableSet_singleton b),
+-    PMF.uniformOfFintype_apply]
++  rw [unif, Measure.uniformOfFinset_apply_singleton_of_mem (Finset.mem_univ b), Finset.card_univ]
+ 
+ /-- The prefix cylinder `{υ : υ_m = p_m for m < n}`. -/
+ def cyl (n : ℕ) (p : ℕ → B) : Set (ℕ → B) := {υ | ∀ m < n, υ m = p m}
+@@ -171,8 +175,8 @@
+ theorem unifSeq_map_tail :
+     (unifSeq B).map (fun υ : ℕ → B => fun m => υ (m + 1)) = unifSeq B := by
+   have hm : Measurable (fun υ : ℕ → B => fun m => υ (m + 1)) :=
+-    measurable_pi_lambda _ fun m => measurable_pi_apply (m + 1)
+-  haveI := Measure.isProbabilityMeasure_map (μ := unifSeq B) hm.aemeasurable
++    Measurable.of_eval fun m => measurable_pi_apply (m + 1)
++  haveI := (Measure.isProbabilityMeasure_map_iff (μ := unifSeq B) hm.aemeasurable).2 inferInstance
+   refine eq_unifSeq fun n p => ?_
+   rw [Measure.map_apply hm (measurableSet_cyl n p)]
+   have e : (fun υ : ℕ → B => fun m => υ (m + 1)) ⁻¹' cyl n p =
+@@ -194,12 +198,12 @@
+ 
+ omit [Fintype B] [Nonempty B] [MeasurableSingletonClass B] in
+ theorem measurable_pairs : Measurable (pairs (B := B)) :=
+-  measurable_pi_lambda _ fun k =>
++  Measurable.of_eval fun k =>
+     (measurable_pi_apply (2 * k)).prodMk (measurable_pi_apply (2 * k + 1))
+ 
+ /-- Grouping in pairs maps i.i.d. uniform sequences on `B` to i.i.d. uniform sequences on `B²`. -/
+ theorem unifSeq_map_pairs : (unifSeq B).map pairs = unifSeq (B × B) := by
+-  haveI := Measure.isProbabilityMeasure_map (μ := unifSeq B) measurable_pairs.aemeasurable
++  haveI := (Measure.isProbabilityMeasure_map_iff (μ := unifSeq B) measurable_pairs.aemeasurable).2 inferInstance
+   refine eq_unifSeq fun n Q => ?_
+   rw [Measure.map_apply measurable_pairs (measurableSet_cyl n Q)]
+   have e : pairs ⁻¹' cyl n Q =
+@@ -324,15 +328,14 @@
+ 
+ theorem measurable_digP (x : Plane) :
+     Measurable (fun υ : ℕ → Bool × Bool => fun m => digP υ x m) :=
+-  measurable_pi_lambda _ fun m => measurable_of_prefix (m + 1) _
++  Measurable.of_eval fun m => measurable_of_prefix (m + 1) _
+     fun υ υ' h => digP_congr (fun i hi => h i (by omega)) x
+ 
+ /-- After `scf:def-resolving`: "for a fixed `x` and Haar-distributed `ϖ`, `x - ϖ` is Haar
+ distributed". -/
+ theorem haar_map_digP (x : Plane) : haar.map (fun υ => fun m => digP υ x m) = haar := by
+   rw [haar_def]
+-  haveI := Measure.isProbabilityMeasure_map (μ := unifSeq (Bool × Bool))
+-    (measurable_digP x).aemeasurable
++  haveI := (Measure.isProbabilityMeasure_map_iff (μ := unifSeq (Bool × Bool)) (measurable_digP x).aemeasurable).2 inferInstance
+   refine eq_unifSeq fun n q => ?_
+   rw [Measure.map_apply (measurable_digP x) (measurableSet_cyl n q)]
+   have e : (fun υ : ℕ → Bool × Bool => fun m => digP υ x m) ⁻¹' cyl n q =
+@@ -370,7 +373,7 @@
+ 
+ theorem measurable_tail :
+     Measurable (fun υ : ℕ → Bool × Bool => fun m => υ (m + 1)) :=
+-  measurable_pi_lambda _ fun m => measurable_pi_apply (m + 1)
++  Measurable.of_eval fun m => measurable_pi_apply (m + 1)
+ 
+ /-- After `scf:def-resolving`: **Haar-almost every phase is resolving** (the digit pairs of
+ `x - ϖ` at positions `(2k, 2k+1)` are independent and uniform on `16` values). -/
+--- original/UndecidablePhaseDiagram/Scaffold/Phase.lean
++++ ported/UndecidablePhaseDiagram/Scaffold/Phase.lean
+@@ -146,8 +146,10 @@
+   congr 1
+   · congr 1
+     ext <;> simp only <;> omega
+-  · rw [Bool.eq_iff_iff, decide_eq_true_iff, decide_eq_true_iff]; omega
+-  · rw [Bool.eq_iff_iff, decide_eq_true_iff, decide_eq_true_iff]; omega
++  · (set_option backward.isDefEq.respectTransparency false in
++      rw [Bool.eq_iff_iff, decide_eq_true_iff, decide_eq_true_iff]); omega
++  · (set_option backward.isDefEq.respectTransparency false in
++      rw [Bool.eq_iff_iff, decide_eq_true_iff, decide_eq_true_iff]); omega
+ 
+ /-- A digit sequence with a given first digit. -/
+ def dcons (u : Bool × Bool) (υ : ℕ → Bool × Bool) : ℕ → Bool × Bool
+--- original/UndecidablePhaseDiagram/Scaffold/QuarterPhase.lean
++++ ported/UndecidablePhaseDiagram/Scaffold/QuarterPhase.lean
+@@ -39,9 +39,11 @@
+ theorem quad_fineSite (x : Plane) (s1 s2 : Bool) : quad (fineSite x s1 s2) = (s1, s2) := by
+   simp only [quad, fineSite, Prod.mk.injEq]
+   constructor
+-  · rw [Bool.eq_iff_iff, decide_eq_true_iff]
++  · (set_option backward.isDefEq.respectTransparency false in
++      rw [Bool.eq_iff_iff, decide_eq_true_iff])
+     cases s1 <;> simp [bitZ]
+-  · rw [Bool.eq_iff_iff, decide_eq_true_iff]
++  · (set_option backward.isDefEq.respectTransparency false in
++      rw [Bool.eq_iff_iff, decide_eq_true_iff])
+     cases s2 <;> simp [bitZ]
+ 
+ theorem qshift_bsite (ε : Bool × Bool) (f : Plane → LetterA) (x : Plane) (s1 s2 : Bool) :
+@@ -187,7 +189,9 @@
+   simp only [shift, qshift, quartering, bvec, quad, half, par, Prod.mk_sub_mk,
+     bitZ_decide_emod_two]
+   congr 1
+-  · ext <;> simp only <;> rw [Bool.eq_iff_iff, decide_eq_true_iff, decide_eq_true_iff] <;> omega
++  · ext <;> simp only <;>
++      (set_option backward.isDefEq.respectTransparency false in
++        rw [Bool.eq_iff_iff, decide_eq_true_iff, decide_eq_true_iff]) <;> omega
+   · congr 1
+     ext <;> simp only <;> omega
+ 
+--- original/UndecidablePhaseDiagram/Scaffold/TILaw.lean
++++ ported/UndecidablePhaseDiagram/Scaffold/TILaw.lean
+@@ -54,7 +54,7 @@
+ 
+ omit [Fintype S] [DiscreteMeasurableSpace S] in
+ theorem measurable_shift (a : Plane) : Measurable (shift a : (Plane → S) → (Plane → S)) :=
+-  measurable_pi_lambda _ fun ξ => measurable_pi_apply (ξ - a)
++  Measurable.of_eval fun ξ => measurable_pi_apply (ξ - a)
+ 
+ /-- The set of tilings of a Wang set (legal on `ℤ²`) is measurable. -/
+ theorem measurableSet_legalOn_univ (H V : S → S → Prop) :
+@@ -168,7 +168,7 @@
+ omit [Fintype S] [DiscreteMeasurableSpace S] in
+ /-- Existence: the image of Haar measure under `Ψ` is a translation-invariant law of `T`. -/
+ theorem isTILaw : IsTILaw P.T (haar.map P.Ψ) := by
+-  refine ⟨Measure.isProbabilityMeasure_map P.measurable_Ψ.aemeasurable, ?_, fun a => ?_⟩
++  refine ⟨(Measure.isProbabilityMeasure_map_iff P.measurable_Ψ.aemeasurable).2 inferInstance, ?_, fun a => ?_⟩
+   · rw [Measure.map_apply P.measurable_Ψ P.measurableSet_T,
+       ← prob_compl_eq_zero_iff (P.measurable_Ψ P.measurableSet_T)]
+     exact ae_iff.1 (P.ae_good.mono fun υ hυ => (P.Ψ_mem υ hυ).1)
+@@ -224,7 +224,7 @@
+ distributed. -/
+ theorem law_phase {μ : Measure (Plane → S)} (hμ : IsTILaw P.T μ) : μ.map P.φ = haar := by
+   haveI := hμ.1
+-  haveI := Measure.isProbabilityMeasure_map (μ := μ) P.measurable_φ.aemeasurable
++  haveI := (Measure.isProbabilityMeasure_map_iff (μ := μ) P.measurable_φ.aemeasurable).2 inferInstance
+   rw [haar_def]
+   exact eq_unifSeq fun n q => cyl_eq_of_const _ n _ fun p => P.cyl_const hμ n p q
+ 
+@@ -293,7 +293,7 @@
+ /-- The phase map is measurable: each digit of `ϖ(f)` is read off a finite box (`scf:phase`(b)). -/
+ theorem measurable_phaseOf : Measurable phaseOf := by
+   classical
+-  refine measurable_pi_lambda _ fun m => ?_
++  refine Measurable.of_eval fun m => ?_
+   let D := boxF (rho (m + 1))
+   let g : (Plane → Letter) → Bool × Bool := fun f =>
+     if h : ∃ f', IsLetterTiling f' ∧ ∀ x ∈ D, f' x = f x then phaseOf (Classical.choose h) m
+@@ -362,7 +362,7 @@
+ /-- `ϖ ↦ f_ϖ` is measurable: "`f_ϖ(x)` is computed from finitely many digits of `x - ϖ`". -/
+ theorem measurable_tilingOf : Measurable tilingOf := by
+   classical
+-  refine measurable_pi_lambda _ fun x => ?_
++  refine Measurable.of_eval fun x => ?_
+   let p : ℕ → (ℕ → Bool × Bool) → Prop := fun n υ => IsDouble υ x n ∨ ¬ ∃ m, IsDouble υ x m
+   have hp : ∀ υ, ∃ n, p n υ := fun υ => by
+     by_cases h : ∃ m, IsDouble υ x m
+@@ -484,7 +484,7 @@
+ /-- The quarter phase map is measurable (`scf:quarter`, last claim). -/
+ theorem measurable_qphaseOf : Measurable qphaseOf := by
+   classical
+-  refine measurable_pi_lambda _ fun m => ?_
++  refine Measurable.of_eval fun m => ?_
+   let D := boxF (rho (m + 1))
+   let g : (Plane → Quarter) → Bool × Bool := fun Y =>
+     if h : ∃ Y', IsQTiling Y' ∧ ∀ x ∈ D, Y' x = Y x then qphaseOf (Classical.choose h) m
+@@ -514,7 +514,7 @@
+ 
+ /-- `τ ↦ Y_τ` is measurable. -/
+ theorem measurable_qtilingOf : Measurable qtilingOf := by
+-  refine measurable_pi_lambda _ fun ξ => ?_
++  refine Measurable.of_eval fun ξ => ?_
+   have hA : ∀ y : Plane, Measurable fun υ : ℕ → Bool × Bool => tilingOfA υ y := fun y =>
+     ((measurable_pi_apply y).comp measurable_tilingOf).subtype_mk
+   let G : (Bool × Bool) × (ℕ → Bool × Bool) → Quarter := fun p =>
