@@ -2,7 +2,7 @@
   "title": "An uncomputable phase diagram at positive temperature for one classical lattice model",
   "upload_type": "publication",
   "publication_type": "preprint",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publication_date": "2026-11-10",
   "creators": [
     {
@@ -28,5 +28,12 @@
   "access_right": "open",
   "license": "cc-by-4.0",
   "language": "eng",
-  "notes": "Preprint. It has not been peer reviewed. Version 1.0.0. Text: CC BY 4.0. Build script: MIT or Apache 2.0."
+  "notes": "Preprint. It has not been peer reviewed. Version 1.1.0 adds a citation of the authors' preprint \"Spontaneous magnetization and thermal decay are undecidable at positive temperature\" (version 1.2.0, 10.5281/zenodo.23962706), which version 1.0.0 did not cite: two sentences comparing it with Theorem A in the prior work of the introduction, a row of Table 1 and one sentence in Section 9. That preprint makes Gibbs uniqueness and other thermal properties undecidable at one fixed temperature for computable families of interactions with strictly positive rational weights; Theorem A fixes one interaction with hard constraints and carries the input in the inverse temperature. No statement or proof has changed. \"How this work was done\" records the change. Version 1.0.0 is 10.5281/zenodo.24115745. Text: CC BY 4.0. Build script: MIT or Apache 2.0.",
+  "related_identifiers": [
+    {
+      "identifier": "https://finite.works/papers/undecidable-phase-diagram/",
+      "relation": "isDescribedBy",
+      "scheme": "url"
+    }
+  ]
 }

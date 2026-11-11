@@ -1,6 +1,6 @@
 An uncomputable phase diagram at positive temperature for one classical lattice model
 Seth Douglas and Nidhal Mghirbi
-Version 1.0.0, November 2026
+Version 1.1.0, November 2026
 
 Build: python -B build.py [--build-dir NEW_OR_EMPTY_DIRECTORY]
 Requires Python 3, pdflatex and the LaTeX packages named in preamble-core.tex. No BibTeX run is

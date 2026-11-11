@@ -1,6 +1,6 @@
 # An uncomputable phase diagram at positive temperature for one classical lattice model
 
-Seth Douglas and Nidhal Mghirbi. Version 1.0.0, November 2026. DOI: [10.5281/zenodo.24115745](https://doi.org/10.5281/zenodo.24115745). Concept DOI (all versions): [10.5281/zenodo.24115744](https://doi.org/10.5281/zenodo.24115744).
+Seth Douglas and Nidhal Mghirbi. Version 1.1.0, November 2026. The version 1.1.0 DOI is recorded in the commit that follows the release. Version 1.0.0: [10.5281/zenodo.24115745](https://doi.org/10.5281/zenodo.24115745). Concept DOI (all versions): [10.5281/zenodo.24115744](https://doi.org/10.5281/zenodo.24115744).
 
 **This is a preprint. It has not been peer reviewed.**
 
@@ -30,7 +30,11 @@ The proofs build on prior work that the paper credits in detail:
 - substitution tilings with local rules and unique derivation (Mozes, Mossé, Solomyak);
 - the Peierls argument and Dobrushin's uniqueness theorem; for the conditional exact diagram, Onsager, Yang, Aizenman, Higuchi, and Beffara and Duminil-Copin.
 
-Related work credited in the paper includes Kurdyumov and Toom (undecidable ergodicity of probabilistic cellular automata), Gu, Weedbrook, Perales and Nielsen and Gayral, Sablik and Taati (who anticipated undecidable thermodynamics), Miękisz and Taati, Marsan, Sablik and Törmä, and our preprint "Forgetting under noise is undecidable" ([10.5281/zenodo.24105227](https://doi.org/10.5281/zenodo.24105227)).
+Related work credited in the paper includes Kurdyumov and Toom (undecidable ergodicity of probabilistic cellular automata), Gu, Weedbrook, Perales and Nielsen and Gayral, Sablik and Taati (who anticipated undecidable thermodynamics), Miękisz and Taati, Marsan, Sablik and Törmä, and our preprints "Forgetting under noise is undecidable" ([10.5281/zenodo.24105227](https://doi.org/10.5281/zenodo.24105227)) and "Spontaneous magnetization and thermal decay are undecidable at positive temperature" ([10.5281/zenodo.23962706](https://doi.org/10.5281/zenodo.23962706)).
+
+## Changes in version 1.1.0
+
+Version 1.1.0 adds a citation of the authors' preprint *Spontaneous magnetization and thermal decay are undecidable at positive temperature* (version 1.2.0, DOI [10.5281/zenodo.23962706](https://doi.org/10.5281/zenodo.23962706)), which version 1.0.0 did not cite: two sentences in the prior work of the introduction, a row of Table 1 and one sentence in Section 9. That preprint makes spontaneous magnetization, exponential decay of a specified spin correlation and uniqueness of the Gibbs measure undecidable at one fixed positive temperature, for computable families of interactions on ℤ² with strictly positive rational Boltzmann weights, in which the interaction and its range depend on the input. Theorem A instead fixes one nearest-neighbour interaction, with hard constraints, carries the input in the inverse temperature, and makes undecidable uniqueness among translation-invariant Gibbs measures. No statement or proof has changed.
 
 ## Contents and reproduction
 
