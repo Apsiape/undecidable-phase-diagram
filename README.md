@@ -1,6 +1,6 @@
 # An uncomputable phase diagram at positive temperature for one classical lattice model
 
-Seth Douglas and Nidhal Mghirbi. Version 1.1.0, November 2026. The version 1.1.0 DOI is recorded in the commit that follows the release. Version 1.0.0: [10.5281/zenodo.24115745](https://doi.org/10.5281/zenodo.24115745). Concept DOI (all versions): [10.5281/zenodo.24115744](https://doi.org/10.5281/zenodo.24115744).
+Seth Douglas and Nidhal Mghirbi. Version 1.1.0, November 2026. DOI: [10.5281/zenodo.24124685](https://doi.org/10.5281/zenodo.24124685). Version 1.0.0: [10.5281/zenodo.24115745](https://doi.org/10.5281/zenodo.24115745). Concept DOI (all versions): [10.5281/zenodo.24115744](https://doi.org/10.5281/zenodo.24115744).
 
 **This is a preprint. It has not been peer reviewed.**
 
