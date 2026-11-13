@@ -2,6 +2,29 @@
 
 This directory proves Theorem A and Corollary B of the paper, and the existence of a universal machine as in Section 2.2, in Lean 4 with Mathlib. The proofs have no unproved step and use no axioms beyond Lean's three standard axioms `propext`, `Classical.choice` and `Quot.sound`. Theorem A and Corollary B are proved from two published theorems that Mathlib lacks: Dobrushin's uniqueness theorem (`H1`) and the plus state of the two-dimensional Ising model (`H2`). They are explicit hypotheses of the two final theorems, not axioms. Appendix D of the paper describes the formalization.
 
+## Reproduce
+
+Install the toolchain specified by `lean-toolchain` (Lean 4.35.0), and have Git and Mathlib's cache prerequisites available. From this directory run:
+
+```sh
+export LEAN_NUM_THREADS=1
+lake exe cache get
+lake build
+lake env lean -j1 -M6144 Audit.lean
+```
+
+The cache command fetches the pinned Git dependencies and Mathlib's standard build cache. Plain `lake build` compiles the entire `UndecidablePhaseDiagram` library from the shipped sources. Compare the audit's axiom lines with `AXIOMS.txt`; this paper's recorded hypothesis policy in the evidence and statement files remains authoritative. Named hypotheses are preserved. The standard build does not run the comparator, the custom Python replay, or independent kernel replays, and does not rewrite `AXIOMS.txt`.
+
+Allow at least 8 GiB of available physical memory and run one Lean compiler process on the machine at a time. The package passes `-j1 -M6144`. On PowerShell set `$env:LEAN_NUM_THREADS = '1'`. Compiler thread limits do not provide a machine-wide process lock: serialize launches externally and check memory before building. This toolchain's Lake has no `lake build -j1` option.
+
+Mathlib is required by Git at `56a005855ea17e0b0958f73ec801ae140b0a1679`; the Lake-generated manifest pins its eight inherited dependencies to the recorded revisions. Use the shipped manifest; ordinary reproduction does not require `lake update`. The stock Mathlib cache tool is used without the historical override.
+
+`Challenge.lean`, `Solution.lean`, and `Audit.lean` are ordinary files checked with `lake env lean -j1 -M6144 FILE.lean`. Challenge retains its intentional comparator holes and is excluded from the library. Library and final audit output must have no `declaration uses sorry` warnings.
+
+`UPDStatements` is a separate library with only `UndecidablePhaseDiagram.Statements` as its root. It supplies `-Dbackward.isDefEq.respectTransparency=false` for the unchanged Lean 4.35 `Fintype` derivations. Other modules retain their original elaboration options. The two UPD libraries together cover exactly the original module set (or the consuming package's recorded subset).
+
+The Python replay, evidence, and previous reproduction instructions below are retained as optional historical tools. They assume the old `vendor/` layout, prebuilt objects, and in some cases a host-memory heartbeat; plain `lake build` does not invoke them. Run any historical preparation in a separate copy and retain the standard manifest in this one. Historical checks describe the original release, not new comparator or kernel replays by the standard build.
+
 ## What is proved
 
 `UndecidablePhaseDiagram/Statements.lean` defines, with no proofs of substance, every object that occurs in Theorem A and Corollary B: interactions, legal configurations, energies, Gibbs kernels and Gibbs measures (Section 2.1), Turing machines (Section 2.2), the scaffold alphabet (Section 3 and Appendix A), the fields, rules, colours and charge of the interaction (Section 4), the machine M (Appendix C), the interaction Φ (Definition 4.1) and the numbers λ_K, β_n and intervals J_n (Lemma 7.1). Every definition carries a comment naming the label of the paper that it mirrors. The file states Theorem A and Corollary B as propositions:
@@ -97,8 +120,7 @@ Among the choices in the proofs, one changes the route of a printed argument: th
 
 `REPORT.md` is the full record of the port and of these checks.
 
-## Reproduce
-
+## Historical reproduction workflow (optional)
 The recorded runs used a Linux workspace in WSL on the authors' Windows machine, at `/opt/undecidable-phase-diagram-arxiv-2026-11-11`, with the toolchain, bubblewrap and the dependency directory `vendor/` copied from the workspace of the forgetting paper's release. That workspace holds what is not shipped here: `vendor/` (6.8 GB with build objects), the `.lake/` build objects, the 360 MB export and the logs of each compile.
 
 You need the Lean 4.35.0 toolchain (`lean`, `lake`, `leanchecker`, `leanexport`), Python 3, Git, and at least 8 GiB of available memory.
